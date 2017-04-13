@@ -1,0 +1,292 @@
+.navigation {
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  border: 0;
+  vertical-align: baseline;
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.navigation__link {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+  padding: 0 7.5px;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.44);
+  -webkit-transition: color .15s;
+  transition: color 0.15s;
+  &:hover {
+    color: rgba(0, 0, 0, 0.9);
+  }
+}
+
+@media (min-width: 480px) {
+  .navigation__link {
+    padding: 0 15px;
+    font-size: 14px;
+  }
+}
+
+.navigation__item:first-child .navigation__link {
+  padding-left: 0;
+}
+
+.button {
+  display: inline-block;
+  padding: 0 25px;
+  margin-bottom: 15px;
+  height: 40px;
+  line-height: 38px;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif;
+  font-size: 14px;
+  white-space: nowrap;
+  color: rgba(0, 0, 0, 0.44);
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 20px;
+  -webkit-transition-property: border-color, color, background-color;
+  transition-property: border-color, color, background-color;
+  -webkit-transition-duration: 125ms;
+  transition-duration: 125ms;
+  -webkit-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  + .button {
+    margin-left: 4px;
+  }
+  &:hover {
+    color: rgba(0, 0, 0, 0.6);
+    border-color: rgba(0, 0, 0, 0.3);
+  }
+}
+
+.button--small {
+  margin-bottom: 0;
+  padding: 0 20px;
+  height: 37px;
+  line-height: 35px;
+}
+
+.button--primary {
+  color: #fff;
+  background: #00ab6b;
+  border-color: #00ab6b;
+  &:hover {
+    color: #fff;
+    border-color: #00ab6b;
+    background: #1c9963;
+  }
+}
+
+.button--secondary {
+  color: #00ab6b;
+  border-color: #02b875;
+  &:hover {
+    color: #1c9963;
+    border-color: #00ab6b;
+  }
+}
+
+.button--no-border {
+  border: none;
+}
+
+.button--appstore {
+  margin-left: 0 !important;
+  margin-right: 6px;
+  width: 135px;
+  height: 40px;
+  text-indent: -9999px;
+  border-radius: 0;
+  border: none;
+  overflow: hidden;
+}
+
+.button--playstore {
+  margin-left: 0 !important;
+  margin-right: 6px;
+  width: 135px;
+  height: 40px;
+  text-indent: -9999px;
+  border-radius: 0;
+  border: none;
+  overflow: hidden;
+  border-radius: 0;
+  //background-image: url(b963007a74204c33e966e9796b9ae49b.png);
+  background-size: cover;
+}
+
+.button--appstore {
+  //background-image: url(26718260004d61e865ae6eccd3c9d021.png);
+  background-size: cover;
+}
+
+.play-button {
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  border: 0;
+  vertical-align: baseline;
+  background: transparent;
+  width: 60px;
+  height: 60px;
+  position: relative;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: inline-block;
+  border-radius: 50%;
+  background-color: #00ab6b;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2016%2024%22%3E%0D%0A%09%3Cpath%20fill%3D%22%23fff%22%20d%3D%22M0%2C0l16%2C12L0%2C24V0z%22/%3E%0D%0A%3C/svg%3E%0D%0A');
+  background-position: 55%;
+  background-repeat: no-repeat;
+  background-size: 12px 18px;
+  text-align: left;
+  text-indent: 80px;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-transition: background-color .25s;
+  transition: background-color 0.25s;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    background-color: #1c9963;
+  }
+}
+
+@media (min-width: 960px) {
+  .play-button {
+    width: 80px;
+    height: 80px;
+    background-size: 16px 24px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .play-button {
+    width: 80px;
+    height: 80px;
+    background-size: 16px 24px;
+  }
+}
+
+.search {
+  position: relative;
+}
+
+.search__input {
+  display: none;
+  padding: 0 15px 0 40px;
+  height: 37px;
+  line-height: 37px;
+  width: 200px;
+  font-family: KievitOT, Helvetica, sans-serif;
+  font-size: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 37px;
+  outline: none;
+  -webkit-transition: border .2s;
+  transition: border 0.2s;
+  &:focus {
+    border-color: rgba(0, 0, 0, 0.35) !important;
+  }
+  &::-webkit-input-placeholder, &:-moz-placeholder, &::-moz-placeholder, &:-ms-input-placeholder {
+    color: #a9a9a9;
+  }
+}
+
+@media (min-width: 1200px) {
+  .search__input {
+    display: block;
+  }
+}
+
+.search:hover .search__input, .search__input:hover {
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+.search__button {
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  border: 0;
+  vertical-align: baseline;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 50%;
+  outline: none;
+  svg {
+    opacity: 0.65;
+  }
+  &:hover svg {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 1200px) {
+  .search__button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: none;
+    border-radius: 0;
+  }
+}
+
+
+nav.pagination {
+  margin-bottom: 50px;
+  ul {
+    padding: 0;
+    list-style-type: none;
+    li {
+      display: inline-block;
+      width: 15px;
+      &.pagination-current span {
+        font-weight: 700;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+        padding: 5px;
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+code, pre {
+  font-family: AtlasTypewriterRegular, AtlasTypewriter-Regular, Andale Mono, Consolas, Lucida Console, Menlo, Luxi Mono, monospace;
+  font-style: normal;
+  font-weight: 400;
+  font-size: .75rem;
+  background-color: #f1f1f1;
+}
+
+code {
+  display: inline-block;
+  padding: 2px 0.3125rem;
+}
+
+pre {
+  padding: .9375rem;
+  margin: .9375rem 0;
+  overflow: hidden;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  code {
+    padding: 0;
+    background-color: transparent;
+  }
+}

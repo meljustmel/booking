@@ -1,0 +1,206 @@
+
+.HeroPromotionCategoryHeading {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.HeroPromotionCategorySubheading {
+  font-size: 1rem;
+}
+
+.HeroPromotionCategoryHeading span {
+  display: inline-block;
+  border-bottom: 1px solid;
+}
+
+.HeroPromotionHeading {
+  font-size: 1.125rem;
+}
+
+.HeroPromotionCategoryCopy {
+  margin-top: 2.5rem;
+}
+
+.HeroPromotionCTA {
+  margin-top: 1.25rem;
+  line-height: 1.3;
+  span {
+    border-bottom: 1px solid;
+  }
+}
+
+.HeroPromotionCredits {
+  position: absolute;
+  right: .625rem;
+  bottom: .625rem;
+  z-index: 1;
+  font-size: .875rem;
+  color: #fff;
+  -webkit-transition: color .2s ease, opacity .2s ease;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.isCreditsHidden .HeroPromotionCredits {
+  pointer-events: none;
+  opacity: 0;
+}
+
+.no-touch .HeroPromotionCredits:hover {
+  color: #ccc;
+}
+
+.HeroPromotionCreditsAuthor {
+  display: inline-block;
+  margin-right: .9375rem;
+  margin-left: .625rem;
+  line-height: 1.2;
+  border-bottom: 1px solid;
+}
+
+@media (max-width: 39.9375em) {
+  .HeroPromotionCategory .HeroPromotionCaption {
+    min-height: 12.5rem;
+    padding-right: .625rem;
+    padding-left: 0.625rem;
+  }
+  .HeroPromotionMobileActions {
+    position: relative;
+    width: 100%;
+    padding: 0 .625rem .625rem;
+    font-size: .875rem;
+    align-self: flex-end;
+    > {
+      .HeroPromotionCTA {
+        display: inline-block;
+        width: 40%;
+        padding-right: .3125rem;
+        margin-top: 0;
+        vertical-align: middle;
+        border: 0;
+      }
+      .HeroPromotionCredits {
+        position: static;
+        width: 60%;
+        padding-left: .3125rem;
+        overflow: hidden;
+        text-align: right;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        align-self: flex-end;
+        vertical-align: middle;
+        .HeroPromotionCreditsAuthor, .HeroPromotionCreditsBy {
+          display: inline;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 40em) {
+  .HeroPromotionCaption {
+    margin: 0 1.25rem;
+  }
+  .HeroPromotionHeading {
+    font-size: 3rem;
+  }
+  .HeroPromotionSubheading {
+    font-size: 1.75rem;
+  }
+  .HeroPromotionCategoryHeading {
+    font-size: 1.5rem;
+  }
+  .HeroPromotionCategorySubheading {
+    font-size: 1.125rem;
+  }
+  .HeroPromotionCredits {
+    right: 1.25rem;
+    bottom: 1.25rem;
+  }
+}
+
+@media (min-width: 85em) {
+  .HeroPromotionCaption {
+    padding-right: 2.5rem;
+    margin: 0 2.5rem;
+    &.isCentered {
+      padding-right: 0;
+    }
+  }
+  .HeroPromotionCredits {
+    right: 2.5rem;
+  }
+}
+
+.Hero {
+  padding-top: 5.3125rem;
+  background-color: #fff;
+}
+
+
+
+.Hero {
+  padding-top: 5.3125rem;
+  background-color: #fff;
+}
+
+.isAuthenticationView ~ .Hero, .isOnboardingView ~ .Hero {
+  padding-top: 0 !important;
+}
+
+.isDiscoverView ~ .Hero {
+  padding-top: 10rem !important;
+}
+
+.HeroProfile {
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+  overflow: hidden;
+}
+
+.HeroPromotion {
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+  overflow: hidden;
+  -webkit-box-align: center;
+  align-items: center;
+  width: 100%;
+  min-height: 15rem;
+  color: #fff;
+}
+
+@media (max-width: 39.9375em) {
+  .isLoggedOut {
+    .Hero {
+      padding-top: 3.125rem;
+    }
+    .isDiscoverView ~ .Hero {
+      padding-top: 7.8125rem !important;
+    }
+  }
+  .HeroPromotionCategory {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 40em) {
+  .Hero {
+    padding-top: 5rem;
+  }
+  .isDiscoverView ~ .Hero {
+    padding-top: 9.6875rem !important;
+  }
+  .HeroProfile {
+    //height: calc(100vh - 5rem);
+    min-height: 33.75rem;
+  }
+  .HeroPromotion {
+    min-height: 23.75rem;
+  }
+}
+
+

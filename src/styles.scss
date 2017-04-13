@@ -1,1 +1,80 @@
-/* You can add global styles to this file, and also import other style files */
+@import "style/jumbotron";
+@import "style/utils/pre";
+@import "style/utils/loading";
+@import "style/utils/variables";
+@import "style/layout/bottom";
+
+@import "style/layout/content";
+
+@import "style/calendar/main";
+@import "style/components/popover";
+@import "style/components/hero";
+@import "style/components/search";
+@import "style/medium";
+@import "style/layout/services";
+@import "style/layout/article";
+@import "style/components/nav";
+@import "style/components/about";
+
+
+
+.PostActionButton {
+  position: absolute;
+  left: auto;
+  right: 3rem;
+  top: 1.25rem;
+  &:hover {
+    color:#000;
+  }
+}
+
+.spacer {
+  padding-top: 3em;
+}
+
+
+h3 {
+  margin: 0;
+}
+
+.container-fluid {
+  padding-top: 70px;
+  padding-bottom: 50px;
+}
+
+.spacer-top {
+  margin-top: 15px;
+}
+
+.sidebar-nav h4 {
+  margin-bottom: 20px;
+}
+
+.sidebar-nav ul {
+  margin-bottom: 0;
+}
+
+.sidebar-nav li {
+  margin-bottom: 10px;
+  font-size: 90%;
+}
+
+.sidebar-nav a:not(.active) {
+  color: #777;
+}
+
+.sidebar-nav a:hover {
+  color: #0275d8;
+  text-decoration: none;
+}
+
+.sidebar-nav a.active {
+  color: #373a3c;
+  font-weight: 700;
+}
+
+.segment {
+  padding: 3em 0;
+}
+
+

@@ -1,0 +1,16 @@
+@import 'month';
+@import 'week';
+@import 'day';
+
+.cal-day-selected {
+  background-color: #F5E2EE !important;
+}
+
+.cal-disabled {
+  background-color: #eee;
+  pointer-events: none;
+}
+
+.cal-disabled .cal-day-number {
+  opacity: 0.1;
+}

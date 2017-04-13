@@ -1,0 +1,133 @@
+.footer {
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  .left {
+    float: left;
+  }
+  .right {
+    float: right;
+  }
+  .middle {
+    max-width: 370px;
+    margin: 0 auto;
+    text-align: center;
+    .copy {
+      font-size: 22px;
+      .footer-logo {
+        img {
+          width:200px;
+        }
+      }
+    }
+    .copy_text {
+      font-size: 13px;
+      line-height: 24px;
+      color: #3a3d4b;
+      opacity: 0.5;
+      margin-top: 18px;
+    }
+  }
+  .left a, .right a {
+    display: inline-block;
+    margin-right: 28px;
+    color: #222328;
+    font-size: 12px;
+    line-height: 24px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    &:focus {
+      display: inline-block;
+      margin-right: 28px;
+      color: #222328;
+      font-size: 12px;
+      line-height: 24px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+  }
+  .left a:hover {
+    opacity: 0.7;
+    color: #222328;
+  }
+  .right {
+    a {
+      &:hover {
+        opacity: 0.7;
+        color: #222328;
+      }
+      margin-left: 20px;
+      margin-right: 0;
+      vertical-align: top;
+      &:focus {
+        margin-left: 20px;
+        margin-right: 0;
+        vertical-align: top;
+      }
+    }
+    .socials a {
+      height: 24px;
+      width: 24px;
+      opacity: 0.8;
+      font-size:20px;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+
+
+
+@media(max-width:570px) {
+  .footer {
+    height:100vh;
+    .container {
+      // margin: 45px 45px 0;
+      text-align:center;
+      .middle {
+        .logo {
+          margin-bottom:30px;
+        }
+
+      }
+      .left {
+        width:100%;
+        // border:1px solid green;
+        margin:0 auto;
+        text-align:center;
+        display:block;
+        a {
+          margin:0 15px;
+        }
+
+      }
+      .right {
+        width:100%;
+        margin:30px auto;
+        // border:1px solid blue;
+        display:block;
+        a {
+          margin:0 auto 10px;
+        }
+        .socials {
+          display:block;
+          // border:1px solid red;
+          a {
+            //border:1px solid grey;
+            font-size:20px;
+            margin:20px 20px 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+

@@ -1,0 +1,86 @@
+.search-results {
+  font-family: Charter, Helvetica, sans-serif;
+  h1, h2 {
+    font-family: KievitOT, Helvetica, sans-serif;
+  }
+}
+
+.search-results-list {
+  list-style-type: none;
+  margin-bottom: 50px;
+  padding: 0;
+  a {
+    color: inherit;
+  }
+  .search-result {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    &:last-child {
+      border-bottom: none;
+    }
+    .breadcrumbs {
+      display: inline-block;
+      padding-left: 10px;
+      list-style-type: none;
+      font-size: 14px;
+      li {
+        display: inline-block;
+        a {
+          padding-right: 20px;
+          margin-right: 10px;
+          text-decoration: none;
+          background: url('/img/icons/right-arrow.png') no-repeat 100%;
+        }
+        &:last-child a {
+          background: none;
+        }
+      }
+    }
+    .search-result-meta {
+      font-size: 14px;
+      margin-top: 10px;
+      font-weight: light;
+      span {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+
+input#query {
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+input[type="search"] {
+  -webkit-appearance: textfield;
+  box-sizing: content-box;
+}
+
+button, input, optgroup, select, textarea {
+  font-family: BlinkMacSystemFont, 'KievitOT', sans-serif;
+}
+
+input {
+  line-height: normal;
+  font-family: BlinkMacSystemFont, 'KievitOT', sans-serif;
+}
+
+button, input, optgroup, select, textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.help-hero__input {
+  padding: 20px 20px 20px 50px;
+  font-size: 16px;
+  background: #fff url(/assets/magnifier.png) 20px no-repeat;
+  border-radius: 2px;
+  border: 1px solid #00ab6b;
+  outline: none;
+  box-shadow: 0 1px 20px 0 rgba(0, 0, 0, .04);
+}

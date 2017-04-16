@@ -48,7 +48,7 @@ import {User} from "../../../core/model";
 
     .button--login {
       display: inline-block;
-      padding: 0 25px;
+      padding: 0 15px;
       /*margin-bottom: 15px;*/
       height: 40px;
       line-height: 38px;

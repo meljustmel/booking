@@ -57,10 +57,15 @@ type CalendarPeriod = 'day' | 'week' | 'month';
         <section class="">
           <div class="wizard">
             <form-wizard [formGroup]="reservationForm" (onStepChanged)="onStepChanged($event)">
-              <wizard-step [title]=" data?.service ||'Pick your Service'" (onNext)="onStep1Next($event)">
+              <wizard-step
+                [isValid]="!reservationForm.controls['service'].untouched"
+                [title]=" data?.service ||'Pick your Service'" 
+                (onNext)="onStep1Next($event)">
                 <service-form [parent]="reservationForm" formControlName="service"></service-form>
               </wizard-step>
-              <wizard-step [title]=" (data?.reservationDate | date)  ||'Pick your Day'" [isValid]="reservationForm.valid"
+              <wizard-step
+                [isValid]="!reservationForm.controls['reservationDate'].untouched"
+                [title]=" (data?.reservationDate | date)  ||'Pick your Day'"
                            [showNext]="step2.showNext" [showPrev]="step2.showPrev" (onNext)="onStep2Next($event)">
 
                 <calendar-form [parent]="reservationForm"
@@ -69,17 +74,20 @@ type CalendarPeriod = 'day' | 'week' | 'month';
                                (dayClicked)="dayClicked($event.day)">
                 </calendar-form>
               </wizard-step>
-              <wizard-step [title]=" (data?.reservationTime | time) || 'Pick your Time'" (onNext)="onStep3Next($event)">
+              <wizard-step
+                [isValid]="!reservationForm.controls['reservationTime'].untouched"
+                [title]=" (data?.reservationTime | time) || 'Pick your Time'" 
+                (onNext)="onStep3Next($event)">
                 <time-form formControlName="reservationTime" [times]='times | async'></time-form>
               </wizard-step>
               <wizard-step title='Confirm' (onComplete)="onComplete($event)">
                 <div [ngSwitch]="isCompleted">
                   <div *ngSwitchDefault>
-                    <action (action)='save(reservationForm)' [label]="'Reserve'" [tag]="'Booking Tag-line'"></action>
+                    <confirm-form [user]="user | async" [data]='data'></confirm-form>
                   </div>
                   <div *ngSwitchCase="true">
                     <!--<h4>Thank you {{data.email}}! You have completed all the steps.</h4>-->
-                    <confirm-form [user]="user | async" [data]='data'></confirm-form>
+                    <success-form [user]="user | async" [data]='data'></success-form>
                   </div>
                 </div>
               </wizard-step>
@@ -90,7 +98,6 @@ type CalendarPeriod = 'day' | 'week' | 'month';
       <!--<pre>{{ filtered | json }}</pre>-->
       <!--<pre>Value: {{ reservationForm.value | json }}</pre>-->
     </div>
-
   `,
   styles: [`
     :host {
@@ -129,7 +136,7 @@ export class BookingComponent implements OnInit {
 
   times;
   user;
-  data;
+  data = {};
 
   minDate: Date = subDays(new Date(), 1);
 
@@ -176,7 +183,10 @@ export class BookingComponent implements OnInit {
   }
 
   onComplete(event) {
+    this.slimLoadingBarService.start();
     this.isCompleted = true;
+    this.save(this.reservationForm);
+    this.slimLoadingBarService.complete();
   }
 
   onStepChanged(step) {
@@ -199,18 +209,6 @@ export class BookingComponent implements OnInit {
 
     this.reservations$ = this.store.select(state => state.reservationState.reservations);
 
-    // const reservations$ = Observable.of(this.reservations$);
-    //
-    // const requestSlotFromKey = (key) => Observable.of({slot: key}).delay(1000); // mock users
-    //
-    //
-    // const userListKeyMap$ = Observable.of([{key: 1}, {key: 2}, {key: 3}]); // mock keys
-    // const requestUserFromKey = (key) => Observable.of({user: key}).delay(1000); // mock users
-    //
-    // const result$ = reservations$.switchMap((userKeys) =>
-    //   Observable.forkJoin(userKeys.map(uk => requestSlotFromKey(uk.key))));
-    //
-    // result$.subscribe((users) => console.log('got some users: ', users));
     this.reservationForm = this.fb.group({
       service: ['', Validators.required],
       reservationDate: ['', Validators.required],

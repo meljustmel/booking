@@ -26,6 +26,7 @@ export class WizardStepComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
   @Input('isActive') set isActive(isActive: boolean) {

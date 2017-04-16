@@ -21,6 +21,7 @@ import {ReservationService} from "../core/service/res";
 import {SlimLoadingBarService} from "ng2-slim-loading-bar";
 
 import {routeFadeStateTrigger} from "../app.animations";
+import {Subject} from 'rxjs/';
 
 @Component({
   selector: 'schedule',
@@ -55,6 +56,8 @@ import {routeFadeStateTrigger} from "../app.animations";
       </div>
 
     </div>
+    <p>{{(filtered$ | async)?.length }}</p>
+    <pre>{{filtered$ | async | json }}</pre>
 
   `,
   styles: [`
@@ -71,6 +74,7 @@ export class ScheduleComponent implements OnInit {
   view = 'month';
   viewDate: Date = new Date();
   reservations$;
+  subject = new Subject();
 
   activeDayIsOpen = false;
 
@@ -79,6 +83,7 @@ export class ScheduleComponent implements OnInit {
   user$;
   reservationDay;
   selectedDay;
+  filtered$;
   addCssClass: (day: CalendarMonthViewDay) => void;
 
 
@@ -93,13 +98,19 @@ export class ScheduleComponent implements OnInit {
     this.slimLoadingBarService.start();
 
     this.reservationService.loadReservations();
+    this.subject.startWith(this.viewDate);
 
     this.reservations$ = this.store.select(state => state.reservationState.reservations);
+    this.filtered$ = this.reservationService.filteredReservations(this.subject);
 
     this.slimLoadingBarService.complete();
+
   }
 
   dayClicked({date, events}: { date: Date, events: CalendarEvent[] }): void {
+    // const day = date;
+    const day = date.toString();
+    this.subject.next(day);
     if (this.selectedDay) {
       delete this.selectedDay.cssClass;
     }

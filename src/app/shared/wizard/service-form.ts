@@ -10,8 +10,15 @@ const SERVICE_VALUE_ACCESSOR = {
 @Component({
   selector: 'service-form',
   template: `
-    <div class="container" [formGroup]="parent">
+    <div class="root" [style.paddingTop.em]="3">
+      <h4 class="label">Step One</h4>
+      <h3 class="">Select the method you prefer </h3>
+      <h1 class="title">All Three are Organic</h1>
+    </div>
+    <div class="section" [formGroup]="parent">
+      
       <div class="section-content">
+       
         <div *ngFor="let service of services; let i = index"
              (click)="onServiceSelect(service.type)"
              class="column large-4 medium-6">
@@ -20,6 +27,7 @@ const SERVICE_VALUE_ACCESSOR = {
                [ngClass]="{selected: checkedOption === i}"
                class="select-trigger select-trigger-light alt-image-product">
               <div class="check" [ngClass]="{selected: checkedOption === i}"></div>
+              <!--<img [src]="service.img" alt="">-->
               <span class="svgIcon svgIcon--logoNew svgIcon--45px is-flushLeft">
                 <svg class="svgIcon-use" width="45" height="45" viewBox="-17 18 45 45" data-multipart="true">
                   <path d="M11.525 28.078c-.472-.225-.858.002-.858.506v20.044l8.616 4.113c.948.46 1.717.14 1.717-.7v-19.3a.22.22 0 0 0-.124-.19l-9.35-4.46v-.01z"></path>
@@ -41,38 +49,28 @@ const SERVICE_VALUE_ACCESSOR = {
           </div>
         </div>
       </div>
-      <!--<div class="help-categories__row">-->
-        <!--<div *ngFor="let service of services"-->
-             <!--(click)="onServiceSelect(service.type)"-->
-             <!--class="help-categories__col">-->
-          <!--<a class="help-categories__item">-->
-            <!--<div class="help-categories__item-inner">-->
-              <!--<div class="help-categories__item-logo">-->
-                <!--<img [src]="service.img" alt="">-->
-              <!--</div>-->
-              <!--<h3>{{ service.price }}</h3>-->
-              <!--<h2 class="help-categories__item-name">{{ service.type }}</h2>-->
-            <!--</div>-->
-          <!--</a>-->
-        <!--</div>-->
-      <!--</div>-->
     </div>
     `,
   styles: [`
-    .section-models {
-      padding-top: 52px;
-    }
     .section {
       overflow: hidden;
-      padding: 110px 0;
+      margin-bottom: 100px;
       position: relative;
+      height: 450px;
       z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .section-content, .section-header {
+    .section-content {
       margin-left: auto;
       margin-right: auto;
       width: 980px;
     }
+    .section-models {
+      padding-top: 52px;
+    }
+    
     .large-4 {
       width: 33.3333%;
     }

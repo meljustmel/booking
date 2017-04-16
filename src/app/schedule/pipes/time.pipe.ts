@@ -28,4 +28,3 @@ export class TimePipe implements PipeTransform {
   }
 
 }
-// :00 {{ value.hour > 12 ? 'pm' : 'am'

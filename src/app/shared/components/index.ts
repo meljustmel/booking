@@ -14,14 +14,16 @@ export * from './interface/hero-text';
 export * from './interface/search';
 export * from './breadcrumbs';
 export * from './interface/action';
-export * from './service-form';
-export * from './time-form';
+export * from '../wizard/service-form';
+export * from '../wizard/time-form';
 export * from './time';
 export * from './homepage';
 
 export * from './application/foot';
 
 export * from './confirm-form';
+export * from '../wizard/success-form';
+
 export * from './interface/segment';
 
 

@@ -19,7 +19,7 @@ import {addMinutes} from "date-fns";
 /**
  * @hidden
  */
-const SEGMENT_HEIGHT = 60;
+const SEGMENT_HEIGHT = 80;
 
 /**
  * Shows all events on a given day. Example usage:
@@ -42,28 +42,29 @@ const SEGMENT_HEIGHT = 60;
             #event
             *ngFor="let dayEvent of view?.events"
 
-            class="cal-event"
+            class="cal-event res"
             [style.marginTop.px]="dayEvent.top"
-            [style.marginLeft.px]="dayEvent.left + 70"
-            [style.height.px]="dayEvent.height"
+            [style.marginLeft.px]="dayEvent.left + 100"
+            [style.height.px]="dayEvent.height - 12"
             [style.width.px]="dayEvent.width - 1"
-            [style.backgroundColor]="dayEvent.event.color.secondary"
-            [style.borderColor]="dayEvent.event.color.primary"
+        
             [class.cal-starts-within-day]="!dayEvent.startsBeforeDay"
             [class.cal-ends-within-day]="!dayEvent.endsAfterDay"
             
             [ngClass]="dayEvent.event.cssClass"
             [mwlCalendarTooltip]="dayEvent.event.title | calendarEventTitle:'dayTooltip':dayEvent.event"
             [tooltipPlacement]="tooltipPlacement">
-            
-            
             <event-title
               [event]="dayEvent.event"
               view="day"
               (click)="eventClicked.emit({event: dayEvent.event})">
             </event-title>
             <event-actions [event]="dayEvent.event"></event-actions>
+            <!--<pre>top: {{dayEvent.top | json}} height: {{dayEvent.height | json}}</pre>-->
           </div>
+          <!--[style.backgroundColor]="dayEvent.event.color.secondary"-->
+          <!--[style.borderColor]="dayEvent.event.color.primary"-->
+         
         </div>
         <div class="cal-hour" *ngFor="let hour of hours" [style.minWidth.px]="view?.width + 70">
           <day-view-hour-segment
@@ -77,10 +78,23 @@ const SEGMENT_HEIGHT = 60;
             (dragLeave)="segment.dragOver = false"
             (drop)="segment.dragOver = false; eventDropped($event, segment)">
           </day-view-hour-segment>
+          
         </div>
       </div>
     </div>
-  `
+  `,
+  styles: [`
+  .res {
+    margin-top: 0px;
+    margin-left: 100px;
+    height: 48px;
+    margin-left: 200px;
+    width: 449px;
+    background-color: white;
+    box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    border: 1px solid rgba(0,0,0,.09);
+  }
+  `]
 })
 export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
 
@@ -97,12 +111,12 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * The number of segments in an hour. Must be <= 6
    */
-  @Input() hourSegments = 4;
+  @Input() hourSegments = 1;
 
   /**
    * The day start hours in 24 hour time. Must be 0-23
    */
-  @Input() dayStartHour = 0;
+  @Input() dayStartHour = 10;
 
   /**
    * The day start minutes. Must be 0-59
@@ -112,7 +126,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * The day end hours in 24 hour time. Must be 0-23
    */
-  @Input() dayEndHour = 23;
+  @Input() dayEndHour = 17;
 
   /**
    * The day end minutes. Must be 0-59
@@ -122,7 +136,7 @@ export class CalendarDayViewComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * The width in pixels of each event on the view
    */
-  @Input() eventWidth = 750;
+  @Input() eventWidth = 450;
 
   /**
    * An observable that when emitted on will re-render the current view

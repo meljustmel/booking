@@ -8,6 +8,8 @@ import {routeFadeStateTrigger} from "../app.animations";
 
 
 import {Store} from "@ngrx/store";
+import {Observable} from "rxjs";
+import {filter} from "rxjs/operator/filter";
 
 @Component({
   selector: 'reservations',
@@ -20,9 +22,13 @@ import {Store} from "@ngrx/store";
     <block>
       <block-header [tag]="'This is where the header tag is'"></block-header>
 
+      <item-list [items]="(filtered$ | async) || []"></item-list>
+      <br>
+      <hr>
+      <br>
       <item-list [items]="(reservations$ | async) || []"></item-list>
     </block>
-    <pre>{{reservations$ | async | json }}</pre>
+    <pre>{{filtered$ | async | json }}</pre>
 
   `,
   styles: [`
@@ -38,7 +44,7 @@ export class ReservationsComponent implements OnInit {
   @HostBinding('@routeFadeState') routeAnimation = false;
   reservations$;
   filtered$;
-  day = "2017-04-08T16:00:00.000Z";
+  day = "2017-04-17T04:00:00.000Z";
   constructor(private reservationsActions: ReservationsActions,
               private reservationService: ReservationService,
               private slimLoadingBarService: SlimLoadingBarService,
@@ -50,7 +56,12 @@ export class ReservationsComponent implements OnInit {
     this.reservationService.loadReservations();
 
     this.reservations$ = this.store.select(state => state.reservationState.reservations);
-
+    this.filtered$ = this.reservationService.filteredReservations(this.day)
+    //   .concatMap(array => Observable.from(array))
+    //   .do(console.log)
+    //   .map(item => {
+    //     return item.time;
+    //   });
     this.slimLoadingBarService.complete();
   }
 }

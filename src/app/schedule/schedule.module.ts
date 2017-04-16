@@ -1,7 +1,7 @@
 import {NgModule, ModuleWithProviders} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {CalendarDayViewHourSegmentComponent, CalendarDayViewComponent, CalendarWeekViewComponent, CalendarWeekViewEventComponent, CalendarWeekViewHeaderComponent, CalendarHeaderComponent, CalendarFormComponent, CalendarEventTitleComponent, EventActionsComponent, ViewHeaderComponent, TimePickerComponent, TimeSlotsComponent, CalendarComponent, CalendarMonthCellComponent, CalendarOpenDayEventsComponent} from "./components";
-import {CalendarDatePipe, CalendarEventTitlePipe, TimePipe, FirstPipe} from "./pipes";
+import {CalendarDatePipe, CalendarEventTitlePipe, TimePipe, FirstPipe, DatePipe} from "./pipes";
 import {CalendarEventTitleFormatter} from "./providers/calendarEventTitleFormatter.provider";
 import {CalendarDateFormatter} from "./providers/calendarDateFormatter.provider";
 import {CalendarTooltipDirective, CalendarTooltipWindowComponent} from "./directives/calendarTooltip.directive";
@@ -32,6 +32,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     CalendarEventTitlePipe,
     TimePipe,
     FirstPipe,
+    DatePipe,
     CalendarTooltipDirective,
     CalendarPreviousViewDirective,
     CalendarNextViewDirective,
@@ -57,6 +58,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     CalendarTooltipDirective,
     TimePipe,
     FirstPipe,
+    DatePipe,
     CalendarPreviousViewDirective,
     CalendarNextViewDirective,
     CalendarTodayDirective,

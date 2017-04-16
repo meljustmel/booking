@@ -30,37 +30,62 @@ import {FormGroup} from "@angular/forms";
 @Component({
   selector: 'calendar-form',
   template: `
-    <div  class="container u-maxWidth1140 cal-month-view">
-      <div class="cal-cell-row cal-header">
-        <div
-          class="cal-cell"
-          *ngFor="let header of columnHeaders"
-          [class.cal-past]="header.isPast"
-          [class.cal-today]="header.isToday"
-          [class.cal-future]="header.isFuture"
-          [class.cal-weekend]="header.isWeekend">
-          {{ header.date | calendarDate:'monthViewColumnHeader':locale }}
-        </div>
-      </div>
-      <div class="cal-days">
-        <div *ngFor="let rowIndex of view.rowOffsets">
-          <div class="cal-cell-row" [formGroup]="parent">
-            <month-cell 
-              class="hot"
-              formControlName="reservationDate"
-              ngDefaultControl
-              *ngFor="let day of view.days | slice : rowIndex : rowIndex + 7"
-              [day]="day"
-              [openDay]="openDay"
-              [locale]="locale"
-              (click)="dayClicked.emit({day: day})">
-            </month-cell>
+    <div class="root" [style.paddingTop.em]="3">
+      <h4 class="label">Step Two</h4>
+      <h3 class="">What day would you like</h3>
+      <h1 class="title">Everyday but Sunday</h1>
+    </div>
+    <div class="section">
+      <div class="section-content">
+        <div  class="cal-month-view">
+          <div class="cal-cell-row cal-header">
+            <div
+              class="cal-cell"
+              *ngFor="let header of columnHeaders"
+              [class.cal-past]="header.isPast"
+              [class.cal-today]="header.isToday"
+              [class.cal-future]="header.isFuture"
+              [class.cal-weekend]="header.isWeekend">
+              {{ header.date | calendarDate:'monthViewColumnHeader':locale }}
+            </div>
+          </div>
+          <div class="cal-days">
+            <div *ngFor="let rowIndex of view.rowOffsets">
+              <div class="cal-cell-row" [formGroup]="parent">
+                <month-cell
+                  formControlName="reservationDate"
+                  ngDefaultControl
+                  *ngFor="let day of view.days | slice : rowIndex : rowIndex + 7"
+                  [day]="day"
+                  [openDay]="openDay"
+                  [locale]="locale"
+                  (click)="dayClicked.emit({day: day})">
+                </month-cell>
+              </div>
+            </div>
           </div>
         </div>
+        
       </div>
     </div>
+    
   `,
   styles: [`
+    .section {
+      margin-bottom: 100px;
+      position: relative;
+      z-index: 1;
+      padding-bottom: 2em;
+
+    }
+    .section-content {
+      margin-left: auto;
+      margin-right: auto;
+      /*width: 980px;*/
+    }
+    .section-models {
+      padding-top: 12px;
+    }
       .maxWidth1140 {
         max-width: 1140px;
       }

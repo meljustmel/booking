@@ -9,9 +9,14 @@ const TIME_VALUE_ACCESSOR = {
 @Component({
   selector: 'time-form',
   template: `
-    <div class="container">
+    <div class="root" [style.paddingTop.em]="3">
+      <h4 class="label">Step Three</h4>
+      <h3 class="">What time would you like</h3>
+      <h1 class="title">Sessions are an hour long</h1>
+    </div>
+    <div class="section">
       <div class="section-content">
-        <div class="choicesbox">
+        <div class="choicesbox" *ngIf="times; else loading">
           <ul class="row form-selector choices">
             <li *ngFor="let time of times; let i = index"
                 (click)="onTimeSelect(time.hour); checkedOption = i"
@@ -23,15 +28,37 @@ const TIME_VALUE_ACCESSOR = {
                 <div class="check" [ngClass]="{checked: checkedOption === i}"></div>
                 <label class="form-label">{{ time.hour | time }}</label>
                 <span class="duration">60 minutes {{time.available}}</span>
-                <small>{{time.available}}</small>
+                <!--<small>{{time.available}}</small>-->
               </div>
             </li>
           </ul>
         </div>
+        <ng-template #loading>
+          <div class="loader"></div>
+        </ng-template>
       </div>
     </div>
   `,
   styles: [`
+    .section {
+      overflow: hidden;
+      margin-bottom: 100px;
+      position: relative;
+      height: 450px;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .section-content {
+      margin-left: auto;
+      margin-right: auto;
+
+      width: 980px;
+    }
+    .section-models {
+      padding-top: 52px;
+    }
     .row {
       position: relative;
       z-index: 1;
@@ -104,7 +131,7 @@ const TIME_VALUE_ACCESSOR = {
       padding-left: 16px;
       padding-right: 16px;
       text-align: center;
-      border: 1px solid #d6d6d6;
+      border: 1px solid rgba(0, 0, 0, 0.09);
       cursor: pointer;
       box-sizing: border-box;
       border-spacing: 0;
@@ -113,31 +140,27 @@ const TIME_VALUE_ACCESSOR = {
       border-radius: 4px;
       position: relative;
     }
-
     .form-choice-selector-label:hover {
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
-      border: 1px solid rgba(0, 0, 0, 0.09);
+      border: 1px solid rgba(0, 0, 0, 0.25);
     }
-
-
     .form-choice-selector-label.selected {
       border-color: #AEEEE1;
     }
-
-
+    
     .form-label {
       position: relative;
       text-indent: 0;
       display: block;
       padding: 0px 14px;
-      font-size: 1.2em;
+      font-size: 1em;
       line-height: 1.28583;
       font-weight: bold;
       letter-spacing: -.05em;
+      color: rgba(0, 0, 0, 0.8);
       cursor: pointer;
 
     }
-
     .duration {
       font-size: 0.8em;
       opacity: 0.7;

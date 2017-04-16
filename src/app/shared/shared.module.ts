@@ -26,6 +26,7 @@ import {
   TestimonialsComponent,
   QuestionsComponent,
   ProductsComponent,
+  SuccessFormComponent,
   InstafeedComponent
 } from './components';
 import {PopoverDirective, SpotlightDirective} from './directives';
@@ -80,7 +81,9 @@ import { FormWizardModule } from './wizard';
     TestimonialsComponent,
     QuestionsComponent,
     ProductsComponent,
-    InstafeedComponent
+    InstafeedComponent,
+    SuccessFormComponent,
+
   ],
   exports: [
     ConfirmFormComponent,
@@ -116,7 +119,9 @@ import { FormWizardModule } from './wizard';
     TestimonialsComponent,
     QuestionsComponent,
     ProductsComponent,
-    InstafeedComponent
+    InstafeedComponent,
+    SuccessFormComponent,
+
   ]
 })
 export class SharedModule {

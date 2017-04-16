@@ -35,7 +35,6 @@ interface Slot {
   available: boolean;
 }
 
-
 @Injectable()
 export class ReservationService {
 
@@ -83,7 +82,7 @@ export class ReservationService {
             title: reservation.client.displayName,
             client: reservation.client,
             time: reservation.reservationTime,
-            start: new Date(reservation.reservationDate),
+            start: new Date(reservation.reservationFullDate),
             color: colors.pink,
             incrementsBadgeTotal: true,
             reservation
@@ -91,6 +90,17 @@ export class ReservationService {
         });
       })
       .subscribe(action => this.store.dispatch(this.reservationsActions.loadReservationsSuccess(action)));
+  }
+
+  filteredReservations(day) {
+    return this.db.list('reservations', {
+      query: {
+        orderByChild: 'reservationDate',
+        equalTo: day
+      }
+    });
+
+
   }
   //
   // getAllReservations() {

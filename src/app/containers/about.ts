@@ -35,6 +35,11 @@ import {routeFadeStateTrigger} from "../app.animations";
         </div>
       </div>
     </div>
+    <segment [type]="'action'"
+             [title]="'Save your spot now!'"
+             [subtitle]="'Great stories deserve a great audience'">
+      <action [type]="'lovely'" [label]="'Book Now'" (action)='onAction()'></action>
+    </segment>
   `,
   styles: [`
     :host {

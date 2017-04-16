@@ -24,12 +24,15 @@ import {Component, Input, OnInit} from "@angular/core";
       padding-top: 2em;
     }
     h1 {
-      font-size: 2.8em;
-      margin: 1.5em auto;
+      font-size: 3.5em;
+      margin: 1.5em auto 1em;
+      width: 600px;
     }
     h2 {
-      font-size: 1.5em;
-      font-weight: bolder;
+      font-size: 1.3em;
+      font-weight: 400;
+      width: 600px;
+      margin: auto;
       /*opacity: .8;*/
     }
   `]

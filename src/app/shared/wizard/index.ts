@@ -7,6 +7,9 @@ import {StepActionComponent} from "./step-action";
 export * from './wizard';
 export * from './wizard-step';
 export * from './step-action';
+export * from './time-form';
+export * from './success-form';
+export * from './service-form';
 
 @NgModule({
   imports: [

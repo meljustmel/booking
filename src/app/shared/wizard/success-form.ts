@@ -1,22 +1,30 @@
 import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 
 @Component({
-  selector: 'confirm-form',
-  template: `    
+  selector: 'success-form',
+  template: `
     <div class="root" style="padding-top: 6em">
       <h4 class="label">
-        <span>Hello {{user?.displayName | first:' '}}! </span>
+        <span>Thank You {{user?.displayName | first:' '}}!</span>
       </h4>
-      <h3 class="">Does this look correct?</h3>
       <h1 class="title">
+        your
         <span class="data">{{data?.service}}</span> reservation <br>
-            on <span class="data">{{data?.reservationDate | formatDate}}</span> <br>
-          at <span class="data">{{data?.reservationTime | time}} ?</span>
+        on <span class="data">{{data?.reservationDate | formatDate}}</span> <br>
+        at <span class="data">{{data?.reservationTime | time}} is Confirmed!</span>
       </h1>
       <div class="loader"></div>
+      
+    </div>
+    <div class="action">
+      <a (click)='action.emit(next)' class="button" routerLink="/">Home</a>
     </div>
   `,
   styles: [`
+    .action {
+      margin: 0 auto;
+      width: 100%;
+    }
     .section {
       overflow: hidden;
       padding: 55px 0;
@@ -48,10 +56,17 @@ import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
     .data {
       color: #AEEEE1;
     }
+
+    /*html {*/
+      /*font-size: 10px;*/
+      /*padding:0;*/
+      /*margin:0;*/
+    /*}*/
     
+
   `]
 })
-export class ConfirmFormComponent implements OnInit {
+export class SuccessFormComponent implements OnInit {
   @Output() action = new EventEmitter<any>();
   @Input() label;
   @Input() data;

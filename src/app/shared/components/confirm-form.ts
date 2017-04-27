@@ -3,7 +3,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 @Component({
   selector: 'confirm-form',
   template: `    
-    <div class="root" style="padding-top: 6em">
+    <div class="root" style="padding-top: 1em">
       <h4 class="label">
         <span>Hello {{user?.displayName | first:' '}}! </span>
       </h4>

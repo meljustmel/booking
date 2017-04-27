@@ -15,6 +15,9 @@ export class WizardStepComponent implements OnInit {
   @Input() isValid = true;
   @Input() showNext = true;
   @Input() showPrev = true;
+  @Input() stepTitle;
+  @Input() stepTagline;
+  @Input() stepHeading;
 
   @Output() onNext: EventEmitter<any> = new EventEmitter<any>();
   @Output() onPrev: EventEmitter<any> = new EventEmitter<any>();

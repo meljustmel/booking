@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>shortcuts copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="shortcuts-copy">
+            <path d="M0,8.5 C0,3.80557963 3.81513183,0 8.5,0 L8.5,0 C13.1944204,0 17,3.81513183 17,8.5 L17,17 L8.5,17 C3.80557963,17 0,13.1848682 0,8.5 L0,8.5 Z" id="Rectangle-2" fill="#FF98D5"></path>
+            <path d="M23,8.5 C23,3.80557963 26.8151318,0 31.5,0 L31.5,0 C36.1944204,0 40,3.81513183 40,8.5 L40,17 L31.5,17 C26.8055796,17 23,13.1848682 23,8.5 L23,8.5 Z" id="Rectangle-2" fill="#FF98D5" transform="translate(31.500000, 8.500000) scale(-1, 1) translate(-31.500000, -8.500000) "></path>
+            <path d="M0,31.5 C0,26.8055796 3.81513183,23 8.5,23 L8.5,23 C13.1944204,23 17,26.8151318 17,31.5 L17,40 L8.5,40 C3.80557963,40 0,36.1848682 0,31.5 L0,31.5 Z" id="Rectangle-2" fill="#FF98D5" transform="translate(8.500000, 31.500000) scale(1, -1) translate(-8.500000, -31.500000) "></path>
+            <path d="M40,31.5 C40,26.8055796 36.1848682,23 31.5,23 C26.8055796,23 23,26.8151318 23,31.5 L23,40 L31.5,40 C36.1944204,40 40,36.1848682 40,31.5 Z" id="Rectangle-2" fill="#FF98D5" transform="translate(31.500000, 31.500000) scale(1, -1) translate(-31.500000, -31.500000) "></path>
+            <rect id="Rectangle-15" fill="#FFD6EE" x="10" y="10" width="20" height="20" rx="2"></rect>
+            <path d="M10,23 L14.9940809,23 C16.1019194,23 17,23.8865548 17,25.0059191 L17,30 L12.0059191,30 C10.8980806,30 10,29.1134452 10,27.9940809 L10,23 Z" id="Rectangle-16" fill="#FF32AC"></path>
+            <path d="M10,12.0059191 C10,10.8980806 10.8865548,10 12.0059191,10 L17,10 L17,14.9940809 C17,16.1019194 16.1134452,17 14.9940809,17 L10,17 L10,12.0059191 Z" id="Rectangle-16" fill="#FF32AC"></path>
+            <path d="M23,10 L27.9940809,10 C29.1019194,10 30,10.8865548 30,12.0059191 L30,17 L25.0059191,17 C23.8980806,17 23,16.1134452 23,14.9940809 L23,10 Z" id="Rectangle-16" fill="#FF32AC"></path>
+            <path d="M23,25.0059191 C23,23.8980806 23.8865548,23 25.0059191,23 L30,23 L30,27.9940809 C30,29.1019194 29.1134452,30 27.9940809,30 L23,30 L23,25.0059191 Z" id="Rectangle-16" fill="#FF32AC"></path>
+        </g>
+    </g>
+</svg>

@@ -12,7 +12,8 @@ import {
 } from "@angular/core";
 import {CalendarEvent, WeekDay, MonthView, getWeekViewHeader, getMonthView, MonthViewDay} from "calendar-utils";
 import {isSameDay} from "date-fns";
-import {Subject, Subscription} from "rxjs";
+import { Subject } from 'rxjs/Subject';
+import { Subscription } from 'rxjs/Subscription';
 import {FormGroup} from "@angular/forms";
 // import {CalendarEventTimesChangedEvent} from "../interfaces/calendarEventTimesChangedEvent.interface";
 
@@ -99,7 +100,7 @@ export class CalendarComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * Whether the events list for the day of the `viewDate` option is visible or not
    */
-  @Input() activeDayIsOpen: boolean = false;
+  @Input() activeDayIsOpen = false;
 
   /**
    * A function that will be called before each cell is rendered. The first argument will contain the calendar cell.
@@ -120,7 +121,7 @@ export class CalendarComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * The placement of the event tooltip
    */
-  @Input() tooltipPlacement: string = 'top';
+  @Input() tooltipPlacement = 'top';
 
   /**
    * The start number of the week
@@ -164,7 +165,7 @@ export class CalendarComponent implements OnChanges, OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    //this.slots$ = this._reservations.getAllSlots();
+    // this.slots$ = this._reservations.getAllSlots();
     if (this.refresh) {
       this.refreshSubscription = this.refresh.subscribe(() => {
         this.refreshAll();

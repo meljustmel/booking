@@ -4,14 +4,8 @@ import {WizardStepComponent} from "./wizard-step";
 @Component({
   selector: 'form-wizard',
   template: `
-    <div class="onboardingTopBar" [style.padding.em]="4">
+    <div class="onboardingTopBar" [style.paddingBottom.em]="1">
       <div class="topbar u-maxWidth920">
-        <div [hidden]="isCompleted" class="onboardingTopBar-actions">
-          <button type="button" class="back" (click)="previous()" [hidden]="!hasPrevStep || !activeStep.showPrev">Back</button>
-          <button type="button" [ngClass]="{'valid' : activeStep.isValid}" (click)="next()" [disabled]="!activeStep.isValid" [hidden]="!hasNextStep || !activeStep.showNext">Next</button>
-          <button type="button" class="" (click)="complete()" [disabled]="!activeStep.isValid" [hidden]="hasNextStep">Done</button>
-        </div>
-        <div class="onboardingTopBar-greeting">Reserve your spot</div>
         <div class="onboardingTopBar-progress">
           <small *ngFor="let step of steps" class="onboardingTopBar-step">
             <a [ngClass]="{'is-active': step.isActive, 'enabled': !step.isDisabled, 'disabled': step.isDisabled, 'u-accentColor--textDarken': isCompleted}"
@@ -26,7 +20,35 @@ import {WizardStepComponent} from "./wizard-step";
         </div>
       </div>
     </div>
-    <div class="">
+    <div [hidden]="isCompleted" class="onboardingTopBar-actions">
+      <div class="u-flex0">
+        <div class="buttonSwitch">
+          <button type="button"
+                  class="button button--withChrome u-baseColor--buttonNormal"
+                  [ngClass]="{'back' : hasPrevStep}"
+                  (click)="previous()" 
+                  [disabled]="!hasPrevStep || !activeStep.showPrev">Back
+          </button>
+          <button type="button"
+                  class="button button--withChrome u-baseColor--buttonNormal"
+                  [ngClass]="{'valid' : activeStep.isValid, 'dead' : !hasNextStep}" 
+                  (click)="next()" [disabled]="!activeStep.isValid" 
+                  [hidden]="!hasNextStep || !activeStep.showNext">Next
+          </button>
+          <button type="button" 
+                  class="button button--withChrome u-baseColor--buttonNormal active"
+                  [ngClass]="{'dead' : hasNextStep}"
+                  (click)="complete()" 
+                  [disabled]="!activeStep.isValid" 
+                  [hidden]="hasNextStep">Book
+          </button>
+        </div>
+      </div>
+    <!--<button type="button" class="back" (click)="previous()" [disabled]="!hasPrevStep || !activeStep.showPrev">Back</button>-->
+    <!--<button type="button" [ngClass]="{'valid' : activeStep.isValid}" (click)="next()" [disabled]="!activeStep.isValid" [hidden]="!hasNextStep || !activeStep.showNext">Next</button>-->
+    <!--<button type="button" class="" (click)="complete()" [disabled]="!activeStep.isValid" [hidden]="hasNextStep">Done</button>-->
+    </div>
+    <div [style.paddingTop.em]="2">
       <ng-content></ng-content>
     </div>
   `,

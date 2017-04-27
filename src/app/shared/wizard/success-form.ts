@@ -3,7 +3,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 @Component({
   selector: 'success-form',
   template: `
-    <div class="root" style="padding-top: 6em">
+    <div class="root" style="padding-top: 1em">
       <h4 class="label">
         <span>Thank You {{user?.displayName | first:' '}}!</span>
       </h4>

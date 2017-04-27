@@ -10,6 +10,11 @@ import {Component, Input} from "@angular/core";
     </form>
   `,
   styles: [`
+    .help-hero__input {
+      
+      border: 1px solid #AEEEE1;
+      
+    }
   `]
 })
 export class SearchComponent {

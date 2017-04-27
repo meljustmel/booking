@@ -22,13 +22,13 @@ import {filter} from "rxjs/operator/filter";
     <block>
       <block-header [tag]="'This is where the header tag is'"></block-header>
 
-      <item-list [items]="(filtered$ | async) || []"></item-list>
-      <br>
-      <hr>
-      <br>
+      <!--<item-list [items]="(filtered$ | async) || []"></item-list>-->
+      <!--<br>-->
+      <!--<hr>-->
+      <!--<br>-->
       <item-list [items]="(reservations$ | async) || []"></item-list>
     </block>
-    <pre>{{filtered$ | async | json }}</pre>
+    <!--<pre>{{filtered$ | async | json }}</pre>-->
 
   `,
   styles: [`

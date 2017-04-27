@@ -48,6 +48,8 @@ const CALENDAR_VALUE_ACCESSOR = {
   providers: [CALENDAR_VALUE_ACCESSOR]
 })
 export class CalendarMonthCellComponent implements ControlValueAccessor {
+  value: any = Date.now();
+
   @Input() day: MonthViewDay;
 
   @Input() openDay: MonthViewDay;
@@ -78,8 +80,6 @@ export class CalendarMonthCellComponent implements ControlValueAccessor {
   writeValue(value) {
     this.value = value || 0;
   }
-
-  value: any = Date.now();
 
   onDateSelect(day: Date) {
     if (this.value !== day) {

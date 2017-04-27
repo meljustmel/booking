@@ -12,7 +12,8 @@ import {
 } from "@angular/core";
 import {CalendarEvent, WeekDay, MonthView, getWeekViewHeader, getMonthView, MonthViewDay} from "calendar-utils";
 import {isSameDay} from "date-fns";
-import {Subject, Subscription} from "rxjs";
+import { Subject } from 'rxjs/Subject';
+import { Subscription } from 'rxjs/Subscription';
 import {FormGroup} from "@angular/forms";
 // import {CalendarEventTimesChangedEvent} from "../interfaces/calendarEventTimesChangedEvent.interface";
 
@@ -30,11 +31,11 @@ import {FormGroup} from "@angular/forms";
 @Component({
   selector: 'calendar-form',
   template: `
-    <div class="root" [style.paddingTop.em]="3">
-      <h4 class="label">Step Two</h4>
-      <h3 class="">What day would you like</h3>
-      <h1 class="title">Everyday but Sunday</h1>
-    </div>
+    <!--<div class="root" [style.paddingTop.em]="3">-->
+      <!--<h4 class="label">Step Two</h4>-->
+      <!--<h3 class="">What day would you like</h3>-->
+      <!--<h1 class="title">Everyday but Sunday</h1>-->
+    <!--</div>-->
     <div class="section">
       <div class="section-content">
         <div  class="cal-month-view">
@@ -139,7 +140,7 @@ export class CalendarFormComponent implements OnChanges, OnInit, OnDestroy {
   /**
    * The placement of the event tooltip
    */
-  @Input() tooltipPlacement: string = 'top';
+  @Input() tooltipPlacement = 'top';
 
   /**
    * The start number of the week

@@ -35,7 +35,6 @@ class CustomDateFormatter extends CalendarDateFormatter {
 
   public monthViewColumnHeader({date, locale}: DateFormatterParams): string {
     return new Intl.DateTimeFormat(locale, {weekday: 'short'}).format(date); // use short week days
-
   }
 
   public timeSlotFormatter({date, locale}: DateFormatterParams): string {
@@ -50,23 +49,37 @@ type CalendarPeriod = 'day' | 'week' | 'month';
 @Component({
   selector: 'booking',
   template: `
-    <hero [background]="'assets/hero.png'"></hero>
+    <!--<hero [background]="'assets/hero.png'"></hero>-->
     <!--<banner></banner>-->
+    <div class="spacer" style="padding-top: 3em"></div>
     <div class="u-foreground homeContainer-content u-marginAuto u-clearfix u-sizeViewHeightMin100">
       <div class="container">
         <section class="">
+          <div class="root" [style.paddingTop.em]="6">
+            <h4 class="label">{{step?.stepTitle}}</h4>
+            <h3 class="">{{step?.stepTagline}}</h3>
+            <h1 class="title">{{step?.stepHeading}}</h1>
+          </div>
           <div class="wizard">
             <form-wizard [formGroup]="reservationForm" (onStepChanged)="onStepChanged($event)">
               <wizard-step
                 [isValid]="!reservationForm.controls['service'].untouched"
-                [title]=" data?.service ||'Pick your Service'" 
+                [title]=" data?.service ||'Pick your Service'"
+                [stepTitle]="'Step One'"
+                [stepTagline]="'Select the method you prefer'"
+                [stepHeading]="'All Three are Organic'"
                 (onNext)="onStep1Next($event)">
                 <service-form [parent]="reservationForm" formControlName="service"></service-form>
               </wizard-step>
               <wizard-step
                 [isValid]="!reservationForm.controls['reservationDate'].untouched"
                 [title]=" (data?.reservationDate | date)  ||'Pick your Day'"
-                           [showNext]="step2.showNext" [showPrev]="step2.showPrev" (onNext)="onStep2Next($event)">
+                [stepTitle]="'Step Two'"
+                [stepTagline]="'What day would you like'"
+                [stepHeading]="'Everyday but Sunday'"
+                [showNext]="step2.showNext" 
+                [showPrev]="step2.showPrev" 
+                (onNext)="onStep2Next($event)">
 
                 <calendar-form [parent]="reservationForm"
                                [dayModifier]="dayModifier"
@@ -76,11 +89,18 @@ type CalendarPeriod = 'day' | 'week' | 'month';
               </wizard-step>
               <wizard-step
                 [isValid]="!reservationForm.controls['reservationTime'].untouched"
-                [title]=" (data?.reservationTime | time) || 'Pick your Time'" 
+                [title]=" (data?.reservationTime | time) || 'Pick your Time'"
+                [stepTitle]="'Step Three'"
+                [stepTagline]="'What time would you like'"
+                [stepHeading]="'Sessions are an hour long'"
                 (onNext)="onStep3Next($event)">
                 <time-form formControlName="reservationTime" [times]='times | async'></time-form>
               </wizard-step>
-              <wizard-step title='Confirm' (onComplete)="onComplete($event)">
+              <wizard-step title='Confirm'
+                           [stepTitle]="'Step Four'"
+                           [stepTagline]="'Review your answers'"
+                           [stepHeading]="'You are seconds away!'"
+                           (onComplete)="onComplete($event)">
                 <div [ngSwitch]="isCompleted">
                   <div *ngSwitchDefault>
                     <confirm-form [user]="user | async" [data]='data'></confirm-form>
@@ -122,6 +142,12 @@ export class BookingComponent implements OnInit {
   viewDate: Date = new Date();
   view: CalendarPeriod = 'month';
 
+  step = {
+    stepTitle : 'Step One',
+    stepTagline : 'Select the method you prefer',
+    stepHeading : 'All Three are Organic',
+  };
+
   reservations$;
   reservationForm: FormGroup;
 
@@ -133,6 +159,7 @@ export class BookingComponent implements OnInit {
     showNext: true,
     showPrev: true
   };
+
 
   times;
   user;
@@ -172,14 +199,17 @@ export class BookingComponent implements OnInit {
 
   onStep1Next(event) {
     console.log('Step1 - Next');
+    // this.stepNumber = 'Step Two';
   }
 
   onStep2Next(event) {
     console.log('Step2 - Next');
+    // this.stepNumber = 'Step Three';
   }
 
   onStep3Next(event) {
     console.log('Step3 - Next');
+    // this.stepNumber = 'Step Four';
   }
 
   onComplete(event) {
@@ -190,6 +220,9 @@ export class BookingComponent implements OnInit {
   }
 
   onStepChanged(step) {
+    this.step.stepTitle = step.stepTitle;
+    this.step.stepTagline = step.stepTagline;
+    this.step.stepHeading = step.stepHeading;
     console.log('Changed to ' + step.title);
   }
 

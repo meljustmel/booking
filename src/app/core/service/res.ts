@@ -100,7 +100,6 @@ export class ReservationService {
       }
     });
 
-
   }
   //
   // getAllReservations() {
@@ -151,6 +150,15 @@ export class ReservationService {
           };
         }).filter(slot => slot.available === true);
       });
+  }
+
+  getReservationsForDay(day) {
+    return this.db.list('reservations', {
+      query: {
+        orderByChild: 'reservationDate',
+        equalTo: day
+      }
+    });
   }
   // getSlotsTaken() {
   //   return this.af.database.list('slots')

@@ -77,8 +77,8 @@ type CalendarPeriod = 'day' | 'week' | 'month';
                 [stepTitle]="'Step Two'"
                 [stepTagline]="'What day would you like'"
                 [stepHeading]="'Everyday but Sunday'"
-                [showNext]="step2.showNext" 
-                [showPrev]="step2.showPrev" 
+                [showNext]="step2.showNext"
+                [showPrev]="step2.showPrev"
                 (onNext)="onStep2Next($event)">
 
                 <calendar-form [parent]="reservationForm"
@@ -94,7 +94,7 @@ type CalendarPeriod = 'day' | 'week' | 'month';
                 [stepTagline]="'What time would you like'"
                 [stepHeading]="'Sessions are an hour long'"
                 (onNext)="onStep3Next($event)">
-                <time-form formControlName="reservationTime" [times]='times | async'></time-form>
+                <time-form formControlName="reservationTime" [times]='times | async' [bookedTimes]='bookedTimes'></time-form>
               </wizard-step>
               <wizard-step title='Confirm'
                            [stepTitle]="'Step Four'"
@@ -162,8 +162,9 @@ export class BookingComponent implements OnInit {
 
 
   times;
+  bookedTimes = [];
   user;
-  data = {};
+  data: any = {};
 
   minDate: Date = subDays(new Date(), 1);
 
@@ -205,6 +206,12 @@ export class BookingComponent implements OnInit {
   onStep2Next(event) {
     console.log('Step2 - Next');
     // this.stepNumber = 'Step Three';
+    // This is after selecting day
+    this.reservationService.getReservationsForDay(this.data.reservationDate).subscribe(reservations => {
+      this.bookedTimes = reservations.map(reservation => {
+        return reservation.reservationTime;
+      })
+    })
   }
 
   onStep3Next(event) {

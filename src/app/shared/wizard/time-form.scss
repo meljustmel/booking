@@ -119,3 +119,17 @@
   font-size: 0.8em;
   opacity: 0.7;
 }
+.choice.disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+.choice.disabled .form-choice-selector-label {
+  border: none;
+  color: rgba(0, 0, 0, 0.09);
+}
+.choice.disabled .form-label {
+  color: rgba(0, 0, 0, 0.09);
+}
+.choice.disabled .form-choice-selector-label:hover {
+  border: none;
+}

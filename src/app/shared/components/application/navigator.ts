@@ -29,7 +29,7 @@ import {User} from "../../../core/model";
           </div>
         </div>
       </div>
-      <secondary *ngIf='user'></secondary>
+      <secondary *ngIf='user' [user]='this.user' [profile]='this.profile'></secondary>
     </div>
   `,
   styles: [`
@@ -86,6 +86,7 @@ import {User} from "../../../core/model";
 export class NavigatorComponent implements OnInit {
 
   @Input() user: User;
+  @Input() profile: User;
 
   @Output() open = new EventEmitter<any>();
   @Output() menu = new EventEmitter<any>();
@@ -102,7 +103,6 @@ export class NavigatorComponent implements OnInit {
 
   ngOnInit() {
     if (this.user) {
-      console.log(this.user);
       this.isUser = true;
     } else {
       console.log('gay');

@@ -35,7 +35,9 @@ export class AuthService {
 
         userRef.take(1).subscribe((user) => {
           if (user.$exists()) {
-            console.log('user exists')
+            console.log('user exists', user)
+            this.store.dispatch(this.authActions.updateUserInfo(user))
+
           } else {
             console.log('user does not exists')
             userRef.set(dataToSet)

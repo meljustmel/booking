@@ -70,7 +70,6 @@ export class TimeFormComponent implements OnInit {
     this.value = value || 0;
   }
   isBooked(time) {
-    console.log("HALA TIME",this.bookedTimes, time);
     if (this.bookedTimes.indexOf(time) > -1) {
       return true;
     }

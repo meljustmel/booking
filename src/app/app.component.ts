@@ -16,9 +16,10 @@ import {User} from "./core/model";
       <div class="surface" style="display: block; visibility: visible;">
         <div class="screenContent surface-content">
           <!--<topbar></topbar>-->
-          <navigator [user]='user$ | async' 
-                     (open)='authModal()' 
-                     (menu)='openMenu()' 
+          <navigator [user]='user$ | async'
+                     [profile]='profile$ | async'
+                     (open)='authModal()'
+                     (menu)='openMenu()'
                      (notifications)='openNotifications()'
                      (signOut)='signOut()'></navigator>
 
@@ -27,8 +28,8 @@ import {User} from "./core/model";
           <router-outlet></router-outlet>
           <placeholder></placeholder>
           <popover-template></popover-template>
-          
-          
+
+
           <!--<div class="metabar metabar&#45;&#45;spacer js-metabarSpacer u-height115 u-xs-height95"></div>-->
           <!--<action></action>-->
           <!--<div class="streamItem streamItem&#45;&#45;digestSection" data-scroll="native">-->
@@ -56,6 +57,7 @@ import {User} from "./core/model";
 })
 export class AppComponent implements OnInit {
   user$: Observable<User>;
+  profile$: Observable<User>;
 
   constructor(private store: Store<RootStore.AppState>,
               private authActions: AuthActions,
@@ -64,6 +66,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.user$ = this.store.select(state => state.authState.currentUser);
+    this.profile$ = this.store.select(state => state.authState.profile);
 
 
   }

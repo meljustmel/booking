@@ -56,9 +56,11 @@ export class ReservationService {
     this.sdkDb = fb.database().ref();
 
     this.getUser$ = this.af.auth.subscribe(authState => {
-      console.log('auth', authState.auth);
-      this.user$ = authState.auth;
-      console.log('uid', authState.auth.uid);
+      if(authState) {
+        console.log('auth', authState.auth);
+        this.user$ = authState.auth;
+        console.log('uid', authState.auth.uid);
+      }
     });
 
   }

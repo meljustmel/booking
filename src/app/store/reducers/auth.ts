@@ -29,7 +29,6 @@ export default function (state = initialState, action: Action): AuthState {
       return updateObject(state, {status: LoginStatus.loggingIn});
 
     case AuthActions.LOGIN_SUCCESS:
-      console.log(action.payload.auth)
       return updateObject(state, {status: LoginStatus.loggedIn, currentUser: action.payload.auth});
     case AuthActions.USER_INFO_LOADED:
       return updateObject(state, {profile: action.payload});

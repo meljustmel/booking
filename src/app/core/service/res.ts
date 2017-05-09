@@ -56,9 +56,11 @@ export class ReservationService {
     this.sdkDb = fb.database().ref();
 
     this.getUser$ = this.af.auth.subscribe(authState => {
-      console.log('auth', authState.auth);
-      this.user$ = authState.auth;
-      console.log('uid', authState.auth.uid);
+      if(authState) {
+        console.log('auth', authState.auth);
+        this.user$ = authState.auth;
+        console.log('uid', authState.auth.uid);
+      }
     });
 
   }
@@ -99,7 +101,6 @@ export class ReservationService {
         equalTo: day
       }
     });
-
 
   }
   //
@@ -151,6 +152,15 @@ export class ReservationService {
           };
         }).filter(slot => slot.available === true);
       });
+  }
+
+  getReservationsForDay(day) {
+    return this.db.list('reservations', {
+      query: {
+        orderByChild: 'reservationDate',
+        equalTo: day
+      }
+    });
   }
   // getSlotsTaken() {
   //   return this.af.database.list('slots')

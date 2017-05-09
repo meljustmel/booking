@@ -80,7 +80,6 @@ export class AuthService {
 
 
   logout(): Observable<any> {
-    console.log('peace')
     return Observable.create((observer) => {
       this.auth$.logout().then(() => {
         console.log('logging out')

@@ -12,6 +12,7 @@ import {SharedStoreModule} from "./store/index";
 
 import {firebaseConfig} from "./core/config/firebase";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { AuthGuard } from './app.service';
 
 @NgModule({
   imports: [
@@ -29,7 +30,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
   declarations: [
     AppComponent
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

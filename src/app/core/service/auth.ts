@@ -1,6 +1,6 @@
 import "rxjs/add/observable/fromPromise";
 import * as RootStore from "../../store";
-import {AuthActions} from "../../store/actions";
+import {AuthActions} from "../../store/actions/index";
 import {Injectable} from "@angular/core";
 import {Store} from "@ngrx/store";
 import {AngularFire, AngularFireAuth, AuthMethods, AuthProviders} from "angularfire2";

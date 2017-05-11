@@ -1,5 +1,6 @@
-import {Component, OnInit} from "@angular/core";
-
+import {Component, Input, OnInit} from "@angular/core";
+import {User, ROLES} from "../../../core/model";
+import {Observable} from 'rxjs/Observable';
 @Component({
   selector: 'secondary',
   template: `
@@ -17,12 +18,12 @@ import {Component, OnInit} from "@angular/core";
                routerLink="booking"
                routerLinkActive="link--darker">Booking</a>
           </li>
-          <li class="metabar-navItem u-uiTextRegular u-fontSizeSmaller u-inlineBlock u-textColorNormal u-xs-paddingRight12 u-xs-marginRight0">
+          <li *ngIf="isAdmin()" class="metabar-navItem u-uiTextRegular u-fontSizeSmaller u-inlineBlock u-textColorNormal u-xs-paddingRight12 u-xs-marginRight0">
             <a class="link link--darken u-accentColor--textDarken u-baseColor--link"
                routerLink="schedule"
                routerLinkActive="link--darker">Schedule</a>
           </li>
-          <li class="metabar-navItem u-uiTextRegular u-fontSizeSmaller u-inlineBlock u-textColorNormal u-xs-paddingRight12 u-xs-marginRight0">
+          <li *ngIf="isAdmin()" class="metabar-navItem u-uiTextRegular u-fontSizeSmaller u-inlineBlock u-textColorNormal u-xs-paddingRight12 u-xs-marginRight0">
             <a class="link link--darken u-accentColor--textDarken u-baseColor--link"
                routerLink="reservations"
                routerLinkActive="link--darker">Reservations</a>
@@ -40,10 +41,16 @@ import {Component, OnInit} from "@angular/core";
 })
 export class SecondaryComponent implements OnInit {
 
+  @Input() user: User;
+  @Input() profile: User;
+
   constructor() {
   }
 
   ngOnInit() {
   }
 
+  isAdmin() {
+    return this.profile && this.profile.role && this.profile.role == ROLES.ADMIN;
+  }
 }

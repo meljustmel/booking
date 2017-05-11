@@ -1,9 +1,9 @@
 import {Injectable, Inject} from '@angular/core';
 import {BehaviorSubject, Observable, Subject} from "rxjs/Rx";
-import {Reservation} from "../model";
+import {Reservation} from "../model/index";
 import * as RootStore from "../../store";
 import {AngularFireDatabase, FirebaseRef, FirebaseObjectObservable, AngularFire} from "angularfire2";
-import {Http} from "@angular/http";
+import {Http, RequestOptionsArgs, RequestOptions} from "@angular/http";
 import {firebaseConfig} from "../config/firebase";
 import {CalendarEvent, MonthViewDay, colors} from "../../core/utils/calendar.utils";
 import {
@@ -20,8 +20,8 @@ import {
 } from "date-fns";
 import "rxjs/add/operator/map";
 import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
-import { ReservationStatus } from '../../core/model';
-import {User} from "../model";
+import { ReservationStatus } from '../../core/model/index';
+import {User} from "../model/index";
 import {Store} from "@ngrx/store";
 import {ReservationsActions} from "../../store/actions/res";
 
@@ -41,6 +41,7 @@ export class ReservationService {
   sdkDb: any;
   getUser$: any;
   user$;
+  token;
   private daySource = new BehaviorSubject<string>(null);
 
   selectedDay$ = this.daySource.asObservable();
@@ -56,9 +57,14 @@ export class ReservationService {
     this.sdkDb = fb.database().ref();
 
     this.getUser$ = this.af.auth.subscribe(authState => {
-      console.log('auth', authState.auth);
-      this.user$ = authState.auth;
-      console.log('uid', authState.auth.uid);
+      if(authState) {
+        console.log('auth', authState.auth);
+        this.user$ = authState.auth;
+        this.user$.getToken().then(token => {
+          this.token = token;
+        })
+        console.log('uid', authState.auth.uid);
+      }
     });
 
   }
@@ -99,7 +105,6 @@ export class ReservationService {
         equalTo: day
       }
     });
-
 
   }
   //
@@ -152,6 +157,15 @@ export class ReservationService {
         }).filter(slot => slot.available === true);
       });
   }
+
+  getReservationsForDay(day) {
+    return this.db.list('reservations', {
+      query: {
+        orderByChild: 'reservationDate',
+        equalTo: day
+      }
+    });
+  }
   // getSlotsTaken() {
   //   return this.af.database.list('slots')
   //     .map((slots: Slot[]) => {
@@ -167,9 +181,37 @@ export class ReservationService {
   //       }).filter(slot => slot.available == false)
   //     })
   // }
-  bookUserReservation(reservation: any): Observable<any> {
+  //bookUserReservation(reservation: any): Observable<any> {
+  //  const userId = this.user$.uid;
+  //  const newReservationKey = this.sdkDb.child('reservations').push().key;
+  //  const compiledReservation = {
+  //    client: {
+  //      uid: this.user$.uid,
+  //      email: this.user$.email,
+  //      name: this.user$.displayName,
+  //      avatar: this.user$.photoURL
+  //    },
+  //    type: reservation.service,
+  //    key: newReservationKey,
+  //    status: ReservationStatus.booked,
+  //    createdDate: reservation.createdDate,
+  //    reservationDate: reservation.reservationDate,
+  //    reservationTime: reservation.reservationTime,
+  //    reservationFullDate: setHours(new Date(reservation.reservationDate), reservation.reservationTime)
+  //  };
+  //
+  //  const reservationToSave = Object.assign(compiledReservation, {userId});
+  //  const dataToSave = {};
+  //
+  //  dataToSave[`reservations/${newReservationKey}`] = reservationToSave;
+  //  dataToSave[`users/${userId}/reservations/${newReservationKey}`] = true;
+  //
+  //  console.log(dataToSave);
+  //  return this.firebaseUpdate(dataToSave);
+  //}
+  bookUserReservation(reservation: any, token: string, amount: number): Observable<any> {
     const userId = this.user$.uid;
-    const newReservationKey = this.sdkDb.child('reservations').push().key;
+    //const newReservationKey = this.sdkDb.child('reservations').push().key;
     const compiledReservation = {
       client: {
         uid: this.user$.uid,
@@ -178,7 +220,7 @@ export class ReservationService {
         avatar: this.user$.photoURL
       },
       type: reservation.service,
-      key: newReservationKey,
+      //key: newReservationKey,
       status: ReservationStatus.booked,
       createdDate: reservation.createdDate,
       reservationDate: reservation.reservationDate,
@@ -188,14 +230,25 @@ export class ReservationService {
 
     const reservationToSave = Object.assign(compiledReservation, {userId});
     const dataToSave = {};
+    //dataToSave[`reservations/${newReservationKey}`] = reservationToSave;
+    //dataToSave[`users/${userId}/reservations/${newReservationKey}`] = true;
+    //let userToken =this.af.auth.getAuth().auth.getToken();
+  //.then(function(token) {
+      const option: any =  {
+        headers: {
+          'Content-Type': 'Application/JSON',
+          'Authorization': 'Bearer ' + this.token
+        }
+      };
 
-    dataToSave[`reservations/${newReservationKey}`] = reservationToSave;
-    dataToSave[`users/${userId}/reservations/${newReservationKey}`] = true;
-
-    console.log(dataToSave);
-    return this.firebaseUpdate(dataToSave);
+      return this.http.post(`${firebaseConfig.cloudFunctionsURL}/bookservice`, { reservation: compiledReservation, token: token, amount: amount }, option);
+  //  }.bind(this));
+    //return this.http.post(`${api}?${this.serialize(query)}`)
+      //.map(this.extractData)
+      //.catch(this.handleError)
+    //console.log(dataToSave);
+    //return this.firebaseUpdate(dataToSave);
   }
-
   firebaseUpdate(dataToSave) {
     this.slimLoadingBarService.start();
     const subject = new Subject();

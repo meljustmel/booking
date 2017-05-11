@@ -20,7 +20,7 @@ export class ReservationEffects {
         .switchMap((reservations) => Observable.of(this.reservationActions.loadReservationsSuccess(reservations)))
         .catch(error => Observable.of(this.reservationActions.loadReservationsFailure(error.message)))
     );
-
+/*
     @Effect() addReservation$ = this.actions$
         .ofType(ReservationsActions.ADD_RESERVATION_RECEIVED)
         .map(toPayload)
@@ -29,6 +29,8 @@ export class ReservationEffects {
                 .switchMap(() => Observable.of(this.reservationActions.addReservationSuccess(payload)))
                 .catch(error => Observable.of(this.reservationActions.addReservationFailure(error.message)))
         );
+        */
+
     constructor(
         private actions$: Actions,
         private reservationActions: ReservationsActions,

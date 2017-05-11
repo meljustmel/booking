@@ -19,9 +19,10 @@ const TIME_VALUE_ACCESSOR = {
         <div class="choicesbox" *ngIf="times; else loading">
           <ul class="row form-selector choices">
             <li *ngFor="let time of times; let i = index"
-                (click)="onTimeSelect(time.hour); checkedOption = i"
-                [ngClass]="{checked: checkedOption === i}"
-                class="choice">
+                (click)="onTimeSelect(time.hour, i); checkedOption = i"
+                [ngClass]="{checked: checkedOption === i, disabled: isBooked(time.hour)}"
+                class="choice"
+                ngDisabled="true">
               <input class="form-choice form-choice-selector rounded" type="radio">
               <div class="form-choice-selector-label"
                     [ngClass]="{selected: checkedOption === i}">
@@ -45,10 +46,11 @@ const TIME_VALUE_ACCESSOR = {
 export class TimeFormComponent implements OnInit {
   @Output() action = new EventEmitter<any>();
   @Input() times;
+  @Input() bookedTimes;
   @Input() parent: FormGroup;
   // @Input() label;
   // @Input() tag;
-
+  //checkedOption;
   value;
   onModelChange: Function = (_: any) => {
   }
@@ -67,8 +69,17 @@ export class TimeFormComponent implements OnInit {
   writeValue(value) {
     this.value = value || 0;
   }
-
-  onTimeSelect(time) {
+  isBooked(time) {
+    if (this.bookedTimes.indexOf(time) > -1) {
+      return true;
+    }
+    return false;
+  }
+  onTimeSelect(time, i) {
+    //if (this.bookedTimes.indexOf(time) > -1) {
+    //  return;
+    //}
+    //this.checkedOption = i;
     console.log('in form', time);
     if (this.value !== time) {
       this.writeValue(time);

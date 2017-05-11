@@ -17,6 +17,7 @@ export class AuthActions {
   static LOGOUT_FAILURE = 'LOGOUT_SUCCESS';
   static USER_AUTHENTICATED = 'USER_AUTHENTICATED';
   static USER_NOT_AUTHENTICATED = 'USER_NOT_AUTHENTICATED';
+  static USER_INFO_LOADED = 'USER_INFO_LOADED';
 
   loginUser(authCredentials): Action {
     return {
@@ -38,7 +39,12 @@ export class AuthActions {
       payload: authState
     };
   }
-
+  updateUserInfo(user): Action {
+    return {
+      type: AuthActions.USER_INFO_LOADED,
+      payload: user
+    };
+  }
   registerUser(authCredentials): Action {
     return {
       type: AuthActions.REGISTER_RECEIVED,

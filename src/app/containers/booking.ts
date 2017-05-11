@@ -29,8 +29,10 @@ import {ReservationsActions} from "../store/actions/res";
 import {ReservationService} from "../core/service/res";
 import {SlimLoadingBarService} from "ng2-slim-loading-bar";
 import {routeFadeStateTrigger} from "../app.animations";
-
-
+import swal from 'sweetalert2';
+import { Router } from '@angular/router'
+//declare swal: any;
+//declare var swal:any;
 class CustomDateFormatter extends CalendarDateFormatter {
 
   public monthViewColumnHeader({date, locale}: DateFormatterParams): string {
@@ -60,6 +62,7 @@ type CalendarPeriod = 'day' | 'week' | 'month';
             <h3 class="">{{step?.stepTagline}}</h3>
             <h1 class="title">{{step?.stepHeading}}</h1>
           </div>
+          <loadingspinner *ngIf="loading"></loadingspinner>
           <div class="wizard">
             <form-wizard [formGroup]="reservationForm" (onStepChanged)="onStepChanged($event)">
               <wizard-step
@@ -77,8 +80,8 @@ type CalendarPeriod = 'day' | 'week' | 'month';
                 [stepTitle]="'Step Two'"
                 [stepTagline]="'What day would you like'"
                 [stepHeading]="'Everyday but Sunday'"
-                [showNext]="step2.showNext" 
-                [showPrev]="step2.showPrev" 
+                [showNext]="step2.showNext"
+                [showPrev]="step2.showPrev"
                 (onNext)="onStep2Next($event)">
 
                 <calendar-form [parent]="reservationForm"
@@ -94,10 +97,19 @@ type CalendarPeriod = 'day' | 'week' | 'month';
                 [stepTagline]="'What time would you like'"
                 [stepHeading]="'Sessions are an hour long'"
                 (onNext)="onStep3Next($event)">
-                <time-form formControlName="reservationTime" [times]='times | async'></time-form>
+                <time-form formControlName="reservationTime" [times]='times | async' [bookedTimes]='bookedTimes'></time-form>
+              </wizard-step>
+              <wizard-step
+                [isValid]="this.data && this.data.creditDetail && this.data.creditDetail.valid"
+                [title]="'Credit Card Info'"
+                [stepTitle]="'Step Four'"
+                [stepTagline]="'Pay with Credit Card'"
+                [stepHeading]="'Payment Is Secure'"
+                (onNext)="onStep4Next($event)">
+                <credit-form formControlName="creditDetail"></credit-form>
               </wizard-step>
               <wizard-step title='Confirm'
-                           [stepTitle]="'Step Four'"
+                           [stepTitle]="'Step Five'"
                            [stepTagline]="'Review your answers'"
                            [stepHeading]="'You are seconds away!'"
                            (onComplete)="onComplete($event)">
@@ -160,10 +172,11 @@ export class BookingComponent implements OnInit {
     showPrev: true
   };
 
-
+  loading: boolean = false;
   times;
+  bookedTimes = [];
   user;
-  data = {};
+  data: any = {};
 
   minDate: Date = subDays(new Date(), 1);
 
@@ -181,6 +194,7 @@ export class BookingComponent implements OnInit {
 
   constructor(private reservationsActions: ReservationsActions,
               private fb: FormBuilder,
+              private _router: Router,
               private reservationService: ReservationService,
               private slimLoadingBarService: SlimLoadingBarService,
               private store: Store<RootStore.AppState>) {
@@ -200,23 +214,71 @@ export class BookingComponent implements OnInit {
   onStep1Next(event) {
     console.log('Step1 - Next');
     // this.stepNumber = 'Step Two';
+    //console.log("HALA ISIVISIBLE", swal.isVisible());
+    //swal.showLoading();
+    //if(swal.isVisible()) { // instant regret
+    //  swal.close();
+    //}
+    //sweetAlert.swal.showLoading();
   }
 
   onStep2Next(event) {
     console.log('Step2 - Next');
     // this.stepNumber = 'Step Three';
+    // This is after selecting day
+    this.reservationService.getReservationsForDay(this.data.reservationDate).subscribe(reservations => {
+      this.bookedTimes = reservations.map(reservation => {
+        return reservation.reservationTime;
+      })
+    })
   }
 
   onStep3Next(event) {
     console.log('Step3 - Next');
     // this.stepNumber = 'Step Four';
   }
-
+  onStep4Next(event) {
+    console.log('Step4 - Next');
+    // this.stepNumber = 'Step Four';
+  }
   onComplete(event) {
     this.slimLoadingBarService.start();
-    this.isCompleted = true;
-    this.save(this.reservationForm);
-    this.slimLoadingBarService.complete();
+    let _this = this;
+    this.loading = true;
+    (<any>window).Stripe.card.createToken({
+      number: this.reservationForm.value['creditDetail'].cardNumber,
+      exp: this.reservationForm.value['creditDetail'].expireDate,
+      cvc: this.reservationForm.value['creditDetail'].cvc
+    }, (status: number, response: any) => {
+      if (status === 200) {
+        console.log(`Success! Card token ${response.card.id}.`);
+        console.log('card  response',response);
+        _this.reservationService.bookUserReservation(_this.reservationForm.value, response.id, 100)
+          .subscribe(
+            () => {
+              _this.loading = false;
+              _this.isCompleted = true;
+              _this.slimLoadingBarService.complete();
+              swal('Awesome', 'Booking have been successful', 'success');
+              _this.reservationForm.reset();
+              _this._router.navigate(['/']);
+            },
+            err => {
+              //this.isCompleted = true;
+              console.log(`error creating reservation ${err}`);
+              _this.loading = false;
+              swal('Oops...', err.message, 'error');
+              _this.slimLoadingBarService.complete();
+            }
+          );
+        //this.save(this.reservationForm);
+      } else {
+        console.log("ERROR", response.error);
+        _this.loading = false;
+        swal('Oops...', response.error.message, 'error');
+        _this.slimLoadingBarService.complete();
+      }
+    });
   }
 
   onStepChanged(step) {
@@ -246,14 +308,15 @@ export class BookingComponent implements OnInit {
       service: ['', Validators.required],
       reservationDate: ['', Validators.required],
       reservationTime: ['', Validators.required],
+      creditDetail: ['', Validators.required],
       createdDate: [new Date()]
     });
     this.reservationForm.valueChanges.subscribe(data => {
-      console.log('Form changes', data);
       this.data = {
         service: data.service,
         reservationDate: data.reservationDate,
         reservationTime: data.reservationTime,
+        creditDetail: data.creditDetail,
         name: this.user.displayName,
         email: this.user.email,
       };
@@ -269,14 +332,14 @@ export class BookingComponent implements OnInit {
   save(form) {
     // console.log(form.value)
 
-    this.reservationService.bookUserReservation(form.value)
-      .subscribe(
-        () => {
-          form.reset();
-          // this._router.navigate(['admin/calendar']);
-        },
-        err => console.log(`error creating reservation ${err}`)
-      );
+    //this.reservationService.bookUserReservation(form.value)
+    //  .subscribe(
+    //    () => {
+    //      form.reset();
+    //      // this._router.navigate(['admin/calendar']);
+    //    },
+    //    err => console.log(`error creating reservation ${err}`)
+    //  );
 
   }
 

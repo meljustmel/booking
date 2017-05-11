@@ -4,6 +4,7 @@ import {HomeComponent, BookingComponent, ScheduleComponent, ReservationsComponen
 import {SharedModule} from "./shared/shared.module";
 import {CommonModule} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { AuthGuard } from './app.service'
 
 const routes: Routes = [
   {
@@ -12,11 +13,14 @@ const routes: Routes = [
   },
   {
     path: 'booking',
-    component: BookingComponent
+    component: BookingComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'schedule',
-    component: ScheduleComponent
+    component: ScheduleComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['admin'] }
   },
   {
     path: 'contact',
@@ -28,7 +32,9 @@ const routes: Routes = [
   },
   {
     path: 'reservations',
-    component: ReservationsComponent
+    component: ReservationsComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['admin'] }
   },
   {
     path: '**',

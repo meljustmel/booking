@@ -8,7 +8,7 @@ import {User} from "../../../core/model";
         <div class="metabar-block metabar-block--left u-floatLeft u-height65 u-xs-height56">
           <!--<logo [style.fill]="user ? '#404040' : 'white'"></logo>-->
         </div>
-        <div class="metabar-block u-floatRight u-xs-absolute u-xs-textAlignRight u-xs-right0 u-xs-marginRight20 u-height65 u-xs-height56">
+        <div class="metabar-block u-floatRight u-xs-absolute u-xs-textAlignRight u-xs-right0 u-height65 u-xs-height56">
           <div *ngIf='!user' class="buttonSet">
             <a (click)='onOpen($event)' class="button button--small button--login u-accentColor--buttonNormal u-sm-hide u-marginRight15 u-lineHeight30 u-height32">Sign In</a>
           </div>

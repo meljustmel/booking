@@ -3,7 +3,6 @@ export * from './application/secondary';
 export * from './application/loadingspinner'
 export * from './logo';
 export * from './card';
-export * from './menu';
 export * from './block';
 export * from './block-header';
 export * from './item-list';

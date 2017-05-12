@@ -213,12 +213,12 @@ export class ReservationService {
     const userId = this.user$.uid;
     //const newReservationKey = this.sdkDb.child('reservations').push().key;
     const compiledReservation = {
-      client: {
-        uid: this.user$.uid,
-        email: this.user$.email,
-        name: this.user$.displayName,
-        avatar: this.user$.photoURL
-      },
+      //client: {
+      //  uid: this.user$.uid,
+      //  email: this.user$.email,
+      //  name: this.user$.displayName,
+      //  avatar: this.user$.photoURL
+      //},
       type: reservation.service,
       //key: newReservationKey,
       status: ReservationStatus.booked,
@@ -228,26 +228,15 @@ export class ReservationService {
       reservationFullDate: setHours(new Date(reservation.reservationDate), reservation.reservationTime)
     };
 
-    const reservationToSave = Object.assign(compiledReservation, {userId});
-    const dataToSave = {};
-    //dataToSave[`reservations/${newReservationKey}`] = reservationToSave;
-    //dataToSave[`users/${userId}/reservations/${newReservationKey}`] = true;
-    //let userToken =this.af.auth.getAuth().auth.getToken();
-  //.then(function(token) {
-      const option: any =  {
-        headers: {
-          'Content-Type': 'Application/JSON',
-          'Authorization': 'Bearer ' + this.token
-        }
-      };
 
-      return this.http.post(`${firebaseConfig.cloudFunctionsURL}/bookservice`, { reservation: compiledReservation, token: token, amount: amount }, option);
-  //  }.bind(this));
-    //return this.http.post(`${api}?${this.serialize(query)}`)
-      //.map(this.extractData)
-      //.catch(this.handleError)
-    //console.log(dataToSave);
-    //return this.firebaseUpdate(dataToSave);
+    const option: any =  {
+      headers: {
+        'Content-Type': 'Application/JSON',
+        'Authorization': 'Bearer ' + this.token
+      }
+    };
+
+    return this.http.post(`${firebaseConfig.cloudFunctionsURL}/bookservice`, { reservation: compiledReservation, token: token, amount: amount }, option);
   }
   firebaseUpdate(dataToSave) {
     this.slimLoadingBarService.start();

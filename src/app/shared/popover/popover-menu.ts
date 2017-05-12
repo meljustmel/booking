@@ -2,8 +2,9 @@ import {Popover} from "./popover";
 import {ChangeDetectionStrategy, Component} from "@angular/core";
 
 const template = `
-  <div class="overlay overlay--clear" (click)="onClickedExit()">
-		<div class="popover js-popover popover--menu popover--userActions popover--globalNav u-resetSpectrum popover--bottom u-fixed is-active" style="left: 986px; top: 52px;">
+  <div class="popover-menu-container" (click)="onClickedExit()">
+    <div class="overlay-inner">
+		<div class="popover js-popover popover--menu popover--userActions popover--globalNav u-resetSpectrum popover--bottom is-active popover-menu-content" style="">
 			<div class="popover-inner">
 				<ul class="list list--borderless list--short list--large" role="menu">
 					<li class="list-item list-item--dark u-padding0">
@@ -43,21 +44,15 @@ const template = `
 					</li>
 				</ul>
 			</div>
-			<div class="popover-arrow" style="left: 134px;"></div>
+			<div class="popover-arrow" style=""></div>
+		</div>
 		</div>
 	</div>
 `;
 
 @Component({
   selector: "popover-menu",
-  styles: [`
-    .popover {
-      z-index: 19999;
-    }
-    .button {
-      margin-bottom: 0px;
-    }
-  `],
+  styleUrls: ['popover-menu.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template
 })

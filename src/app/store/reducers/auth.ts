@@ -1,5 +1,5 @@
-import { LoginStatus } from '../../core/model';
-import { AuthActions } from './../actions';
+import { LoginStatus } from '../../core/model/index';
+import { AuthActions } from './../actions/index';
 import { Action } from '@ngrx/store';
 import {User} from "../../core/model/user";
 
@@ -29,7 +29,7 @@ export default function (state = initialState, action: Action): AuthState {
       return updateObject(state, {status: LoginStatus.loggingIn});
 
     case AuthActions.LOGIN_SUCCESS:
-      return updateObject(state, {status: LoginStatus.loggedIn, currentUser: action.payload.auth});
+      return updateObject(state, {status: LoginStatus.loggedIn, currentUser: action.payload});
     case AuthActions.USER_INFO_LOADED:
       return updateObject(state, {profile: action.payload});
     case AuthActions.LOGIN_FAILURE:

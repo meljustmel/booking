@@ -2,7 +2,8 @@ import {Injectable, Inject} from '@angular/core';
 import {BehaviorSubject, Observable, Subject} from "rxjs/Rx";
 import {Reservation} from "../model/index";
 import * as RootStore from "../../store";
-import {AngularFireDatabase, FirebaseRef, FirebaseObjectObservable, AngularFire} from "angularfire2";
+import { FirebaseApp } from "angularfire2";
+import { AngularFireDatabase, FirebaseObjectObservable } from "angularfire2/database";
 import {Http, RequestOptionsArgs, RequestOptions} from "@angular/http";
 import {firebaseConfig} from "../config/firebase";
 import {CalendarEvent, MonthViewDay, colors} from "../../core/utils/calendar.utils";
@@ -24,6 +25,7 @@ import { ReservationStatus } from '../../core/model/index';
 import {User} from "../model/index";
 import {Store} from "@ngrx/store";
 import {ReservationsActions} from "../../store/actions/res";
+import { AngularFireAuth } from "angularfire2/auth";
 
 interface ReservationEvent extends CalendarEvent {
   reservation: Reservation;
@@ -48,22 +50,23 @@ export class ReservationService {
 
   reservations$: Observable<ReservationEvent[]>;
 
-  constructor(private db: AngularFireDatabase, @Inject(FirebaseRef) fb,
-              private http: Http, private af: AngularFire,
+  constructor(private db: AngularFireDatabase, //@Inject(FirebaseRef) fb,
+              private http: Http, private af: FirebaseApp, public auth$: AngularFireAuth,
               private reservationsActions: ReservationsActions,
               private slimLoadingBarService: SlimLoadingBarService,
               private store: Store<RootStore.AppState>) {
 
-    this.sdkDb = fb.database().ref();
+    //this.sdkDb = fb.database().ref();
+    this.sdkDb = this.af.database().ref();
 
-    this.getUser$ = this.af.auth.subscribe(authState => {
-      if(authState) {
-        console.log('auth', authState.auth);
-        this.user$ = authState.auth;
+    this.getUser$ = this.auth$.authState.subscribe(user => {
+      if(user) {
+        console.log('auth', user);
+        this.user$ = user;
         this.user$.getToken().then(token => {
           this.token = token;
         })
-        console.log('uid', authState.auth.uid);
+        console.log('uid', user.uid);
       }
     });
 
@@ -127,7 +130,7 @@ export class ReservationService {
   // }
 
   getAllSlots() {
-    return this.af.database.list('slots')
+    return this.db.list('slots')
       .map((slots: Slot[]) => {
         // console.log(res)
         return slots.map((slot: Slot) => {
@@ -143,7 +146,7 @@ export class ReservationService {
   }
 
   getSlotsAvailable() {
-    return this.af.database.list('slots')
+    return this.db.list('slots')
       .map((slots: Slot[]) => {
         // console.log(res)
         return slots.map((slot: Slot) => {

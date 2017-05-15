@@ -2,7 +2,7 @@ import {ModuleWithProviders, NgModule, Optional, SkipSelf} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {RouterModule} from "@angular/router";
 import {SlimLoadingBarModule} from 'ng2-slim-loading-bar';
-import {AuthService, UserService} from "./service";
+import {AuthService, UserService} from "./service/index";
 import {ReservationService} from "./service/res";
 
 @NgModule({

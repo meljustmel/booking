@@ -1,12 +1,12 @@
 import {Component, OnInit} from "@angular/core";
 import {Store} from "@ngrx/store";
-import {LoginModalComponent, ModalService} from "./shared/modal";
+import {LoginModalComponent, ModalService} from "./shared/modal/index";
 import {Observable} from 'rxjs/Observable';
 import {SharedModule} from "./shared/shared.module";
-import {AuthActions} from "./store/actions";
-import {PopoverNotificationsComponent, PopoverMenuComponent, PopoverService} from "./shared/popover";
+import {AuthActions} from "./store/actions/index";
+import {PopoverNotificationsComponent, PopoverMenuComponent, PopoverService} from "./shared/popover/index";
 import * as RootStore from './store';
-import {User} from "./core/model";
+import {User} from "./core/model/index";
 
 @Component({
   selector: 'app-root',

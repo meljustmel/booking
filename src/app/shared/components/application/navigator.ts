@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
-import {User} from "../../../core/model";
+import {User} from "../../../core/model/index";
 @Component({
   selector: 'navigator',
   template: `

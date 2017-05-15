@@ -18,7 +18,7 @@ export * from '../wizard/service-form';
 export * from '../wizard/time-form';
 export * from '../wizard/credit-form';
 export * from './time';
-export * from './homepage';
+export * from './homepage/index';
 
 export * from './application/foot';
 

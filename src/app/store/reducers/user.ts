@@ -1,7 +1,7 @@
-import { User, UserStatus } from '../../core/model';
-import { UserActions } from './../actions';
-import { Action } from '@ngrx/store';
-import { FirebaseListObservable } from 'angularfire2';
+import { User, UserStatus } from '../../core/model/index';
+import { UserActions } from './../actions/index';
+import { Action } from '@ngrx/store/index';
+import { FirebaseListObservable } from 'angularfire2/database';
 
 
 export interface UserState {

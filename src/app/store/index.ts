@@ -7,8 +7,8 @@ import {compose} from "@ngrx/core/compose";
 import {EffectsModule} from "@ngrx/effects";
 import {combineReducers, StoreModule} from "@ngrx/store";
 
-import {AuthActions, MessagesActions} from "./actions";
-import {AuthEffects, UserEffects} from "./effects";
+import {AuthActions, MessagesActions} from "./actions/index";
+import {AuthEffects, UserEffects} from "./effects/index";
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import {UserActions} from "./actions/user";
 import {ReservationsActions} from "./actions/res";

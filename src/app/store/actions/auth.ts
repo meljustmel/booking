@@ -1,7 +1,7 @@
 // import { IAuthCredentials } from '../../models';
 import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
-import { FirebaseAuthState } from 'angularfire2';
+//import { FirebaseAuthState } from 'angularfire2';
 
 @Injectable()
 export class AuthActions {
@@ -45,12 +45,12 @@ export class AuthActions {
       payload: user
     };
   }
-  registerUser(authCredentials): Action {
-    return {
-      type: AuthActions.REGISTER_RECEIVED,
-      payload: authCredentials
-    };
-  }
+  //registerUser(authCredentials): Action {
+  //  return {
+  //    type: AuthActions.REGISTER_RECEIVED,
+  //    payload: authCredentials
+  //  };
+  //}
 
   registerSuccess(): Action {
     return {
@@ -84,12 +84,12 @@ export class AuthActions {
     };
   }
 
-  userAuthenticated(authState: FirebaseAuthState): Action {
-    return {
-      type: AuthActions.USER_AUTHENTICATED,
-      payload: authState
-    };
-  }
+  //userAuthenticated(authState: FirebaseAuthState): Action {
+  //  return {
+  //    type: AuthActions.USER_AUTHENTICATED,
+  //    payload: authState
+  //  };
+  //}
 
   userNotAuthenticated(): Action {
     return {

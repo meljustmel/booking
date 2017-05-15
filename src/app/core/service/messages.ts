@@ -1,12 +1,10 @@
 import {Inject, Injectable} from "@angular/core";
-import {
-  AngularFire, AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable,
-  FirebaseRef
-} from "angularfire2";
+import { FirebaseApp } from "angularfire2";
+import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from "angularfire2/database";
 import {Store} from "@ngrx/store";
 import * as RootStore from "../../store";
-import {MessagesActions} from "../../store/actions";
-import {Message} from "../model";
+import {MessagesActions} from "../../store/actions/index";
+import {Message} from "../model/index";
 import {Observable, Subject} from "rxjs";
 import * as firebase from 'firebase';
 
@@ -18,7 +16,7 @@ export class MessagesService {
   messages: Observable<Message[]>
   rootRef = firebase.database().ref();
 
-  constructor(public af: AngularFire,
+  constructor(public af: FirebaseApp,
               private db: AngularFireDatabase,
               private messagesActions: MessagesActions,
               private store: Store<RootStore.AppState>) {
@@ -32,7 +30,7 @@ export class MessagesService {
   }
 
   getMessages(){
-    return this.af.database.list('messages')
+    return this.db.list('messages')
       .map((messages: Message[]) => {
         return messages.map((message: Message) => {
           return {
@@ -87,7 +85,7 @@ export class MessagesService {
     createMessageJoin[`messagesFromClients/${message.uid}/${key}`] = true;
     createMessageJoin[`users/${message.uid}/messages/${key}`] = true;
 
-    return this.af.database.object(`/`).update(createMessageJoin)
+    return this.db.object(`/`).update(createMessageJoin)
       .then(message => (this.messagesActions.addMessageSuccess(message)))
       .then(action => this.store.dispatch(action));
   }
@@ -109,7 +107,7 @@ export class MessagesService {
     createMessageJoin[`messagesFromClients/${message.uid}/${key}`] = true;
     createMessageJoin[`users/${message.uid}/messages/${key}`] = true;
 
-    return Observable.of(this.af.database.object(`/`).update(createMessageJoin))
+    return Observable.of(this.db.object(`/`).update(createMessageJoin))
 
   }
 
@@ -129,13 +127,13 @@ export class MessagesService {
     createMessageJoin[`messagesFromClients/${message.uid}/${key}`] = true;
     createMessageJoin[`users/${message.uid}/messages/${key}`] = true;
 
-    return this.af.database.object(`/`).update(createMessageJoin)
+    return this.db.object(`/`).update(createMessageJoin)
       .then(message => this.messagesActions.addMessageSuccess(message))
       .catch(error => Observable.of(this.messagesActions.addMessageFailure(error.message)))
   }
 
   deleteMessage(message: Message) {
-    this.af.database.list(`${BASE_URL}${message.id}`)
+    this.db.list(`${BASE_URL}${message.id}`)
       .subscribe(action => this.store.dispatch({ type: 'DELETE_ITEM', payload: message }));
   }
 }

@@ -1,7 +1,7 @@
 import { User } from '../../core/model/index';
 import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
-import { FirebaseListObservable } from 'angularfire2';
+import { FirebaseListObservable } from 'angularfire2/database';
 
 @Injectable()
 export class UserActions {

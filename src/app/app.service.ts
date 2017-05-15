@@ -5,12 +5,14 @@ import {Observable} from 'rxjs/Observable';
 import {Store} from "@ngrx/store";
 
 import * as RootStore from './store';
-import {User} from "./core/model";
-import {LoginModalComponent, ModalService} from "./shared/modal";
-import {AuthActions} from "./store/actions";
+import {User} from "./core/model/index";
+import {LoginModalComponent, ModalService} from "./shared/modal/index";
+import {AuthActions} from "./store/actions/index";
 import {SharedModule} from "./shared/shared.module";
-import { AngularFire } from 'angularfire2';
+import { FirebaseApp } from 'angularfire2';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { Subject } from 'rxjs';
+import { AngularFireAuth } from "angularfire2/auth";
 
 @Injectable()
 /**
@@ -25,7 +27,9 @@ export class AuthGuard implements CanActivate {
               private authActions: AuthActions,
               private _router: Router,
               private modalService: ModalService,
-              private af: AngularFire) {
+              private af: FirebaseApp,
+              public auth$: AngularFireAuth,
+              private db: AngularFireDatabase) {
     this.store.select(state => state.authState.currentUser).subscribe(user => {
       this.user = user;
     });
@@ -39,12 +43,15 @@ export class AuthGuard implements CanActivate {
     if (this.firstTime) {
       this.firstTime = false;
 
-      return Observable.from(this.af.auth)
+      return Observable.from(this.auth$.authState)
         .take(1)
         .map(state => {
-          if (!state) return false;
+          if (!state) {
+            this._router.navigate(['/']);
+            return false;
+          }
             if (roles && roles.length > 0) {
-              let userRef = this.af.database.object("users/" + state.uid);
+              let userRef = this.db.object("users/" + state.uid);
               Observable.from(userRef).take(1).subscribe(user => {
                 if (user.$exists()) {
                   if (!user.role || roles.indexOf(user.role) == -1) {
@@ -62,9 +69,11 @@ export class AuthGuard implements CanActivate {
           this.signIn(provider);
         }
       });
+      this._router.navigate(['/']);
       return false;
     }
     if(!this.profile) {
+      this._router.navigate(['/']);
       return false;
     }
     if (roles && roles.length > 0) {

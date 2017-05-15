@@ -3,15 +3,15 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
-import { AuthService, UserService } from '../../core/service';
-import { UserActions } from '../actions';
+import { AuthService, UserService } from '../../core/service/index';
+import { UserActions } from '../actions/index';
 import { Injectable } from '@angular/core';
 import { Actions, Effect, toPayload } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class UserEffects {
-
+/*
     @Effect() getUsers$ = this.actions$
         .ofType(UserActions.GET_USERS_RECEIVED)
         .switchMap(() =>
@@ -29,7 +29,7 @@ export class UserEffects {
                 })
                 .catch(error => Observable.of({ type: UserActions.GET_USERS_FAILURE, payload: 'You must be logged in' }))
         );
-
+*/
     @Effect() initialiseUser$ = this.actions$
         .ofType(UserActions.INITIALISE_USER_RECEIVED)
         .map(toPayload)

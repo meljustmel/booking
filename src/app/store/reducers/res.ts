@@ -1,5 +1,5 @@
-import {Reservation} from "../../core/model";
-import { ReservationsActions } from './../actions';
+import {Reservation} from "../../core/model/index";
+import { ReservationsActions } from './../actions/index';
 
 
 export interface ReservationState {

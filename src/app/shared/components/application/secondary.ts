@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {User, ROLES} from "../../../core/model";
+import {User, ROLES} from "../../../core/model/index";
 import {Observable} from 'rxjs/Observable';
 @Component({
   selector: 'secondary',

@@ -3,9 +3,12 @@ import * as RootStore from "../../store";
 import {AuthActions} from "../../store/actions/index";
 import {Injectable} from "@angular/core";
 import {Store} from "@ngrx/store";
-import {AngularFire, AngularFireAuth, AuthMethods, AuthProviders} from "angularfire2";
+import {FirebaseApp } from "angularfire2";
+import { AngularFireDatabase } from "angularfire2/database";
+import { AngularFireAuth } from "angularfire2/auth"; //, AuthMethods, AuthProviders
 import {Observable} from "rxjs/Observable";
 import {User} from "../model/user";
+import * as firebase from 'firebase';
 
 @Injectable()
 export class AuthService {
@@ -13,23 +16,24 @@ export class AuthService {
   public currentUser$: Observable<User>;
 
   constructor(public auth$: AngularFireAuth,
-              public af: AngularFire,
+              public af: FirebaseApp,
+              public db: AngularFireDatabase,
               private authActions: AuthActions,
               private store: Store<RootStore.AppState>) {
     this.currentUser$ = store.select(state => state.authState.currentUser);
 
 
-    this.auth$.subscribe(user => {
+    this.auth$.authState.subscribe(user => {
       if (user) {
 
         let userData = user;
-        let userRef = af.database.object("users/" + userData.uid);
+        let userRef = db.object("users/" + userData.uid);
 
         let dataToSet = {
-          displayName: userData.auth.providerData[0].displayName,
-          email: userData.auth.providerData[0].email,
-          photoURL: userData.auth.providerData[0].photoURL,
-          providerId: userData.auth.providerData[0].providerId,
+          displayName: userData.providerData[0].displayName,
+          email: userData.providerData[0].email,
+          photoURL: userData.providerData[0].photoURL,
+          providerId: userData.providerData[0].providerId,
           registeredAt: new Date()
         };
 
@@ -49,6 +53,7 @@ export class AuthService {
               })
           }
         })
+        console.log('hala user', user);
         this.store.dispatch(this.authActions.loginSuccess(user))
       }
       else {
@@ -81,7 +86,7 @@ export class AuthService {
 
   logout(): Observable<any> {
     return Observable.create((observer) => {
-      this.auth$.logout().then(() => {
+      this.auth$.auth.signOut().then(() => {
         console.log('logging out')
         return observer.next(this.authActions.logoutSuccess())
       }, (error) => {
@@ -97,19 +102,15 @@ export class AuthService {
 
   }
 
-  register(credentials): Observable<any> {
-    return Observable.fromPromise(<Promise<any>>this.auth$.createUser(credentials));
-  }
+  //register(credentials): Observable<any> {
+  //  return Observable.fromPromise(<Promise<any>>this.auth$.createUser(credentials));
+  //}
 
   login(provider): Observable<any> {
     console.log('service', provider)
     return Observable.create((observer) => {
       if (provider == 'Facebook') {
-        this.auth$.login({
-          provider: AuthProviders.Facebook,
-          method: AuthMethods.Popup,
-          scope: ['email']
-        }).then((user) => {
+        this.auth$.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider).then((user) => {
           console.log("user", user)
           return observer.next(this.authActions.loginSuccess(user))
         }, (error) => {
@@ -119,11 +120,7 @@ export class AuthService {
 
       }
       else {
-        this.auth$.login({
-          provider: AuthProviders.Google,
-          method: AuthMethods.Popup,
-          scope: ['email']
-        }).then((user) => {
+        this.auth$.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider).then((user) => {
           console.log("service log google----should be user", user)
           return observer.next(this.authActions.loginSuccess(user))
         }, (error) => {

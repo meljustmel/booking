@@ -2,7 +2,7 @@ import { Component, HostBinding, OnInit } from '@angular/core';
 import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
 import { ReservationsActions } from '../../store/actions/res';
 import { ReservationService } from '../../core/service/res';
-import * as RootStore from '../store';
+import * as RootStore from '../../store/index';
 import { ReservationStatus, getReservationStatusName } from '../../core/model/index';
 
 import {routeFadeStateTrigger} from '../../app.animations';

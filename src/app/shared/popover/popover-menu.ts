@@ -4,7 +4,7 @@ import {ChangeDetectionStrategy, Component} from "@angular/core";
 const template = `
   <div class="popover-menu-container" (click)="onClickedExit()">
     <div class="overlay-inner">
-		<div class="popover js-popover popover--menu popover--userActions popover--globalNav u-resetSpectrum popover--bottom is-active popover-menu-content" style="">
+		<div class="popovercustom js-popover popover--menu popover--userActions popover--globalNav u-resetSpectrum popover--bottom is-active popover-menu-content" style="">
 			<div class="popover-inner">
 				<ul class="list list--borderless list--short list--large" role="menu">
 					<li class="list-item list-item--dark u-padding0">
@@ -31,7 +31,7 @@ const template = `
 					</li>
 					<li class="list-item list-item--separator"></li>
 					<li class="list-item u-padding0">
-						<a class="button button--dark button--chromeless u-baseColor--buttonDark" href="#">Profile</a>
+						<a class="button button--dark button--chromeless u-baseColor--buttonDark" routerLink="/profile">Profile</a>
 					</li>
 					<li class="list-item u-padding0">
 						<a class="button button--dark button--chromeless u-baseColor--buttonDark" href="#">Settings</a>

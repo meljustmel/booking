@@ -112,6 +112,7 @@ import { FormWizardModule } from './wizard/index';
     UserItemComponent,
     UserListComponent,
     ReactiveFormsModule,
+    PopoverMenuComponent,
     FormsModule,
     PopoverNotificationsComponent,
     PopoverPlaceholderComponent,

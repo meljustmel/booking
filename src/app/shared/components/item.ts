@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { ReservationService } from "../../core/service/res";
-import { ReservationStatus } from '../../core/model/index';
+import { ReservationStatus, getReservationStatusName } from '../../core/model/index';
 
 @Component({
   selector: 'item',
@@ -22,6 +22,8 @@ import { ReservationStatus } from '../../core/model/index';
 })
 export class ItemComponent implements OnInit {
   @Input() reservation;
+  @Input() showActionButton;
+  @Input() showUserInfo;
   constructor(private reservationService: ReservationService) {
   }
 
@@ -29,17 +31,7 @@ export class ItemComponent implements OnInit {
   }
 
   currentStatus() {
-    if (this.reservation.reservation.status == ReservationStatus.booked) {
-      return 'Booked';
-    } else if (this.reservation.reservation.status == ReservationStatus.rescheduled) {
-      return 'Rescheduled';
-    } else if (this.reservation.reservation.status == ReservationStatus.cancelled) {
-      return 'Cancelled';
-    } else if (this.reservation.reservation.status == ReservationStatus.completed) {
-      return 'Completed';
-    }
-
-    return '';
+    return getReservationStatusName(this.reservation.reservation.status);
   }
 
   updateStatus(newStatus) {

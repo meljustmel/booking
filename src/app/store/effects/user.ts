@@ -11,13 +11,13 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class UserEffects {
-/*
+
     @Effect() getUsers$ = this.actions$
         .ofType(UserActions.GET_USERS_RECEIVED)
         .switchMap(() =>
-            this.authService.af.auth
+            this.authService.auth$.authState
                 .switchMap(authState => {
-
+                  console.log("HALA UserEffects GET_USERS_RECEIVED")
                     if (authState) {
                         return this.userService.getUsers()
                             .switchMap((users) => Observable.of(this.userActions.getUsersSuccess(users)))
@@ -29,7 +29,7 @@ export class UserEffects {
                 })
                 .catch(error => Observable.of({ type: UserActions.GET_USERS_FAILURE, payload: 'You must be logged in' }))
         );
-*/
+
     @Effect() initialiseUser$ = this.actions$
         .ofType(UserActions.INITIALISE_USER_RECEIVED)
         .map(toPayload)

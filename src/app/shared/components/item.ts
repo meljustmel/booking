@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from "@angular/core";
-import {ReservationService} from "../../core/service/res";
+import { Component, Input, OnInit } from "@angular/core";
+import { ReservationService } from "../../core/service/res";
+import { ReservationStatus } from '../../core/model/index';
 
 @Component({
   selector: 'item',
@@ -21,13 +22,28 @@ import {ReservationService} from "../../core/service/res";
 })
 export class ItemComponent implements OnInit {
   @Input() reservation;
-  constructor(private res: ReservationService) {
+  constructor(private reservationService: ReservationService) {
   }
 
   ngOnInit() {
   }
-  delete(id) {
-    this.res.kill(id);
+
+  currentStatus() {
+    if (this.reservation.reservation.status == ReservationStatus.booked) {
+      return 'Booked';
+    } else if (this.reservation.reservation.status == ReservationStatus.rescheduled) {
+      return 'Rescheduled';
+    } else if (this.reservation.reservation.status == ReservationStatus.cancelled) {
+      return 'Cancelled';
+    } else if (this.reservation.reservation.status == ReservationStatus.completed) {
+      return 'Completed';
+    }
+
+    return '';
+  }
+
+  updateStatus(newStatus) {
+    this.reservationService.updateStatus(this.reservation.reservation, newStatus);
   }
 
 }

@@ -1,12 +1,12 @@
-import {Injectable, Inject} from '@angular/core';
-import {BehaviorSubject, Observable, Subject} from "rxjs/Rx";
-import {Reservation} from "../model/index";
-import * as RootStore from "../../store";
-import { FirebaseApp } from "angularfire2";
-import { AngularFireDatabase, FirebaseObjectObservable } from "angularfire2/database";
-import {Http, RequestOptionsArgs, RequestOptions} from "@angular/http";
-import {firebaseConfig} from "../config/firebase";
-import {CalendarEvent, MonthViewDay, colors} from "../../core/utils/calendar.utils";
+import { Injectable, Inject } from '@angular/core';
+import { BehaviorSubject, Observable, Subject } from 'rxjs/Rx';
+import { Reservation } from '../model/index';
+import * as RootStore from '../../store';
+import { FirebaseApp } from 'angularfire2';
+import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
+import { Http, RequestOptionsArgs, RequestOptions } from '@angular/http';
+import {firebaseConfig} from '../config/firebase';
+import {CalendarEvent, MonthViewDay, colors} from '../../core/utils/calendar.utils';
 import {
   isSameMonth,
   isSameDay,
@@ -18,14 +18,14 @@ import {
   endOfDay,
   format,
   setHours
-} from "date-fns";
-import "rxjs/add/operator/map";
+} from 'date-fns';
+import 'rxjs/add/operator/map';
 import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
 import { ReservationStatus } from '../../core/model/index';
-import {User} from "../model/index";
-import {Store} from "@ngrx/store";
-import {ReservationsActions} from "../../store/actions/res";
-import { AngularFireAuth } from "angularfire2/auth";
+import { User } from '../model/index';
+import { Store } from '@ngrx/store';
+import { ReservationsActions } from '../../store/actions/res';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 interface ReservationEvent extends CalendarEvent {
   reservation: Reservation;
@@ -262,7 +262,10 @@ export class ReservationService {
     return subject.asObservable();
 
   }
-
+  updateStatus(reservation, newStatus) {
+    reservation.status = newStatus;
+    this.db.database.ref(`reservations/${reservation.$key}/status`).set(newStatus);
+  }
   // deleteRecipe(recipe_id: string, recipebook_id: string) {
   //
   //   this.sdkDb.update({

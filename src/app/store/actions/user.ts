@@ -47,7 +47,7 @@ export class UserActions {
     };
   }
 
-  getUsersSuccess(users: FirebaseListObservable<User>): Action {
+  getUsersSuccess(users): Action {
     return {
       type: UserActions.GET_USERS_SUCCESS,
       payload: users

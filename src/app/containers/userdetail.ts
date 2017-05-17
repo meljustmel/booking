@@ -4,6 +4,7 @@ import { UserActions } from "../store/actions/user";
 import { UserService } from "../core/service/user";
 import * as RootStore from "../store";
 import { Router, ActivatedRoute } from '@angular/router'
+import { ReservationService } from '../core/service/res';
 
 import { routeFadeStateTrigger } from "../app.animations";
 
@@ -25,27 +26,22 @@ import { filter } from "rxjs/operator/filter";
       <!--<br>-->
       <!--<hr>-->
       <!--<br>-->
-      <div *ngIf="user$">
-      <div class="postArticle postArticle--short">
-      <div class="u-clearfix u-marginBottom10">
-        <div class="postMetaInline u-floatLeft">
-          <div class="u-flexCenter">
+      <div class="" *ngIf="user$">
+        <div class="">
             <div class="postMetaInline-avatar u-flex0">
-              <a class="link avatar u-baseColor--link" href="javascript:;">
                 <img alt="Go to the profile of"
                      class="avatar-image u-size36x36 u-xs-size32x32"
                      [src]="user$.photoURL">
-              </a>
+              {{ user$.displayName }}
             </div>
-            <div class="postMetaInline-authorLockup u-flex1 u-noWrapWithEllipsis">
-              <a
-                class="link link link--darken link--accent u-accentColor--textNormal u-accentColor--textDarken u-baseColor--link">{{ user$.displayName }}
-              </a>
-            </div>
+          <p>
+          Email: {{user$.email}}
+          </p>
+          <div>
+          <h3>Reservations</h3>
+          <item-list [items]="reservations$ || []" [showActionButton]="true" [showUserInfo]="false"></item-list>
           </div>
         </div>
-      </div>
-      </div>
       </div>
     </block>
     <!--<pre>{{filtered$ | async | json }}</pre>-->
@@ -63,8 +59,11 @@ import { filter } from "rxjs/operator/filter";
 export class UserDetailComponent implements OnInit {
   @HostBinding('@routeFadeState') routeAnimation = false;
   user$;
+  reservations$;
+
   constructor(private usersActions: UserActions,
               private userService: UserService,
+              private reservationService: ReservationService,
               private route: ActivatedRoute,
               private slimLoadingBarService: SlimLoadingBarService,
               private store: Store<RootStore.AppState>) {
@@ -75,13 +74,16 @@ export class UserDetailComponent implements OnInit {
     let userId = this.route.params['value'].id;
 
     this.userService.getSingleUser(userId).take(1).subscribe((user) => {
-        this.slimLoadingBarService.complete();
-        if (user.$exists()) {
-          console.log('user exists', user)
-          this.user$ = user;
-        } else {
-          console.log('user does not exists')
-        }}
-    );
+      this.slimLoadingBarService.complete();
+      if (user.$exists()) {
+        this.user$ = user;
+      } else {
+        console.log('user does not exists')
+      }
+    });
+
+    this.reservationService.loadUserReservations(userId).subscribe((reservations) => {
+      this.reservations$ = reservations;
+    });
   }
 }

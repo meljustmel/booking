@@ -105,7 +105,6 @@ export class NavigatorComponent implements OnInit {
     if (this.user) {
       this.isUser = true;
     } else {
-      console.log('gay');
       this.isUser = false;
     }
   }

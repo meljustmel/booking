@@ -100,7 +100,27 @@ export class ReservationService {
       })
       .subscribe(action => this.store.dispatch(this.reservationsActions.loadReservationsSuccess(action)));
   }
-
+  loadUserReservations(userId) {
+    // this.slimLoadingBarService.start();
+    return this.db.list('reservations', {
+        query: {
+          orderByChild: 'userId',
+          equalTo: userId
+        }
+    }).map((res: Reservation[]) => {
+        return res.map((reservation: Reservation) => {
+          return {
+            title: reservation.client.displayName,
+            client: reservation.client,
+            time: reservation.reservationTime,
+            start: new Date(reservation.reservationFullDate),
+            color: colors.pink,
+            incrementsBadgeTotal: true,
+            reservation
+          };
+        });
+      })
+  }
   filteredReservations(day) {
     return this.db.list('reservations', {
       query: {

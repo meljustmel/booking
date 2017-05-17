@@ -1,4 +1,4 @@
-.popover {
+.popovercustom {
   overflow: hidden;
   position: absolute;
   z-index: 900;
@@ -51,7 +51,7 @@
 }
 
 @media all and (max-width: 767px) {
-  .popover .popover-inner {
+  .popovercustom .popover-inner {
     max-width: 240px;
   }
 }

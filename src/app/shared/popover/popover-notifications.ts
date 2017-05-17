@@ -3,7 +3,7 @@ import {ChangeDetectionStrategy, Component} from "@angular/core";
 
 const template = `
 <div class="overlay overlay--clear"  (click)="onClickedExit()">
-		<div class="popover popover--menu popover--globalNav u-resetSpectrum popover--bottom u-fixed is-active">
+		<div class="popovercustom popover--menu popover--globalNav u-resetSpectrum popover--bottom u-fixed is-active">
 			<div class="popover-inner u-padding0 u-width360 u-maxWidthNone">
 				<ul class="notificationsList js-notificationsList">
 					<li class="notificationsList-item u-hideOutline js-notification">
@@ -32,7 +32,7 @@ const template = `
 @Component({
   selector: "popover-notifications",
   styles: [`
-    .popover {
+    .popovercustom {
       left: 875px;
       top: 49px;
       box-sizing: border-box;

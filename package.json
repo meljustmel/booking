@@ -38,7 +38,11 @@
     "spinkit": "^1.2.5",
     "sweetalert2": "^6.6.2",
     "ts-helpers": "1.1.2",
-    "zone.js": "0.8.5"
+    "zone.js": "0.8.5",
+    "animate.css": "3.1.1",
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.1.0"
   },
   "devDependencies": {
     "@angular/cli": "1.0.0-rc.2",

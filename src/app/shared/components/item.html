@@ -28,14 +28,16 @@
         </div>
         <div class="u-marginLeft20 u-floatRight">
           <span class="followState js-followState buttonSet-inner">
-            <button class="button button--small u-noUserSelect button--withChrome u-baseColor--buttonNormal button--withHover button--unblock js-unblockButton">
-              <span class="button-label  button-defaultState">Action 1</span>
-              <!--<span class="button-label button-hoverState">Unblock</span>-->
-            </button>
-            <button (click)="delete(reservation.reservation.key)" class="button button--primary button--small is-active u-noUserSelect button--withChrome u-accentColor--buttonNormal button--follow">
-              <span class="button-label button-defaultState">Action 1</span>
-              <span class="button-label button-activeState">Action Active</span>
-            </button>
+            <div class="btn-group">
+              <button data-toggle="dropdown" class="button button--small u-noUserSelect button--withChrome u-baseColor--buttonNormal button--withHover button--unblock js-unblockButton">{{currentStatus()}} <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li><a (click)="updateStatus(0)">Booked</a></li>
+                <li><a (click)="updateStatus(1)">Rescheduled</a></li>
+                <li><a (click)="updateStatus(2)">Completed</a></li>
+                <li><a (click)="updateStatus(3)">Cancelled</a></li>
+              </ul>
+            </div>
+
           </span>
         </div>
         <!--<div class="buttonSet u-floatRight">-->

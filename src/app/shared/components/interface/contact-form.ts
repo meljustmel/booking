@@ -1,6 +1,9 @@
 import {Component, Input, OnInit, Output} from "@angular/core";
 import {EventEmitter} from "@angular/core";
 import {FormGroup} from "@angular/forms";
+import { UserService } from "../../../core/service/user";
+import swal from 'sweetalert2';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'contact-form',
@@ -9,21 +12,21 @@ import {FormGroup} from "@angular/forms";
       <div class="auth--box">
         <h2 class="small">Feel free to contact me</h2>
         <div class="auth--form form--fancy">
-          <form [formGroup]="parent">
+          <form [formGroup]="parent" (ngSubmit)="submitForm($event)">
             <div class="form--fancy-wrapper">
               <div class="required form--fancy undefined">
-                <input name="fullName" type="text" value=""><label>Full Name</label>
+                <input formControlName="fullName" type="text" value=""><label for="fullName" [ngClass]="{fullUp:parent.value.fullName!=''}">Full Name</label>
               </div>
               <div class="required form--fancy undefined">
-                <input name="email" type="text" value=""><label>Email Address</label>
+                <input formControlName="email" type="text" value=""><label for="email" [ngClass]="{fullUp:parent.value.email!=''}">Email Address</label>
               </div>
               <div class="required form--fancy undefined">
-                <textarea name="message" type="text" value="" placeholder="Say Hello!"></textarea>
+                <textarea formControlName="message" type="text" value="" placeholder="Say Hello!"></textarea>
               </div>
             </div>
             <div class="auth--form-wrapper">
               <div class="auth--form-col">
-                <button class="btn btn--black" type="submit" (click)="submitForm($event)">Send</button>
+                <button class="btn btn--black" type="submit" [disabled]="!parent.valid">Send</button>
               </div>
             </div>
           </form>
@@ -36,6 +39,10 @@ import {FormGroup} from "@angular/forms";
 export class ContactFormComponent implements OnInit {
   @Input() parent: FormGroup;
   @Output() form = new EventEmitter;
+
+
+  constructor(private userService: UserService, private _router: Router) {
+  }
 
   ngOnInit() {
 

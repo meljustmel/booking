@@ -7,12 +7,16 @@ import { AngularFireDatabase } from "angularfire2/database";
 import * as RootStore from '../../store';
 import { Store } from '@ngrx/store';
 import { UserActions } from '../../store/actions/user';
+import { BehaviorSubject, Observable, Subject } from 'rxjs/Rx';
+import {firebaseConfig} from '../config/firebase';
+import { Http, RequestOptionsArgs, RequestOptions } from '@angular/http';
+
 @Injectable()
 export class UserService {
 
   rootRef = firebase.database().ref();
 
-  constructor(public af: FirebaseApp,
+  constructor(public af: FirebaseApp, private http: Http,
               private store: Store<RootStore.AppState>,
               private usersActions: UserActions,
             private db: AngularFireDatabase) { }
@@ -40,6 +44,16 @@ export class UserService {
 
     return this.db.object(`/`).update(fanOutUser);
 
+  }
+
+  sendEmail(email: string, fullName: string, message: string): Observable<any> {
+    const option: any =  {
+      headers: {
+        'Content-Type': 'Application/JSON'
+      }
+    };
+
+    return this.http.post(`${firebaseConfig.cloudFunctionsURL}/sendmail`, { message: message, email: email, fullName: fullName }, option);
   }
 
 }

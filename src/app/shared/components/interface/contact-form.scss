@@ -247,7 +247,7 @@ textarea {
   outline: none;
 }
 
-.form--fancy .form--fancy input[type="text"]:focus~label, .form--fancy .form--fancy input[type="password"]:focus~label {
+.form--fancy .form--fancy label.fullUp,.form--fancy .form--fancy input[type="text"]:focus~label, .form--fancy .form--fancy input[type="password"]:focus~label {
   z-index: 4;
   transform: translate(0px, -12px);
   font-size: 1rem;

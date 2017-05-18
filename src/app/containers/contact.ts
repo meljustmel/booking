@@ -6,6 +6,9 @@ import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AngularFireDatabase, FirebaseListObservable} from "angularfire2/database";
 import {Message} from "../core/model/message";
+import swal from 'sweetalert2';
+import { UserService } from "../core/service/user";
+
 const EMAIL_PATTERN = /.+@.+/;
 
 @Component({
@@ -13,6 +16,8 @@ const EMAIL_PATTERN = /.+@.+/;
   template: `
     <hero [background]="'assets/hero.png'">
     </hero>
+          <loadingspinner *ngIf="loading"></loadingspinner>
+
     <contact-form [parent]="contactForm" (form)="sendMessage($event)"></contact-form>
   `,
   styles: [`
@@ -29,10 +34,11 @@ export class ContactComponent implements OnInit {
   messages: FirebaseListObservable<Message[]>;
 
   contactForm: FormGroup;
+  loading: boolean = false;
 
   constructor(private db: AngularFireDatabase,
               private fb: FormBuilder,
-              private _router: Router,
+              private _router: Router, private userService: UserService,
               private slimLoadingBarService: SlimLoadingBarService) {
     this.messages = db.list('/messages');
     this.contactForm = new FormGroup({});
@@ -43,7 +49,7 @@ export class ContactComponent implements OnInit {
   ngOnInit() {
     this.slimLoadingBarService.start();
     this.contactForm = this.fb.group({
-      name: ['', [
+      fullName: ['', [
         Validators.required,
         Validators.minLength(1),
       ]],
@@ -58,10 +64,31 @@ export class ContactComponent implements OnInit {
     });
     this.slimLoadingBarService.complete();
   }
-  sendMessage(message: Message) {
-    this.messages.push(message)
-      .then(x => console.log(message));
-    this.contactForm.reset();
-    this._router.navigate(['home']);
+  sendMessage(message) {
+    if (!this.contactForm.valid) {
+      swal('Oops...', 'Please provide valid input', 'error');
+      return;
+    }
+
+    this.loading = true;
+    this.userService.sendEmail(this.contactForm.value.email, this.contactForm.value.fullName, this.contactForm.value.message)
+      .subscribe(
+        () => {
+          this.loading = false;
+          swal('Awesome', 'Email have been sent', 'success');
+          this._router.navigate(['/']);
+        },
+        err => {
+          //this.isCompleted = true;
+          console.log(`error creating reservation ${err}`);
+          this.loading = false;
+          swal('Oops...', "Failed to send email", 'error');
+        }
+      );
+
+    //this.messages.push(message)
+    //  .then(x => console.log(message));
+    //this.contactForm.reset();
+    //this._router.navigate(['home']);
   }
 }

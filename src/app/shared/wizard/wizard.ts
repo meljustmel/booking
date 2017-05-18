@@ -26,27 +26,17 @@ import {WizardStepComponent} from "./wizard-step";
           <button type="button"
                   class="button button--withChrome u-baseColor--buttonNormal"
                   [ngClass]="{'back' : hasPrevStep}"
-                  (click)="previous()" 
+                  (click)="previous()"
                   [disabled]="!hasPrevStep || !activeStep.showPrev">Back
           </button>
           <button type="button"
                   class="button button--withChrome u-baseColor--buttonNormal"
-                  [ngClass]="{'valid' : activeStep.isValid, 'dead' : !hasNextStep}" 
-                  (click)="next()" [disabled]="!activeStep.isValid" 
+                  [ngClass]="{'valid' : activeStep.isValid, 'dead' : !hasNextStep}"
+                  (click)="next()" [disabled]="!activeStep.isValid"
                   [hidden]="!hasNextStep || !activeStep.showNext">Next
-          </button>
-          <button type="button" 
-                  class="button button--withChrome u-baseColor--buttonNormal active"
-                  [ngClass]="{'dead' : hasNextStep}"
-                  (click)="complete()" 
-                  [disabled]="!activeStep.isValid" 
-                  [hidden]="hasNextStep">Book
           </button>
         </div>
       </div>
-    <!--<button type="button" class="back" (click)="previous()" [disabled]="!hasPrevStep || !activeStep.showPrev">Back</button>-->
-    <!--<button type="button" [ngClass]="{'valid' : activeStep.isValid}" (click)="next()" [disabled]="!activeStep.isValid" [hidden]="!hasNextStep || !activeStep.showNext">Next</button>-->
-    <!--<button type="button" class="" (click)="complete()" [disabled]="!activeStep.isValid" [hidden]="hasNextStep">Done</button>-->
     </div>
     <div [style.paddingTop.em]="2">
       <ng-content></ng-content>

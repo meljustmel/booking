@@ -282,17 +282,13 @@ export class ReservationService {
     return subject.asObservable();
 
   }
+
+
+
   updateStatus(reservation, newStatus) {
     reservation.status = newStatus;
     this.db.database.ref(`reservations/${reservation.$key}/status`).set(newStatus);
   }
-  // deleteRecipe(recipe_id: string, recipebook_id: string) {
-  //
-  //   this.sdkDb.update({
-  //     `recipes/${recipe_id}`: null,
-  //     `recipesPerRecipebook/${recipebook_id}/${recipe_id}`: null
-  // })
-  // }
 
 
   kill(id) {

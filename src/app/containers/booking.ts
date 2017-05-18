@@ -100,21 +100,14 @@ type CalendarPeriod = 'day' | 'week' | 'month';
               </wizard-step>
               <wizard-step
                 [isValid]="this.data && this.data.creditDetail && this.data.creditDetail.valid"
-                [title]="'Payment'"
+                [title]="'Confirm & Pay - Book'"
                 [stepTitle]="'Step Four'"
-                [stepTagline]="'Pay with Credit Card'"
+                [stepTagline]="'Review your answers and Pay with Credit Card'"
                 [stepHeading]="'Payment Is Secure'"
-                (onNext)="onStep4Next($event)">
-                <credit-form formControlName="creditDetail"></credit-form>
-              </wizard-step>
-              <wizard-step title='Confirm'
-                           [stepTitle]="'Step Five'"
-                           [stepTagline]="'Review your answers'"
-                           [stepHeading]="'You are seconds away!'"
-                           (onComplete)="onComplete($event)">
+                >
                 <div [ngSwitch]="isCompleted">
                   <div *ngSwitchDefault>
-                    <confirm-form [user]="user | async" [data]='data'></confirm-form>
+                    <credit-form formControlName="creditDetail" [user]="user | async" [data]='data' (onComplete)="onComplete($event)"></credit-form>
                   </div>
                   <div *ngSwitchCase="true">
                     <!--<h4>Thank you {{data.email}}! You have completed all the steps.</h4>-->

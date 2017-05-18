@@ -49,11 +49,17 @@ const CREDIT_VALUE_ACCESSOR = {
 })
 export class CreditFormComponent implements OnInit {
   @Output() action = new EventEmitter<any>();
+  @Output() onComplete = new EventEmitter<any>();
+  @Input() label;
+  @Input() data;
+  @Input() user;
+
   @Input() parent: FormGroup;
   value: any = {};
   private cardNumber = '';
-  private expireDate;
+  private expireDate = '';
   private cvc;
+  private isValid : boolean = false;
   onModelChange: Function = (_: any) => {
   }
 
@@ -82,12 +88,18 @@ export class CreditFormComponent implements OnInit {
     this.cvc = $event;
     this.onInputChange();
   }
+  onBookEvent($event) {
+    console.log('onBookEvent called');
+    this.onComplete.emit();
+  }
   onInputChange() {
     if ((<any>window).Stripe.card.validateCardNumber(this.cardNumber) && (<any>window).Stripe.card.validateExpiry(this.expireDate) &&  (<any>window).Stripe.card.validateCVC(this.cvc)) {
       this.writeValue({cardNumber: this.cardNumber, expireDate: this.expireDate, cvc: this.cvc, valid: true});
       this.onModelChange(this.value);
+      this.isValid = true;
       this.onModelTouched();
     } else {
+      this.isValid = false;
       this.onModelChange({valid: false});
     }
   }

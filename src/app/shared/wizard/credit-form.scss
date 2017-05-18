@@ -685,7 +685,23 @@ p {
 .button--lighter:active .svgIcon, .button--lighter:focus .svgIcon, .button--lighter:hover .svgIcon {
   fill: rgba(0, 0, 0, .44)
 }
-
+button.valid {
+  color: #FFFFFF;
+  background-color: #AEEEE1;
+  border-color: #AEEEE1;
+  opacity: 1;
+}
+button.invalid {
+  color: rgba(1, 1, 1, .5);
+  background-color: rgba(0, 0, 0, .14);
+  border: none;
+  opacity: 0.5;
+  cursor: default;
+}
+button.invalid:hover {
+  color: rgba(1, 1, 1, .5);
+  border: none;
+}
 @media screen and (max-width:767px) {
   .button {
     height: 33px;

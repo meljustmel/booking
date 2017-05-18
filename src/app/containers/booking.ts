@@ -51,13 +51,12 @@ type CalendarPeriod = 'day' | 'week' | 'month';
 @Component({
   selector: 'booking',
   template: `
-    <!--<hero [background]="'assets/hero.png'"></hero>-->
+    <hero [background]="'assets/hands.jpg'"></hero>
     <!--<banner></banner>-->
-    <div class="spacer" style="padding-top: 3em"></div>
     <div class="u-foreground homeContainer-content u-marginAuto u-clearfix u-sizeViewHeightMin100">
       <div class="container">
         <section class="">
-          <div class="root" [style.paddingTop.em]="6">
+          <div class="root" [style.paddingTop.em]="2">
             <h4 class="label">{{step?.stepTitle}}</h4>
             <h3 class="">{{step?.stepTagline}}</h3>
             <h1 class="title">{{step?.stepHeading}}</h1>
@@ -101,7 +100,7 @@ type CalendarPeriod = 'day' | 'week' | 'month';
               </wizard-step>
               <wizard-step
                 [isValid]="this.data && this.data.creditDetail && this.data.creditDetail.valid"
-                [title]="'Credit Card Info'"
+                [title]="'Payment'"
                 [stepTitle]="'Step Four'"
                 [stepTagline]="'Pay with Credit Card'"
                 [stepHeading]="'Payment Is Secure'"

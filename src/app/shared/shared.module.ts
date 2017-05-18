@@ -30,7 +30,8 @@ import {
   ProductsComponent,
   SuccessFormComponent,
   InstafeedComponent,
-  LoadingSpinnerComponent
+  LoadingSpinnerComponent,
+  ContactFormComponent
 } from './components/index';
 import {PopoverDirective, SpotlightDirective} from './directives/index';
 import {LoginModalComponent, ModalModule, ModalPlaceholderComponent} from './modal/index';
@@ -42,6 +43,7 @@ import {
 } from './popover/index';
 import {ScheduleModule} from '../schedule/schedule.module';
 import { FormWizardModule } from './wizard/index';
+import { CreditCardPipe } from './directives/index'
 
 
 @NgModule({
@@ -88,7 +90,9 @@ import { FormWizardModule } from './wizard/index';
     ProductsComponent,
     InstafeedComponent,
     SuccessFormComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    ContactFormComponent,
+    CreditCardPipe
   ],
   exports: [
     ConfirmFormComponent,
@@ -129,7 +133,9 @@ import { FormWizardModule } from './wizard/index';
     ProductsComponent,
     InstafeedComponent,
     SuccessFormComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    ContactFormComponent,
+    CreditCardPipe
   ]
 })
 export class SharedModule {

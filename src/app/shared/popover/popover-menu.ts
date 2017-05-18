@@ -8,40 +8,25 @@ const template = `
 			<div class="popover-inner">
 				<ul class="list list--borderless list--short list--large" role="menu">
 					<li class="list-item list-item--dark u-padding0">
-						<a class="button button--dark button--chromeless u-baseColor--buttonDark" href="#" role="menuitem">New story</a>
+						<a routerLink="booking"
+						class="button button--dark button--chromeless u-baseColor--buttonDark">Book Reservation</a>
 					</li>
 					<li class="list-item list-item--dark u-padding0">
-						<a class="button button--dark button--chromeless u-baseColor--buttonDark" href="#">Stories</a>
+						<a routerLink="about"
+						class="button button--dark button--chromeless u-baseColor--buttonDark" >About</a>
 					</li>
 					<li class="list-item list-item--dark u-padding0">
-						<a class="button button--dark button--chromeless u-baseColor--buttonDark" href="#">Series</a>
-					</li>
-					<li class="list-item list-item--dark u-padding0">
-						<a class="button button--dark button--chromeless u-baseColor--buttonDark" href="#">Stats</a>
-					</li>
-					<li class="list-item list-item--separator"></li>
-					<li class="list-item list-item--dark u-padding0">
-						<a class="button button--dark button--chromeless u-baseColor--buttonDark" href="#">Bookmarks</a>
-					</li>
-					<li class="list-item list-item--dark u-padding0">
-						<a class="button button--dark button--chromeless u-baseColor--buttonDark" href="#">Publications</a>
-					</li>
-					<li class="list-item list-item--dark u-padding0">
-						<a class="button button--dark button--chromeless u-baseColor--buttonDark" href="#">Customize your interests</a>
+						<a routerLink="contact"
+						class="button button--dark button--chromeless u-baseColor--buttonDark" >Contact</a>
 					</li>
 					<li class="list-item list-item--separator"></li>
 					<li class="list-item u-padding0">
 						<a class="button button--dark button--chromeless u-baseColor--buttonDark" routerLink="/profile">Profile</a>
 					</li>
 					<li class="list-item u-padding0">
-						<a class="button button--dark button--chromeless u-baseColor--buttonDark" href="#">Settings</a>
+						<a (click)='onSignOut()' class="button button--dark button--chromeless u-baseColor--buttonDark" >Sign out</a>
 					</li>
-					<li class="list-item u-padding0">
-						<a class="button button--dark button--chromeless u-baseColor--buttonDark" href="#" target="_blank">Help</a>
-					</li>
-					<li class="list-item u-padding0">
-						<a (click)='onSignOut()' class="button button--dark button--chromeless u-baseColor--buttonDark" href="#">Sign out</a>
-					</li>
+				
 				</ul>
 			</div>
 			<div class="popover-arrow" style=""></div>

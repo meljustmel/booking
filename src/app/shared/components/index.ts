@@ -28,6 +28,8 @@ export * from '../wizard/success-form';
 export * from './interface/segment';
 
 export * from './users/index';
+export * from './interface/contact-form';
+
 
 
 

@@ -8,41 +8,42 @@ const CREDIT_VALUE_ACCESSOR = {
 };
 @Component({
   selector: 'credit-form',
-  template: `
-    <div class="section">
-      <div class="section-content">
-        <div class="choicesbox">
-          <div class="row">
-              <div class="col-xs-12">
-                  <div class="form-group">
-                      <label>CARD NUMBER</label>
-                      <div class="input-group">
-                          <input type="text" class="form-control" name="Number" placeholder="Valid Card Number" required (ngModelChange)="onInputChangeNumber($event)" [ngModel]="cardNumber"/>
-                          <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="row">
-              <div class="col-xs-12 col-md-12">
-                  <div class="form-group">
-                      <label>EXPIRATION DATE</label>
-                      <input type="text" class="form-control" name="Expiry" placeholder="MM / YY"  required (ngModelChange)="onInputChangeExpiry($event)" [ngModel]="expireDate"/>
-                  </div>
-              </div>
-          </div>
-          <div class="row">
-              <div class="col-xs-12 col-md-12">
-                  <div class="form-group">
-                      <label>CV CODE</label>
-                      <input type="text" class="form-control" name="CVC" placeholder="CVC"  required (ngModelChange)="onInputChangeCVC($event)" [ngModel]="cvc"/>
-                  </div>
-              </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  `,
+  templateUrl: 'credit-form.html',
+  // template: `
+  //   <div class="section">
+  //     <div class="section-content">
+  //       <div class="choicesbox">
+  //         <div class="row">
+  //             <div class="col-xs-12">
+  //                 <div class="form-group">
+  //                     <label>CARD NUMBER</label>
+  //                     <div class="input-group">
+  //                         <input type="text" class="form-control" name="Number" placeholder="Valid Card Number" required (ngModelChange)="onInputChangeNumber($event)" [ngModel]="cardNumber"/>
+  //                         <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+  //                     </div>
+  //                 </div>
+  //             </div>
+  //         </div>
+  //         <div class="row">
+  //             <div class="col-xs-12 col-md-12">
+  //                 <div class="form-group">
+  //                     <label>EXPIRATION DATE</label>
+  //                     <input type="text" class="form-control" name="Expiry" placeholder="MM / YY"  required (ngModelChange)="onInputChangeExpiry($event)" [ngModel]="expireDate"/>
+  //                 </div>
+  //             </div>
+  //         </div>
+  //         <div class="row">
+  //             <div class="col-xs-12 col-md-12">
+  //                 <div class="form-group">
+  //                     <label>CV CODE</label>
+  //                     <input type="text" class="form-control" name="CVC" placeholder="CVC"  required (ngModelChange)="onInputChangeCVC($event)" [ngModel]="cvc"/>
+  //                 </div>
+  //             </div>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   </div>
+  // `,
   styleUrls: ['credit-form.scss'],
   providers: [CREDIT_VALUE_ACCESSOR]
 })
@@ -50,7 +51,7 @@ export class CreditFormComponent implements OnInit {
   @Output() action = new EventEmitter<any>();
   @Input() parent: FormGroup;
   value: any = {};
-  private cardNumber;
+  private cardNumber = '';
   private expireDate;
   private cvc;
   onModelChange: Function = (_: any) => {
@@ -82,7 +83,7 @@ export class CreditFormComponent implements OnInit {
     this.onInputChange();
   }
   onInputChange() {
-    if((<any>window).Stripe.card.validateCardNumber(this.cardNumber) && (<any>window).Stripe.card.validateExpiry(this.expireDate) &&  (<any>window).Stripe.card.validateCVC(this.cvc)) {
+    if ((<any>window).Stripe.card.validateCardNumber(this.cardNumber) && (<any>window).Stripe.card.validateExpiry(this.expireDate) &&  (<any>window).Stripe.card.validateCVC(this.cvc)) {
       this.writeValue({cardNumber: this.cardNumber, expireDate: this.expireDate, cvc: this.cvc, valid: true});
       this.onModelChange(this.value);
       this.onModelTouched();

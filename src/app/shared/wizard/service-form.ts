@@ -8,16 +8,9 @@ const SERVICE_VALUE_ACCESSOR = {
 };
 @Component({
   selector: 'service-form',
-  template: `
-    <!--<div class="root" [style.paddingTop.em]="3">-->
-      <!--<h4 class="label">Step One</h4>-->
-      <!--<h3 class="">Select the method you prefer </h3>-->
-      <!--<h1 class="title">All Three are Organic</h1>-->
-    <!--</div>-->
+  template: `    
     <div class="section" [formGroup]="parent">
-
       <div class="section-content">
-
         <div *ngFor="let service of services; let i = index"
              (click)="onServiceSelect(service.type)"
              class="column large-4 medium-6">
@@ -60,7 +53,6 @@ const SERVICE_VALUE_ACCESSOR = {
                       </g>
                   </svg>
                </div>
-                
               </span>
               <div class="product-header">
                 <p class="product">Organic {{ service.type }}</p>
@@ -77,133 +69,7 @@ const SERVICE_VALUE_ACCESSOR = {
       </div>
     </div>
   `,
-  styles: [`
-    svg {
-      margin: 2em 0;
-    }
-    .section {
-      overflow: hidden;
-      margin-bottom: 100px;
-      position: relative;
-      height: 450px;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .section-content {
-      margin-left: auto;
-      margin-right: auto;
-      width: 980px;
-    }
-
-    .section-models {
-      padding-top: 52px;
-    }
-
-    .large-4 {
-      width: 33.3333%;
-    }
-
-    .column {
-      position: relative;
-      z-index: 1;
-      min-height: 2px;
-      margin: 0;
-      padding: 0;
-      float: left;
-    }
-
-    .select-trigger {
-      display: block;
-      padding-top: 22px;
-      text-align: center;
-      text-decoration: none;
-      color: #333;
-      background-color: #f2f2f2;
-      border: 1px solid transparent;
-      cursor: pointer;
-      /*height: 735px;*/
-      margin: 5px;
-      border-radius: 10px;
-    }
-
-    .select-trigger.select-trigger-light {
-      background-color: #fafafa;
-    }
-
-    .select-trigger .check {
-      background-image: url(assets/circle.png);
-      background-repeat: no-repeat;
-      background-size: 22px 22px;
-      height: 22px;
-      width: 22px;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: 13px;
-    }
-
-    .select-trigger .product-header {
-      height: 86px;
-    }
-
-    .select-trigger .product-messaging {
-      margin: 15px 0 17px 0;
-      min-height: 38px;
-    }
-
-    .select-trigger:hover {
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
-      border: 1px solid rgba(0, 0, 0, 0.09);
-    }
-
-    .select-trigger .selected {
-      background-image: url(assets/check.png);
-      background-repeat: no-repeat;
-      /*background-size: 22px 22px;*/
-      /*height: 22px;*/
-      /*width: 22px;*/
-      /*margin-left: auto;*/
-      /*margin-right: auto;*/
-      /*margin-bottom: 13px;*/
-
-    }
-
-    .select-trigger.selected {
-      border-color: #AEEEE1;
-    }
-
-    .select-trigger ul {
-      text-align: left;
-      margin: 0 24px 0 60px;
-      color: #666;
-      font-size: 14px;
-      line-height: 1.25;
-      padding-bottom: 20px;
-    }
-
-    .list-circle {
-      list-style: circle outside;
-    }
-
-    .select-trigger li:empty {
-      display: none;
-    }
-
-    .select-trigger li {
-      margin-bottom: 16px;
-    }
-
-    .product {
-      margin-bottom: 5px;
-    }
-
-    .price {
-      opacity: 0.6;
-      font-size: 16px;
-    }
-  `],
+  styleUrls: ['service-form.scss'],
   providers: [SERVICE_VALUE_ACCESSOR]
 })
 export class ServiceFormComponent implements OnInit {

@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {routeFadeStateTrigger} from "../app.animations";
 import {ServiceModalComponent, ModalService} from ".././shared/modal/index";
 import {SharedModule} from "../shared/shared.module";
+import {Service} from "../core/model/index";
 
 
 @Component({
@@ -21,7 +22,7 @@ import {SharedModule} from "../shared/shared.module";
       
     </segment>
     <segment [pretitle]="'Services'" [subtitle]="'You need to get that shit together'">
-      <services (open)='serviceModal()'></services>
+      <services [services]='services' (open)='serviceModal(service)'></services>
       <action [type]="'action'" [label]="'Book Now'" (action)='onAction()'></action>
     </segment>
     <segment [type]="'lovely'"
@@ -53,6 +54,7 @@ import {SharedModule} from "../shared/shared.module";
              [subtitle]="'Great stories deserve a great audience'">
       <action [type]="'lovely'" [label]="'Book Now'" (action)='onAction()'></action>
     </segment>
+
   `,
   animations: [
     routeFadeStateTrigger
@@ -72,8 +74,29 @@ import {SharedModule} from "../shared/shared.module";
 })
 export class HomeComponent implements OnInit {
   @HostBinding('@routeFadeState') routeAnimation = false;
-
-
+  services: Service[] = [
+    {
+      'title': 'Organic Waxing',
+      'price': 25,
+      'description': 'Suddenly you are aware of every single thing that happens.',
+      'type': 'Waxing',
+      'img': '/assets/hands.jpg',
+    },
+    {
+      'title': 'Total Tinting',
+      'price': 30,
+      'description': 'Play the game, or lose. But you’ll probably lose anyway.',
+      'type': 'Shaping',
+      'img': '/assets/hands.jpg',
+    },
+    {
+      'title': 'Full Shaping',
+      'price': 35,
+      'description': 'Do you ever wake up wondering, “I’ve made a huge mistake”?',
+      'type': 'Tinting',
+      'img': '/assets/hands.jpg',
+    }
+  ];
   constructor(private router: Router,
               private modalService: ModalService,
               private slimLoadingBarService: SlimLoadingBarService) {
@@ -87,9 +110,10 @@ export class HomeComponent implements OnInit {
   onAction() {
     this.router.navigate(['booking']);
   }
-  serviceModal(): void {
+  serviceModal(service): void {
+    console.log(service);
     const modal$ = this.modalService.create(SharedModule, ServiceModalComponent, {
-      title: 'test',
+      service,
       goToBooking: () => {
         this.router.navigate(['booking']);
       }

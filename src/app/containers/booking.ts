@@ -110,7 +110,6 @@ type CalendarPeriod = 'day' | 'week' | 'month';
                     <credit-form formControlName="creditDetail" [user]="user | async" [data]='data' (onComplete)="onComplete($event)"></credit-form>
                   </div>
                   <div *ngSwitchCase="true">
-                    <!--<h4>Thank you {{data.email}}! You have completed all the steps.</h4>-->
                     <success-form [user]="user | async" [data]='data'></success-form>
                   </div>
                 </div>
@@ -119,8 +118,6 @@ type CalendarPeriod = 'day' | 'week' | 'month';
           </div>
         </section>
       </div>
-      <!--<pre>{{ filtered | json }}</pre>-->
-      <!--<pre>Value: {{ reservationForm.value | json }}</pre>-->
     </div>
   `,
   styles: [`
@@ -151,10 +148,8 @@ export class BookingComponent implements OnInit {
     stepTagline : 'Select the method you prefer',
     stepHeading : 'All Three are Organic',
   };
-
   reservations$;
   reservationForm: FormGroup;
-
   activeDayIsOpen = false;
 
   reservationDay;
@@ -164,7 +159,7 @@ export class BookingComponent implements OnInit {
     showPrev: true
   };
 
-  loading: boolean = false;
+  loading = false;
   times;
   bookedTimes = [];
   user;
@@ -206,12 +201,12 @@ export class BookingComponent implements OnInit {
   onStep1Next(event) {
     console.log('Step1 - Next');
     // this.stepNumber = 'Step Two';
-    //console.log("HALA ISIVISIBLE", swal.isVisible());
-    //swal.showLoading();
-    //if(swal.isVisible()) { // instant regret
+    // console.log("HALA ISIVISIBLE", swal.isVisible());
+    // swal.showLoading();
+    // if(swal.isVisible()) { // instant regret
     //  swal.close();
-    //}
-    //sweetAlert.swal.showLoading();
+    // }
+    // sweetAlert.swal.showLoading();
   }
 
   onStep2Next(event) {
@@ -221,8 +216,8 @@ export class BookingComponent implements OnInit {
     this.reservationService.getReservationsForDay(this.data.reservationDate).subscribe(reservations => {
       this.bookedTimes = reservations.map(reservation => {
         return reservation.reservationTime;
-      })
-    })
+      });
+    });
   }
 
   onStep3Next(event) {
@@ -235,7 +230,7 @@ export class BookingComponent implements OnInit {
   }
   onComplete(event) {
     this.slimLoadingBarService.start();
-    let _this = this;
+    const _this = this;
     this.loading = true;
     (<any>window).Stripe.card.createToken({
       number: this.reservationForm.value['creditDetail'].cardNumber,
@@ -244,7 +239,7 @@ export class BookingComponent implements OnInit {
     }, (status: number, response: any) => {
       if (status === 200) {
         console.log(`Success! Card token ${response.card.id}.`);
-        console.log('card  response',response);
+        console.log('card  response', response);
         _this.reservationService.bookUserReservation(_this.reservationForm.value, response.id, 100)
           .subscribe(
             () => {
@@ -256,14 +251,14 @@ export class BookingComponent implements OnInit {
               _this._router.navigate(['/']);
             },
             err => {
-              //this.isCompleted = true;
+              // this.isCompleted = true;
               console.log(`error creating reservation ${err}`);
               _this.loading = false;
               swal('Oops...', err.message, 'error');
               _this.slimLoadingBarService.complete();
             }
           );
-        //this.save(this.reservationForm);
+        // this.save(this.reservationForm);
       } else {
         console.log("ERROR", response.error);
         _this.loading = false;
@@ -324,7 +319,7 @@ export class BookingComponent implements OnInit {
   save(form) {
     // console.log(form.value)
 
-    //this.reservationService.bookUserReservation(form.value)
+    // this.reservationService.bookUserReservation(form.value)
     //  .subscribe(
     //    () => {
     //      form.reset();

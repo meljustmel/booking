@@ -17,7 +17,6 @@ import {Store} from "@ngrx/store";
     <div class="spacer"></div>
     <block>
       <block-header [tag]="'This is where the header tag is'"></block-header>
-
       <div>
         <div class="btn-group">
           Filter By :
@@ -60,7 +59,6 @@ export class ReservationsComponent implements OnInit {
   ngOnInit() {
     this.slimLoadingBarService.start();
     this.reservationService.loadReservations();
-
     this.store.select(state => state.reservationState.reservations).subscribe((reservations) => {
       this.reservations$ = reservations;
       this.filterReservations();
@@ -70,16 +68,16 @@ export class ReservationsComponent implements OnInit {
   }
 
   filterReservations() {
-    let filtered = [];
+    const filtered = [];
     if (this.reservations$ && this.reservations$.length > 0) {
-      if (this.status == -1) {
+      if (this.status === -1) {
         this.filtered$ = [...this.reservations$];
       } else {
         this.reservations$.forEach(reservation => {
-          if (reservation.reservation.status == this.status) {
+          if (reservation.reservation.status === this.status) {
             filtered.push(reservation);
           }
-        })
+        });
         this.filtered$ = filtered;
       }
     }

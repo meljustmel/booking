@@ -20,7 +20,7 @@ import {ChangeDetectionStrategy, Component, ElementRef, HostListener, Input, Vie
             <div class="u-flex1 u-sizeHalfWidth u-borderBox u-padding40 u-xs-padding20 u-xs-marginBottom20 u-xs-sizeFullWidth">
               <h3 class="u-contentSerifBold u-lineHeightTight u-textColorWhite u-borderTopGreen u-borderBottomGreen u-paddingTop20 u-paddingBottom20 u-marginBottom30 u-xs-fontSize24 u-fontSize40">
                 <span class="data">Heading</span> Service <br>
-                on <span class="data">This is a {{title}}</span> <br>
+                on <span class="data">This is a {{service.title}}</span> <br>
                 at <span class="data">Line Two</span>
               </h3>
               <p class="u-margin0 u-contentSansRegular u-letterSpacingNormal u-textColorTransparentWhiteDarker">Does this look correct?</p>
@@ -78,6 +78,7 @@ import {ChangeDetectionStrategy, Component, ElementRef, HostListener, Input, Vie
 @Modal()
 export class ServiceModalComponent {
   @Input() title;
+  @Input() service;
   ok: Function;
   destroy: Function;
   closeModal: Function;

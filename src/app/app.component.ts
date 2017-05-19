@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, ComponentRef, OnInit} from "@angular/core";
 import {Store} from "@ngrx/store";
 import {LoginModalComponent, ModalService} from "./shared/modal/index";
 import {Observable} from 'rxjs/Observable';

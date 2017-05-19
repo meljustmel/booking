@@ -1,16 +1,12 @@
-import { Component, HostBinding, OnInit } from "@angular/core";
-import { SlimLoadingBarService } from "ng2-slim-loading-bar";
-import { UserActions } from "../store/actions/user";
-import { UserService } from "../core/service/user";
+import {Component, HostBinding, OnInit} from "@angular/core";
+import {SlimLoadingBarService} from "ng2-slim-loading-bar";
+import {UserActions} from "../store/actions/user";
+import {UserService} from "../core/service/user";
 import * as RootStore from "../store";
-import { Router, ActivatedRoute } from '@angular/router'
-import { ReservationService } from '../core/service/res';
-
-import { routeFadeStateTrigger } from "../app.animations";
-
-import { Store } from "@ngrx/store";
-import { Observable } from "rxjs";
-import { filter } from "rxjs/operator/filter";
+import {ActivatedRoute} from "@angular/router";
+import {ReservationService} from "../core/service/res";
+import {routeFadeStateTrigger} from "../app.animations";
+import {Store} from "@ngrx/store";
 
 @Component({
   selector: 'user-detail',
@@ -21,36 +17,29 @@ import { filter } from "rxjs/operator/filter";
     <div class="spacer"></div>
     <block>
       <block-header [tag]="'This is where the header tag is'"></block-header>
-
-      <!--<item-list [items]="(filtered$ | async) || []"></item-list>-->
-      <!--<br>-->
-      <!--<hr>-->
-      <!--<br>-->
       <div class="" *ngIf="user$">
         <div class="">
-            <div class="postMetaInline-avatar u-flex0">
-                <img alt="Go to the profile of"
-                     class="avatar-image u-size36x36 u-xs-size32x32"
-                     [src]="user$.photoURL">
-              {{ user$.displayName }}
-            </div>
+          <div class="postMetaInline-avatar u-flex0">
+            <img alt="Go to the profile of"
+                 class="avatar-image u-size36x36 u-xs-size32x32"
+                 [src]="user$.photoURL">
+            {{ user$.displayName }}
+          </div>
           <p>
-          Email: {{user$.email}}
+            Email: {{user$.email}}
           </p>
           <div>
-          <h3>Reservations</h3>
-          <item-list [items]="reservations$ || []" [showActionButton]="true" [showUserInfo]="false"></item-list>
+            <h3>Reservations</h3>
+            <item-list [items]="reservations$ || []" [showActionButton]="true" [showUserInfo]="false"></item-list>
           </div>
         </div>
       </div>
     </block>
-    <!--<pre>{{filtered$ | async | json }}</pre>-->
-
   `,
   styles: [`
-  :host {
-    display: block;
-  }
+    :host {
+      display: block;
+    }
   `],
   animations: [
     routeFadeStateTrigger
@@ -71,7 +60,7 @@ export class UserDetailComponent implements OnInit {
 
   ngOnInit() {
     this.slimLoadingBarService.start();
-    let userId = this.route.params['value'].id;
+    const userId = this.route.params['value'].id;
 
     this.userService.getSingleUser(userId).take(1).subscribe((user) => {
       this.slimLoadingBarService.complete();

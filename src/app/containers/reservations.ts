@@ -1,16 +1,11 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
-import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
-import { ReservationsActions } from '../store/actions/res';
-import { ReservationService } from '../core/service/res';
-import * as RootStore from '../store';
-import { ReservationStatus, getReservationStatusName } from '../core/model/index';
-
-import {routeFadeStateTrigger} from '../app.animations';
-
-
-import {Store} from '@ngrx/store';
-import {Observable} from 'rxjs';
-import {filter} from 'rxjs/operator/filter';
+import {Component, HostBinding, OnInit} from "@angular/core";
+import {SlimLoadingBarService} from "ng2-slim-loading-bar";
+import {ReservationsActions} from "../store/actions/res";
+import {ReservationService} from "../core/service/res";
+import * as RootStore from "../store";
+import {getReservationStatusName} from "../core/model/index";
+import {routeFadeStateTrigger} from "../app.animations";
+import {Store} from "@ngrx/store";
 
 @Component({
   selector: 'reservations',
@@ -23,32 +18,28 @@ import {filter} from 'rxjs/operator/filter';
     <block>
       <block-header [tag]="'This is where the header tag is'"></block-header>
 
-      <!--<item-list [items]="(filtered$ | async) || []"></item-list>-->
-      <!--<br>-->
-      <!--<hr>-->
-      <!--<br>-->
       <div>
-                   <div class="btn-group">
-                   Filter By :
-              <button data-toggle="dropdown" class="button button--small u-noUserSelect button--withChrome u-baseColor--buttonNormal button--withHover button--unblock js-unblockButton">{{currentStatus()}} <span class="caret"></span></button>
-              <ul class="dropdown-menu">
-                <li><a (click)="updateStatus(-1)">All</a></li>
-                <li><a (click)="updateStatus(0)">Booked</a></li>
-                <li><a (click)="updateStatus(1)">Rescheduled</a></li>
-                <li><a (click)="updateStatus(2)">Completed</a></li>
-                <li><a (click)="updateStatus(3)">Cancelled</a></li>
-              </ul>
-            </div>
+        <div class="btn-group">
+          Filter By :
+          <button data-toggle="dropdown"
+                  class="button button--small u-noUserSelect button--withChrome u-baseColor--buttonNormal button--withHover button--unblock js-unblockButton">
+            {{currentStatus()}} <span class="caret"></span></button>
+          <ul class="dropdown-menu">
+            <li><a (click)="updateStatus(-1)">All</a></li>
+            <li><a (click)="updateStatus(0)">Booked</a></li>
+            <li><a (click)="updateStatus(1)">Rescheduled</a></li>
+            <li><a (click)="updateStatus(2)">Completed</a></li>
+            <li><a (click)="updateStatus(3)">Cancelled</a></li>
+          </ul>
+        </div>
       </div>
       <item-list [items]="filtered$ || []" [showActionButton]="true" [showUserInfo]="true"></item-list>
     </block>
-    <!--<pre>{{filtered$ | async | json }}</pre>-->
-
   `,
   styles: [`
-  :host {
-    display: block;
-  }
+    :host {
+      display: block;
+    }
   `],
   animations: [
     routeFadeStateTrigger
@@ -93,6 +84,7 @@ export class ReservationsComponent implements OnInit {
       }
     }
   }
+
   updateStatus(newStatus) {
     this.status = newStatus;
     this.filterReservations();

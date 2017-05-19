@@ -26,7 +26,7 @@ export class UserItemComponent implements OnInit {
   ngOnInit() {
   }
   gotoProfile(id) {
-    //this.res.kill(id);
+    // this.res.kill(id);
   }
 
 }

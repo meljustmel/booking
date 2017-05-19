@@ -7,8 +7,6 @@ import * as RootStore from "../store";
 import {routeFadeStateTrigger} from "../app.animations";
 
 import {Store} from "@ngrx/store";
-import {Observable} from "rxjs";
-import {filter} from "rxjs/operator/filter";
 
 @Component({
   selector: 'users',
@@ -20,20 +18,13 @@ import {filter} from "rxjs/operator/filter";
     <div class="spacer"></div>
     <block>
       <block-header [tag]="'This is where the header tag is'"></block-header>
-
-      <!--<item-list [items]="(filtered$ | async) || []"></item-list>-->
-      <!--<br>-->
-      <!--<hr>-->
-      <!--<br>-->
       <user-list [users]="(users$ | async) || []"></user-list>
     </block>
-    <!--<pre>{{filtered$ | async | json }}</pre>-->
-
   `,
   styles: [`
-  :host {
-    display: block;
-  }
+    :host {
+      display: block;
+    }
   `],
   animations: [
     routeFadeStateTrigger
@@ -42,6 +33,7 @@ import {filter} from "rxjs/operator/filter";
 export class UsersComponent implements OnInit {
   @HostBinding('@routeFadeState') routeAnimation = false;
   users$;
+
   constructor(private usersActions: UserActions,
               private userService: UserService,
               private slimLoadingBarService: SlimLoadingBarService,
@@ -50,7 +42,6 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this.slimLoadingBarService.start();
-
     this.store.dispatch(this.usersActions.getUsers());
     this.users$ = this.store.select(state => state.userState.users);
     this.slimLoadingBarService.complete();

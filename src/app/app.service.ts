@@ -21,7 +21,7 @@ import { AngularFireAuth } from "angularfire2/auth";
 export class AuthGuard implements CanActivate {
   user: any;
   profile: any;
-  firstTime: boolean = true
+  firstTime = true;
 
   constructor(private store: Store<RootStore.AppState>,
               private authActions: AuthActions,

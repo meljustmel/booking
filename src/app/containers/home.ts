@@ -2,6 +2,9 @@ import {Component, HostBinding, OnInit} from "@angular/core";
 import {SlimLoadingBarService} from "ng2-slim-loading-bar";
 import {Router} from "@angular/router";
 import {routeFadeStateTrigger} from "../app.animations";
+import {ServiceModalComponent, ModalService} from ".././shared/modal/index";
+import {SharedModule} from "../shared/shared.module";
+
 
 @Component({
   selector: 'home',
@@ -18,7 +21,7 @@ import {routeFadeStateTrigger} from "../app.animations";
       
     </segment>
     <segment [pretitle]="'Services'" [subtitle]="'You need to get that shit together'">
-      <services></services>
+      <services (open)='serviceModal()'></services>
       <action [type]="'action'" [label]="'Book Now'" (action)='onAction()'></action>
     </segment>
     <segment [type]="'lovely'"
@@ -72,6 +75,7 @@ export class HomeComponent implements OnInit {
 
 
   constructor(private router: Router,
+              private modalService: ModalService,
               private slimLoadingBarService: SlimLoadingBarService) {
   }
 
@@ -82,6 +86,14 @@ export class HomeComponent implements OnInit {
 
   onAction() {
     this.router.navigate(['booking']);
+  }
+  serviceModal(): void {
+    const modal$ = this.modalService.create(SharedModule, ServiceModalComponent, {
+      title: 'test',
+      goToBooking: () => {
+        this.router.navigate(['booking']);
+      }
+    });
   }
 
 }

@@ -34,7 +34,7 @@ import {
   ContactFormComponent
 } from './components/index';
 import {PopoverDirective, SpotlightDirective} from './directives/index';
-import {LoginModalComponent, ModalModule, ModalPlaceholderComponent} from './modal/index';
+import {LoginModalComponent, ServiceModalComponent, ModalModule, ModalPlaceholderComponent} from './modal/index';
 import {
   PopoverMenuComponent,
   PopoverModule,
@@ -93,7 +93,8 @@ import { CreditCardPipe, ExpireDatePipe } from './directives/index'
     LoadingSpinnerComponent,
     ContactFormComponent,
     CreditCardPipe,
-    ExpireDatePipe
+    ExpireDatePipe,
+    ServiceModalComponent
   ],
   exports: [
     ConfirmFormComponent,
@@ -137,7 +138,8 @@ import { CreditCardPipe, ExpireDatePipe } from './directives/index'
     LoadingSpinnerComponent,
     ContactFormComponent,
     CreditCardPipe,
-    ExpireDatePipe
+    ExpireDatePipe,
+    ServiceModalComponent
   ]
 })
 export class SharedModule {

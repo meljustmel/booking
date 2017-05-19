@@ -9,41 +9,6 @@ const CREDIT_VALUE_ACCESSOR = {
 @Component({
   selector: 'credit-form',
   templateUrl: 'credit-form.html',
-  // template: `
-  //   <div class="section">
-  //     <div class="section-content">
-  //       <div class="choicesbox">
-  //         <div class="row">
-  //             <div class="col-xs-12">
-  //                 <div class="form-group">
-  //                     <label>CARD NUMBER</label>
-  //                     <div class="input-group">
-  //                         <input type="text" class="form-control" name="Number" placeholder="Valid Card Number" required (ngModelChange)="onInputChangeNumber($event)" [ngModel]="cardNumber"/>
-  //                         <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
-  //                     </div>
-  //                 </div>
-  //             </div>
-  //         </div>
-  //         <div class="row">
-  //             <div class="col-xs-12 col-md-12">
-  //                 <div class="form-group">
-  //                     <label>EXPIRATION DATE</label>
-  //                     <input type="text" class="form-control" name="Expiry" placeholder="MM / YY"  required (ngModelChange)="onInputChangeExpiry($event)" [ngModel]="expireDate"/>
-  //                 </div>
-  //             </div>
-  //         </div>
-  //         <div class="row">
-  //             <div class="col-xs-12 col-md-12">
-  //                 <div class="form-group">
-  //                     <label>CV CODE</label>
-  //                     <input type="text" class="form-control" name="CVC" placeholder="CVC"  required (ngModelChange)="onInputChangeCVC($event)" [ngModel]="cvc"/>
-  //                 </div>
-  //             </div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   </div>
-  // `,
   styleUrls: ['credit-form.scss'],
   providers: [CREDIT_VALUE_ACCESSOR]
 })

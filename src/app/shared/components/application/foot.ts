@@ -26,7 +26,7 @@ import {Component} from "@angular/core";
           >Facebook</a>
         </div>
         <div class="middle">
-          <!--<logo [style.fill]="'#404040'"></logo>-->
+          <logo [style.fill]="'#404040'"></logo>
           <div class="copy_text">Copyright 2017 The Lovely You. <br />All Rights Reserved</div>
         </div>
       </div>

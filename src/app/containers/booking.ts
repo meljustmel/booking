@@ -100,7 +100,7 @@ type CalendarPeriod = 'day' | 'week' | 'month';
               </wizard-step>
               <wizard-step
                 [isValid]="this.data && this.data.creditDetail && this.data.creditDetail.valid"
-                [title]="'Confirm & Pay - Book'"
+                [title]="'Payment'"
                 [stepTitle]="'Step Four'"
                 [stepTagline]="'Review your answers and Pay with Credit Card'"
                 [stepHeading]="'Payment Is Secure'"

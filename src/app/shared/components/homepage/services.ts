@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, EventEmitter, Input, Output} from "@angular/core";
 @Component({
   selector: 'services',
   template: `
@@ -15,7 +15,7 @@ import {Component, Input} from "@angular/core";
         </span>
           <h4>Organic Waxing</h4>          
           <p>Suddenly you are aware of every single thing that happens.</p>
-          <a>Details</a>
+          <a (click)='onOpen($event)'>Details</a>
         </div>
       </div>
       <div class="discover__col">
@@ -30,7 +30,7 @@ import {Component, Input} from "@angular/core";
           </span>
           <h4>Full Tinting</h4>
           <p>Play the game, or lose. But you’ll probably lose anyway.</p>
-          <a>Details</a>
+          <a (click)='onOpen($event)'>Details</a>
         </div>
       </div>
       <div class="discover__col">
@@ -45,7 +45,7 @@ import {Component, Input} from "@angular/core";
           </span>
           <h4>Total Shaping</h4>
           <p>Do you ever wake up wondering, “I’ve made a huge mistake”?</p>
-          <a>Details</a>
+          <a (click)='onOpen($event)'>Details</a>
         </div>
       </div>
     </div>
@@ -95,6 +95,11 @@ import {Component, Input} from "@angular/core";
 })
 export class ServicesComponent {
   @Input() background;
+  @Output() open = new EventEmitter<any>();
+
+  onOpen(event) {
+    this.open.emit(event);
+  }
 
 }
 

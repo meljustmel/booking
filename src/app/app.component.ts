@@ -22,9 +22,6 @@ import {User} from "./core/model/index";
                      (menu)='openMenu()'
                      (notifications)='openNotifications()'
                      (signOut)='signOut()'></navigator>
-
-          <!--<topbar></topbar>-->
-
           <router-outlet></router-outlet>
           <placeholder></placeholder>
           <popover-template></popover-template>
@@ -50,7 +47,6 @@ import {User} from "./core/model/index";
       </div>
     </div>
     <ng2-slim-loading-bar [color]="'pink'" [height]="'2px'"></ng2-slim-loading-bar>
-    <!--<bottom></bottom>-->
     <foot></foot>
   `,
   styles: [``]

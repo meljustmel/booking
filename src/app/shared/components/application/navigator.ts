@@ -6,7 +6,7 @@ import {User} from "../../../core/model/index";
     <div [style.z-index]='' [ngClass]="user ? 'activated' : 'metabar'" class="metabar u-clearfix js-metabar is-withBottomSection">
       <div class="metabar-inner u-marginAuto u-maxWidth1000">
         <div class="metabar-block metabar-block--left u-floatLeft u-height65 u-xs-height56">
-          <logo [style.fill]="user ? '#404040' : 'white'"></logo>
+          <!--<logo [style.fill]="user ? '#404040' : 'white'"></logo>-->
         </div>
         <div class="metabar-block u-floatRight u-xs-absolute u-xs-textAlignRight u-xs-right0 u-height65 u-xs-height56">
           <div *ngIf='!user' class="buttonSet">

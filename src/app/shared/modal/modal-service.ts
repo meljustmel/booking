@@ -77,8 +77,7 @@ import {ChangeDetectionStrategy, Component, ElementRef, HostListener, Input, Vie
 })
 @Modal()
 export class ServiceModalComponent {
-  @Input() title;
-  // @Input() service;
+  @Input() service;
   ok: Function;
   destroy: Function;
   closeModal: Function;

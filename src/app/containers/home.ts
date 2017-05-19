@@ -113,7 +113,7 @@ export class HomeComponent implements OnInit {
   serviceModal(service): void {
     console.log(service);
     const modal$ = this.modalService.create(SharedModule, ServiceModalComponent, {
-      service,
+      // service,
       goToBooking: () => {
         this.router.navigate(['booking']);
       }

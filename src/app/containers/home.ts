@@ -11,18 +11,18 @@ import {Service} from "../core/model/index";
   selector: 'home',
   template: `
     <hero [type]="'jumbotron'" [background]="'assets/hero.png'">
-      <hero-text 
-        [heading]="'The eyes are windows to the soul'" 
+      <hero-text
+        [heading]="'The eyes are windows to the soul'"
         [subheading]="'The Rapture Startup is the one platform you need to build the business you’ve always dreamed of.'">
       </hero-text>
     </hero>
     <segment [title]="'Rapture is the easiest way to sell your products at events like fairs, pop ups & markets'"
              [subtitle]="'Choose and customize your site with over 160+ gorgeous content block types. Build and launch with ease with Slides'"
              [type]="'intro'">
-      
+
     </segment>
     <segment [pretitle]="'Services'" [subtitle]="'You need to get that shit together'">
-      <services [services]='services' (open)='serviceModal(service)'></services>
+      <services [services]='services' (open)='serviceModal($event)'></services>
       <action [type]="'action'" [label]="'Book Now'" (action)='onAction()'></action>
     </segment>
     <segment [type]="'lovely'"
@@ -30,12 +30,12 @@ import {Service} from "../core/model/index";
              [pretitle]="'Client Testimonials'">
       <testimonials></testimonials>
     </segment>
-    
+
     <segment [title]="'Frequently Asked Questions'">
       <questions></questions>
       <action [type]="'action'" [label]="'Contact Us'" [tag]="'Do you have other question?'"></action>
     </segment>
-  
+
     <segment [type]="'alternate'"
              [pretitle]="'Products'"
              [title]="'Sign up to interact with what matters most'"
@@ -113,7 +113,7 @@ export class HomeComponent implements OnInit {
   serviceModal(service): void {
     console.log(service);
     const modal$ = this.modalService.create(SharedModule, ServiceModalComponent, {
-      // service,
+      service: service,
       goToBooking: () => {
         this.router.navigate(['booking']);
       }

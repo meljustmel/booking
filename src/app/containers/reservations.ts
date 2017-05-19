@@ -11,7 +11,7 @@ import {Store} from "@ngrx/store";
   selector: 'reservations',
   template: `
     <hero [background]="'assets/hero.png'">
-      <search></search>
+      <search (searchChanged)="searchValueChanged($event)"></search>
     </hero>
     <div class="spacer"></div>
     <div class="spacer"></div>
@@ -32,7 +32,7 @@ import {Store} from "@ngrx/store";
           </ul>
         </div>
       </div>
-      <item-list [items]="filtered$ || []" [showActionButton]="true" [showUserInfo]="true"></item-list>
+      <item-list [items]="filtered || []" [showActionButton]="true" [showUserInfo]="true"></item-list>
     </block>
   `,
   styles: [`
@@ -46,8 +46,9 @@ import {Store} from "@ngrx/store";
 })
 export class ReservationsComponent implements OnInit {
   @HostBinding('@routeFadeState') routeAnimation = false;
-  reservations$;
-  filtered$;
+  reservations;
+  filtered;
+  searchString = '';
   status = -1;
 
   constructor(private reservationsActions: ReservationsActions,
@@ -60,7 +61,7 @@ export class ReservationsComponent implements OnInit {
     this.slimLoadingBarService.start();
     this.reservationService.loadReservations();
     this.store.select(state => state.reservationState.reservations).subscribe((reservations) => {
-      this.reservations$ = reservations;
+      this.reservations = reservations;
       this.filterReservations();
     });
 
@@ -68,21 +69,22 @@ export class ReservationsComponent implements OnInit {
   }
 
   filterReservations() {
-    const filtered = [];
-    if (this.reservations$ && this.reservations$.length > 0) {
-      if (this.status === -1) {
-        this.filtered$ = [...this.reservations$];
-      } else {
-        this.reservations$.forEach(reservation => {
-          if (reservation.reservation.status === this.status) {
+    let filtered = [];
+    let searchLowercase = this.searchString.toLocaleLowerCase();
+    if (this.reservations && this.reservations.length > 0) {
+        this.reservations.forEach(reservation => {
+          if ((this.status == -1 || reservation.reservation.status == this.status) && (this.searchString == '' || reservation.reservation.client.email.toLocaleLowerCase().includes(searchLowercase) || reservation.reservation.client.name.toLocaleLowerCase().includes(searchLowercase))) {
             filtered.push(reservation);
           }
-        });
-        this.filtered$ = filtered;
-      }
+        })
+        this.filtered = filtered;
     }
   }
 
+  searchValueChanged(event) {
+    this.searchString = event ? event : '';
+    this.filterReservations();
+  }
   updateStatus(newStatus) {
     this.status = newStatus;
     this.filterReservations();

@@ -14,7 +14,7 @@ import {Service} from "../../../core/model/service";
             <path d="M.333 52.033c0 .84-.643 1.22-1.43.844l-8.045-3.84c-.472-.224-.858-.82-.858-1.325V28.89c0-.672.515-.976 1.145-.675l9.133 4.36a.092.092 0 0 1 .055.084v19.37z"></path>
           </svg>
         </span>
-          <h4>{{ service.title}}</h4>          
+          <h4>{{ service.title}}</h4>
           <p>{{ service.description}}</p>
           <a (click)='onOpen(service)'>Details</a>
         </div>
@@ -72,7 +72,5 @@ export class ServicesComponent {
   onOpen(service) {
     this.open.emit(service);
   }
-
-
 }
 

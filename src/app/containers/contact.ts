@@ -6,8 +6,8 @@ import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AngularFireDatabase, FirebaseListObservable} from "angularfire2/database";
 import {Message} from "../core/model/message";
-import swal from 'sweetalert2';
-import { UserService } from "../core/service/user";
+import swal from "sweetalert2";
+import {UserService} from "../core/service/user";
 
 const EMAIL_PATTERN = /.+@.+/;
 
@@ -16,9 +16,21 @@ const EMAIL_PATTERN = /.+@.+/;
   template: `
     <hero [background]="'assets/hero.png'">
     </hero>
-          <loadingspinner *ngIf="loading"></loadingspinner>
-
+    <loadingspinner *ngIf="loading"></loadingspinner>
     <contact-form [parent]="contactForm" (form)="sendMessage($event)"></contact-form>
+    <!--<div *ngIf=“isLoaded; then movieList else spinner”></div>-->
+
+    <!--<ng-template #movieList>-->
+
+      <!--<movies-list [movies]=“movies”></movies-list>-->
+
+    <!--</ng-template>-->
+    <!---->
+    <!--<ng-template #spinner>-->
+
+      <!--<spinner></spinner>-->
+
+    <!--</ng-template>-->
   `,
   styles: [`
     :host {
@@ -64,6 +76,7 @@ export class ContactComponent implements OnInit {
     });
     this.slimLoadingBarService.complete();
   }
+
   sendMessage(message) {
     if (!this.contactForm.valid) {
       swal('Oops...', 'Please provide valid input', 'error');

@@ -34,6 +34,15 @@ import {Store} from "@ngrx/store";
       </div>
       <item-list [items]="filtered || []" [showActionButton]="true" [showUserInfo]="true"></item-list>
     </block>
+    <!--<ul>-->
+
+      <!--<li *ngFor=“let movie of movies | slice:0:5 as topMovies; index as i”>-->
+
+        <!--{{ topMovies.length - i }}: { movie.title }}-->
+
+      <!--</li>-->
+
+    <!--</ul>-->
   `,
   styles: [`
     :host {

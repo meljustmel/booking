@@ -78,6 +78,7 @@ svg {
 
 .select-trigger .selected {
   background: url(/assets/check.png) no-repeat;
+  background-size: contain;
 }
 
 .select-trigger.selected {

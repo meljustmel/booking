@@ -16,6 +16,7 @@ import {firebaseConfig} from "./core/config/firebase";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { AuthGuard } from './app.service';
 
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -34,6 +35,6 @@ import { AuthGuard } from './app.service';
     AppComponent
   ],
   providers: [AuthGuard],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -83,11 +83,11 @@ type CalendarPeriod = 'day' | 'week' | 'month';
                 [showPrev]="step2.showPrev"
                 (onNext)="onStep2Next($event)">
 
-                <calendar-form [parent]="reservationForm"
+                <day-form formControlName="reservationDate" [parent]="reservationForm"
                                [dayModifier]="dayModifier"
                                [viewDate]="viewDate"
                                (dayClicked)="dayClicked($event.day)">
-                </calendar-form>
+                </day-form>
               </wizard-step>
               <wizard-step
                 [isValid]="!reservationForm.controls['reservationTime'].untouched"
@@ -185,10 +185,12 @@ export class BookingComponent implements OnInit {
               private reservationService: ReservationService,
               private slimLoadingBarService: SlimLoadingBarService,
               private store: Store<RootStore.AppState>) {
-    this.dayModifier = function (day: CalendarMonthViewDay): void {
-      if (!this.dateIsValid(day.date) || isSunday(day.date)) {
-        day.cssClass = 'cal-disabled';
+    this.dayModifier = function (day: Date): string {
+      if (!this.dateIsValid(day) || isSunday(day)) {
+        //day.cssClass = 'cal-disabled';
+        return 'disabled';
       }
+      return '';
     }.bind(this);
     this.dateOrViewChanged();
   }
@@ -331,14 +333,16 @@ export class BookingComponent implements OnInit {
   }
 
 
-  dayClicked(day: CalendarMonthViewDay): void {
-    if (this.selectedDay) {
-      delete this.selectedDay.cssClass;
-    }
-    this.setDay();
-    day.cssClass = 'cal-day-selected';
-    this.selectedDay = day;
-    this.reservationDay = this.selectedDay.date;
+  dayClicked(day: Date): void {
+    //if (this.selectedDay) {
+    //  delete this.selectedDay.cssClass;
+    //}
+    //this.setDay();
+    //day.cssClass = 'cal-day-selected';
+    //this.selectedDay = day;
+    this.viewDate = day;
+    this.reservationDay = day;//this.selectedDay;
+    console.log("hala day", day);
     // console.log(this.selectedDay, this.reservationDay)
   }
 

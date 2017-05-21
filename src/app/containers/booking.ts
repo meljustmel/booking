@@ -66,7 +66,7 @@ type CalendarPeriod = 'day' | 'week' | 'month';
             <form-wizard [formGroup]="reservationForm" (onStepChanged)="onStepChanged($event)">
               <wizard-step
                 [isValid]="!reservationForm.controls['service'].untouched"
-                [title]=" data?.service ||'Pick your Service'"
+                [title]=" data?.service ||'Pick Service'"
                 [stepTitle]="'Step One'"
                 [stepTagline]="'Select the method you prefer'"
                 [stepHeading]="'All Three are Organic'"
@@ -75,7 +75,7 @@ type CalendarPeriod = 'day' | 'week' | 'month';
               </wizard-step>
               <wizard-step
                 [isValid]="!reservationForm.controls['reservationDate'].untouched"
-                [title]=" (data?.reservationDate | date)  ||'Pick your Day'"
+                [title]=" (data?.reservationDate | date :'EEEE')  ||'Pick Date'"
                 [stepTitle]="'Step Two'"
                 [stepTagline]="'What day would you like'"
                 [stepHeading]="'Everyday but Sunday'"
@@ -91,7 +91,7 @@ type CalendarPeriod = 'day' | 'week' | 'month';
               </wizard-step>
               <wizard-step
                 [isValid]="!reservationForm.controls['reservationTime'].untouched"
-                [title]=" (data?.reservationTime | time) || 'Pick your Time'"
+                [title]=" (data?.reservationTime | time) || 'Pick Time'"
                 [stepTitle]="'Step Three'"
                 [stepTagline]="'What time would you like'"
                 [stepHeading]="'Sessions are an hour long'"

@@ -1,7 +1,7 @@
 import {NgModule, ModuleWithProviders} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {CalendarDayViewHourSegmentComponent, CalendarDayViewComponent, CalendarWeekViewComponent, CalendarWeekViewEventComponent, CalendarWeekViewHeaderComponent, CalendarHeaderComponent, CalendarFormComponent, CalendarEventTitleComponent, EventActionsComponent, ViewHeaderComponent, TimePickerComponent, TimeSlotsComponent, CalendarComponent, CalendarMonthCellComponent, CalendarOpenDayEventsComponent} from "./components";
-import {CalendarDatePipe, CalendarEventTitlePipe, TimePipe, FirstPipe, DatePipe} from "./pipes";
+import {CalendarDayViewHourSegmentComponent, CalendarDayViewComponent, CalendarWeekViewComponent, CalendarWeekViewEventComponent, CalendarWeekViewHeaderComponent, CalendarHeaderComponent, CalendarFormComponent, CalendarEventTitleComponent, EventActionsComponent, ViewHeaderComponent, TimePickerComponent, TimeSlotsComponent, CalendarComponent, CalendarMonthCellComponent, CalendarOpenDayEventsComponent, DayFormComponent } from "./components/index";
+import {CalendarDatePipe, CalendarEventTitlePipe, TimePipe, FirstPipe, DatePipe} from "./pipes/index";
 import {CalendarEventTitleFormatter} from "./providers/calendarEventTitleFormatter.provider";
 import {CalendarDateFormatter} from "./providers/calendarDateFormatter.provider";
 import {CalendarTooltipDirective, CalendarTooltipWindowComponent} from "./directives/calendarTooltip.directive";
@@ -40,7 +40,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     CalendarTooltipWindowComponent,
     TimeSlotsComponent,
     TimePickerComponent,
-    ViewHeaderComponent
+    ViewHeaderComponent,
+    DayFormComponent
   ],
   exports: [
     CalendarComponent,
@@ -65,7 +66,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     CalendarTooltipWindowComponent,
     TimeSlotsComponent,
     TimePickerComponent,
-    ViewHeaderComponent
+    ViewHeaderComponent,
+    DayFormComponent
   ],
   entryComponents: [
     CalendarTooltipWindowComponent

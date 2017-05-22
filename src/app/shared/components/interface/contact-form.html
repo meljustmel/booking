@@ -12,21 +12,21 @@
       <div class="u-relative u-flex1 u-sizeHalfWidth u-minHeight250 u-xs-minHeight100 u-xs-sizeFullWidth">
         <div class="u-flexColumn u-sizeFullHeight u-backgroundWhite u-borderBox u-paddingLeft30 u-paddingRight30 u-paddingTop40 u-paddingBottom40 u-xs-padding20">
           <div class="u-flex1">
-            <p class="u-fontSize18 u-contentSansRegular u-marginBottom40 u-xs-marginBottom20">Start your membership for <strong>$5 a month.</strong></p>
+            <p class="u-fontSize18 u-contentSansRegular u-marginBottom40 u-xs-marginBottom20">Send  me a message, anytime</p>
             <div class="creditCardForm creditCardForm--saved"></div>
-            <form [formGroup]="parent" class="u-sizeFullWidth creditCardForm creditCardForm--input">
+            <form [formGroup]="parent"  class="u-sizeFullWidth creditCardForm creditCardForm--input">
               <fieldset class="u-marginBottom15">
                 <label [ngClass]="{fullUp:parent.value.fullName!=''}" class="creditCardForm-heading u-block">Name</label>
                 <div class="u-relative">
-                  <input formControlName="fullName" autocomplete="name" class="textInput u-padding0 textInput--transparent textInput--underlined u-sizeFullWidth creditCardForm-number u-paddingLeft35" type="text">
+                  <input formControlName="fullName" autocomplete="name" class="textInput u-padding0 textInput--transparent textInput--underlined u-sizeFullWidth creditCardForm-number" type="text">
                 </div>
                 <label class="creditCardForm-heading u-block">Email</label>
                 <div class="u-relative">
-                  <input formControlName="email" autocomplete="email" class="textInput u-padding0 textInput--transparent textInput--underlined u-sizeFullWidth creditCardForm-number u-paddingLeft35" type="text">
+                  <input formControlName="email" autocomplete="email" class="textInput u-padding0 textInput--transparent textInput--underlined u-sizeFullWidth creditCardForm-number" type="text">
                 </div>
                 <label class="creditCardForm-heading u-block">Message</label>
                 <div class="u-relative">
-                  <input formControlName="message" class="textInput u-padding0 textInput--transparent textInput--underlined u-sizeFullWidth creditCardForm-number u-paddingLeft35" type="text">
+                  <input formControlName="message" class="textInput u-padding0 textInput--transparent textInput--underlined u-sizeFullWidth creditCardForm-number" type="text">
                 </div>
               </fieldset>
             </form>
@@ -35,7 +35,7 @@
             </div>
           </div>
           <div class="u-marginTop20">
-            <button type="button" class="button button--large button--withChrome" [disabled]="!isValid" (click)="sendMessage($event)" [ngClass]="{'valid' : isValid, 'invalid' : !isValid}">Send Message</button>
+            <button class="button button--large button--withChrome" (click)="submitForm($event)" type="submit" [disabled]="!parent.valid" [ngClass]="{'valid' : isValid, 'invalid' : !isValid}">Send Message</button>
 
             <p class="u-textColorNormal u-fontSize14 u-marginTop40 u-marginBottom0">By clicking "Start membership", you agree to our
               <a class="link link--underline u-baseColor--link" href="#">Subscription Terms of Service</a> and

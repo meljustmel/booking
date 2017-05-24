@@ -1,4 +1,4 @@
-<div class="u-marginAuto u-marginTop60 u-xs-marginTop30">
+<div class="u-marginAuto u-marginTop60 u-xs-marginTop30 u-marginBottom60">
   <section class="u-maxWidth1000 u-marginAuto u-relative u-borderBox u-boxShadowThick">
     <div class="u-backgroundGrey u-sm-minHeight150 u-flex u-xs-flexWrap" style="min-height: 470px; background-image: url(assets/hands.jpg);
     background-size: cover;">
@@ -16,7 +16,7 @@
             <div class="creditCardForm creditCardForm--saved"></div>
             <form [formGroup]="parent"  class="u-sizeFullWidth creditCardForm creditCardForm--input">
               <fieldset class="u-marginBottom15">
-                <label [ngClass]="{fullUp:parent.value.fullName!=''}" class="creditCardForm-heading u-block">Name</label>
+                <label class="creditCardForm-heading u-block">Name</label>
                 <div class="u-relative">
                   <input formControlName="fullName" autocomplete="name" class="textInput u-padding0 textInput--transparent textInput--underlined u-sizeFullWidth creditCardForm-number" type="text">
                 </div>
@@ -35,7 +35,7 @@
             </div>
           </div>
           <div class="u-marginTop20">
-            <button class="button button--large button--withChrome" (click)="submitForm($event)" type="submit" [disabled]="!parent.valid" [ngClass]="{'valid' : isValid, 'invalid' : !isValid}">Send Message</button>
+            <button class="button button--large button--withChrome" (click)="submitForm($event)" type="button" [disabled]="!parent.valid" [ngClass]="{'valid' : parent.valid, 'invalid' : !parent.valid}">Send Message</button>
 
             <p class="u-textColorNormal u-fontSize14 u-marginTop40 u-marginBottom0">By clicking "Start membership", you agree to our
               <a class="link link--underline u-baseColor--link" href="#">Subscription Terms of Service</a> and

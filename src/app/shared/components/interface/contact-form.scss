@@ -640,6 +640,9 @@ p {
 .u-marginTop60 {
   margin-top: 60px!important
 }
+.u-marginBottom60 {
+  margin-bottom: 60px!important
+}
 
 @media screen and (max-width:767px) {
   .u-xs-marginBottom20 {
@@ -1148,4 +1151,10 @@ input:-webkit-autofill {
 
 fieldset div:not(:last-child) {
   padding-bottom: 2em;
+}
+button.valid {
+  color: #FFFFFF;
+  background-color: #AEEEE1;
+  border-color: #AEEEE1;
+  opacity: 1;
 }

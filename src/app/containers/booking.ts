@@ -31,8 +31,8 @@ import {SlimLoadingBarService} from "ng2-slim-loading-bar";
 import {routeFadeStateTrigger} from "../app.animations";
 import swal from 'sweetalert2';
 import { Router } from '@angular/router'
-//declare swal: any;
-//declare var swal:any;
+// declare swal: any;
+// declare var swal:any;
 class CustomDateFormatter extends CalendarDateFormatter {
 
   public monthViewColumnHeader({date, locale}: DateFormatterParams): string {
@@ -187,7 +187,7 @@ export class BookingComponent implements OnInit {
               private store: Store<RootStore.AppState>) {
     this.dayModifier = function (day: Date): string {
       if (!this.dateIsValid(day) || isSunday(day)) {
-        //day.cssClass = 'cal-disabled';
+        // day.cssClass = 'cal-disabled';
         return 'disabled';
       }
       return '';
@@ -334,14 +334,14 @@ export class BookingComponent implements OnInit {
 
 
   dayClicked(day: Date): void {
-    //if (this.selectedDay) {
+    // if (this.selectedDay) {
     //  delete this.selectedDay.cssClass;
-    //}
-    //this.setDay();
-    //day.cssClass = 'cal-day-selected';
-    //this.selectedDay = day;
+    // }
+    // this.setDay();
+    // day.cssClass = 'cal-day-selected';
+    // this.selectedDay = day;
     this.viewDate = day;
-    this.reservationDay = day;//this.selectedDay;
+    this.reservationDay = day; // this.selectedDay;
     console.log("hala day", day);
     // console.log(this.selectedDay, this.reservationDay)
   }

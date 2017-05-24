@@ -13,6 +13,8 @@ export class WizardComponent implements OnInit, AfterContentInit {
   private _steps: Array<WizardStepComponent> = [];
   private _isCompleted = false;
 
+  active = 1;
+
   @Output()
   onStepChanged: EventEmitter<WizardStepComponent> = new EventEmitter<WizardStepComponent>();
 
@@ -71,6 +73,7 @@ export class WizardComponent implements OnInit, AfterContentInit {
       this.activeStep.onNext.emit();
       nextStep.isDisabled = false;
       this.activeStep = nextStep;
+      this.active++;
     }
   }
 
@@ -80,6 +83,8 @@ export class WizardComponent implements OnInit, AfterContentInit {
       this.activeStep.onPrev.emit();
       prevStep.isDisabled = false;
       this.activeStep = prevStep;
+      this.active--;
+
     }
   }
 

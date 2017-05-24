@@ -1,0 +1,52 @@
+<section class="estimate-project__questions-section" [formGroup]="parent">
+  <div class="container">
+
+    <div class="row estimate-project__question-row">
+      <div class="col-md-3 center-block">
+        <div class="estimate-project__question-container">
+          <p class="estimate-project__question">
+            <span class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_text">When would you like to come in?</span>
+          </p>
+          <div class="estimate-project__question-number">
+            2<span class="estimate-project__question-number-of">/4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row estimate-project__question-row">
+
+      <div class="col-sm-4 col-md-4 center-block"
+
+           *ngFor="let day of days; let i = index"
+       >
+        <div [ngClass]="{active: currentSelected && day.getTime() == currentSelected.getTime(), disabled: dayModifier(day)}"
+             (click)="$event.stopPropagation(); dayClick(day)"
+          class="estimate-project__checkbox"
+             (click)="checkedOption = i"
+             [ngClass]="{active: checkedOption === i}"
+        >
+          <div class="estimate-project__checkbox__icon">
+            <span class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_image">
+              <img alt="" class="hs-image-widget"
+                   src="//www.netguru.co/hubfs/images/landing_pages/city/time_green_icon.png?t=1495524306439"
+                   style="width:121px;border-width:0px;border:0px;" title="" width="121">
+            </span>
+          </div>
+          <div class="estimate-project__checkbox__text">
+            <span class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_text">{{formattedDate(day,'ddd')}}</span>
+            <span class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_text">{{formattedDate(day,'D')}}</span>
+            <span class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_text">{{formattedDate(day,'MMM')}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="buttonSet clearfix" style="padding: 20px 0">
+    <button (click)="gotoPrev()" [ngClass]="{disabled: dayShowIndex < 5}"
+    style="float: left"
+    class="button button--withChrome u-baseColor--buttonNormal">Prev 5</button>
+    <button (click)="gotoNext()" [ngClass]="{disabled: dayShowIndex >= 15}"
+    style="float: right"
+    class="button button--withChrome u-baseColor--buttonNormal">Next 5</button>
+    </div>
+  </div>
+</section>

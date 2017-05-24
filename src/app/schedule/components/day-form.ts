@@ -19,17 +19,6 @@ import {FormGroup, NG_VALUE_ACCESSOR} from "@angular/forms";
 import * as moment from 'moment'
 
 
-/**
- * Shows all events on a given month. Example usage:
- *
- * ```
- * <calendar
- *  [viewDate]="viewDate"
- *  [events]="events"
- * calendar>
- * ```
- */
-
 const DATE_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => DayFormComponent),
@@ -38,31 +27,31 @@ const DATE_VALUE_ACCESSOR = {
 
 @Component({
   selector: 'day-form',
-  template: `
-    <div class="section">
-      <div class="section-content">
-          <div class="cal-days">
-              <div class="cal-cell-row">
-                <div class="column column-prev-next" (click)="gotoPrev()" [ngClass]="{disabled: dayShowIndex < 5}" (click)="$event.stopPropagation(); dayClick(day)"><-</div>
-                <div
-                  class="column column-date"
-                  *ngFor="let day of days"
-                  >
-                  <div class="select-trigger" [ngClass]="{selected: currentSelected && day.getTime() == currentSelected.getTime(), disabled: dayModifier(day)}" (click)="$event.stopPropagation(); dayClick(day)">
-                  <div>{{formattedDate(day,'ddd')}}</div>
-                  <div>{{formattedDate(day,'D')}}</div>
-                  <div>{{formattedDate(day,'MMM')}}</div>
-                  </div>
-                </div>
-                <div class="column column-prev-next" (click)="gotoNext()" [ngClass]="{disabled: dayShowIndex >= 15}">-></div>
-
-              </div>
-          </div>
-
-      </div>
-    </div>
-
-  `,
+  // template: `
+  //   <div class="section">
+  //     <div class="section-content">
+  //         <div class="cal-days">
+  //             <div class="cal-cell-row">
+  //               <div class="column column-prev-next" (click)="gotoPrev()" [ngClass]="{disabled: dayShowIndex < 5}" (click)="$event.stopPropagation(); dayClick(day)"><-</div>
+  //               <div
+  //                 class="column column-date"
+  //                 *ngFor="let day of days"
+  //                 >
+  //                 <div class="select-trigger" [ngClass]="{selected: currentSelected && day.getTime() == currentSelected.getTime(), disabled: dayModifier(day)}" (click)="$event.stopPropagation(); dayClick(day)">
+  //                 <div>{{formattedDate(day,'ddd')}}</div>
+  //                 <div>{{formattedDate(day,'D')}}</div>
+  //                 <div>{{formattedDate(day,'MMM')}}</div>
+  //                 </div>
+  //               </div>
+  //               <div class="column column-prev-next" (click)="gotoNext()" [ngClass]="{disabled: dayShowIndex >= 15}">-></div>
+  //
+  //             </div>
+  //         </div>
+  //
+  //     </div>
+  //   </div>
+  // `,
+  templateUrl: 'day-form.html',
   styleUrls: ['day-form.scss'],
   providers: [DATE_VALUE_ACCESSOR]
 })
@@ -123,22 +112,22 @@ export class DayFormComponent implements OnChanges, OnInit, OnDestroy {
 
   ngOnChanges(changes: any): void {
     //
-    //if (changes.viewDate || changes.events) {
+    // if (changes.viewDate || changes.events) {
     //  this.refreshBody();
-    //}
+    // }
 
 
   }
 
 
   ngOnDestroy(): void {
-    //if (this.refreshSubscription) {
+    // if (this.refreshSubscription) {
     //  this.refreshSubscription.unsubscribe();
-    //}
+    // }
   }
 
   //
-  //toggleDayHighlight(event: CalendarEvent, isHighlighted: boolean): void {
+  // toggleDayHighlight(event: CalendarEvent, isHighlighted: boolean): void {
   //  this.view.days.forEach(day => {
   //    if (isHighlighted && day.events.indexOf(event) > -1) {
   //      day.backgroundColor = event.color.secondary;
@@ -146,13 +135,13 @@ export class DayFormComponent implements OnChanges, OnInit, OnDestroy {
   //      delete day.backgroundColor;
   //    }
   //  });
-  //}
+  // }
 
 
   private refreshDays(): void {
-    let daysToShow = [];
+    const daysToShow = [];
     for (let i = this.dayShowIndex - 2; i <= this.dayShowIndex + 2; i++) {
-      let dt = new Date(this.todayDate);
+      const dt = new Date(this.todayDate);
       dt.setDate(this.todayDate.getDate() + i);
       daysToShow.push(dt);
     }
@@ -164,7 +153,7 @@ export class DayFormComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   dayClick(dt) {
-    if(this.dayModifier(dt) == '') {
+    if(this.dayModifier(dt) === '') {
       this.currentSelected = dt;
 
 
@@ -173,9 +162,9 @@ export class DayFormComponent implements OnChanges, OnInit, OnDestroy {
       this.writeValue(selectedDay);
       this.onModelChange(this.value);
 
-      //this.writeValue(dt);
-      //this.onModelChange(this.value);
-      //this.dayClicked.emit({day: dt});
+      // this.writeValue(dt);
+      // this.onModelChange(this.value);
+      // this.dayClicked.emit({day: dt});
       this.onModelTouched();
     }
   }

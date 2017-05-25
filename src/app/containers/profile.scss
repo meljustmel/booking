@@ -317,6 +317,11 @@ ul {
 
 .u-maxWidth640 {
   max-width: 640px!important
+
+}
+.u-maxWidth960 {
+  max-width: 960px!important
+
 }
 
 .u-maxWidth700 {
@@ -331,6 +336,16 @@ ul {
 .u-size100x100 {
   width: 100px!important;
   height: 100px!important
+}
+
+.profile {
+  padding-top: 120px;
+}
+
+@media screen and (max-width:767px) {
+  .profile {
+    padding-top: 100px;
+  }
 }
 
 @media screen and (max-width:767px) {
@@ -852,7 +867,8 @@ ul {
 
 .label {
   color: rgba(0, 0, 0, .44);
-  line-height: 1.4
+  line-height: 1.4;
+  padding-left: 0;
 }
 
 .label--smaller {
@@ -1430,4 +1446,45 @@ hr.section-divider {
     margin-top: 44px;
     margin-bottom: 34px
   }
+}
+
+
+
+.heading {
+  color: rgba(0, 0, 0, .8);
+  font-size: 16px;
+  letter-spacing: 0;
+  position: relative
+}
+
+.heading--borderedTop {
+  border-top: 1px solid rgba(0, 0, 0, .05)
+}
+
+.heading-tabs {
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden
+}
+
+.heading-tabsItem {
+  margin-right: 20px;
+  color: rgba(0, 0, 0, .44)
+}
+
+.heading--borderedTop .heading-tabsItem {
+  padding-top: 16px
+}
+
+.heading-tabsItem:last-child {
+  margin-right: 0
+}
+
+.heading--borderedTop .heading-tabsItem.is-active {
+  border-top: 1px solid rgba(0, 0, 0, .44)
+}
+
+.heading-tabsItem.is-active .heading-title {
+  font-weight: 600;
+  color: rgba(0, 0, 0, .8)
 }

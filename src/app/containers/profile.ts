@@ -65,6 +65,7 @@ import {Store} from "@ngrx/store";
 export class ProfileComponent implements OnInit {
   @HostBinding('@routeFadeState') routeAnimation = false;
   profile;
+  reservations$;
 
   constructor(private usersActions: UserActions,
               private userService: UserService,
@@ -76,10 +77,15 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.slimLoadingBarService.start();
+    const userId = this.route.params['value'].id;
     this.store.select(state => state.authState.profile).subscribe(profile => {
       this.slimLoadingBarService.complete();
       this.profile = profile;
       console.log(profile);
+    });
+
+    this.reservationService.loadUserReservations(userId).subscribe((reservations) => {
+      this.reservations$ = reservations;
     });
 
     // let userId = this.route.params['value'].id;

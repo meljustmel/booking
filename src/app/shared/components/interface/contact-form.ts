@@ -7,34 +7,57 @@ import { Router } from '@angular/router'
 
 @Component({
   selector: 'contact-form',
-  // template: `
-  //   <div class="auth">
-  //     <div class="auth--box">
-  //       <h2 class="small">Feel free to contact me</h2>
-  //       <div class="auth--form form--fancy">
-  //         <form [formGroup]="parent" (ngSubmit)="submitForm($event)">
-  //           <div class="form--fancy-wrapper">
-  //             <div class="required form--fancy undefined">
-  //               <input formControlName="fullName" type="text" value=""><label for="fullName" [ngClass]="{fullUp:parent.value.fullName!=''}">Full Name</label>
-  //             </div>
-  //             <div class="required form--fancy undefined">
-  //               <input formControlName="email" type="text" value=""><label for="email" [ngClass]="{fullUp:parent.value.email!=''}">Email Address</label>
-  //             </div>
-  //             <div class="required form--fancy undefined">
-  //               <textarea formControlName="message" type="text" value="" placeholder="Say Hello!"></textarea>
-  //             </div>
-  //           </div>
-  //           <div class="auth--form-wrapper">
-  //             <div class="auth--form-col">
-  //               <button class="btn btn--black" type="submit" [disabled]="!parent.valid">Send</button>
-  //             </div>
-  //           </div>
-  //         </form>
-  //       </div>
-  //     </div>
-  //   </div>
-  // `,
-  templateUrl: 'contact-form.html',
+  template: `
+    <div class="u-marginAuto u-marginTop60 u-xs-marginTop30 u-marginBottom60">
+      <section class="u-maxWidth1000 u-marginAuto u-relative u-borderBox u-boxShadowThick">
+        <div class="u-backgroundGrey u-sm-minHeight150 u-flex u-xs-flexWrap" style="min-height: 470px; background-image: url(assets/hands.jpg);
+    background-size: cover;">
+          <div class="u-flex1 u-sizeHalfWidth u-borderBox u-padding40 u-xs-padding20 u-xs-marginBottom20 u-xs-sizeFullWidth">
+            <h3 class="u-contentSerifBold u-lineHeightTight u-textColorWhite u-borderTopGreen u-borderBottomGreen u-paddingTop20 u-paddingBottom20 u-marginBottom30 u-xs-fontSize24 u-fontSize40">
+              <span class="data">Lorem ipsum dolor sit amet, consectetur adipisicing.</span>
+            </h3>
+            <p class="u-margin0 u-contentSansRegular u-letterSpacingNormal u-textColorTransparentWhiteDarker">Does this look correct?</p>
+
+          </div>
+          <div class="u-relative u-flex1 u-sizeHalfWidth u-minHeight250 u-xs-minHeight100 u-xs-sizeFullWidth">
+            <div class="u-flexColumn u-sizeFullHeight u-backgroundWhite u-borderBox u-paddingLeft30 u-paddingRight30 u-paddingTop40 u-paddingBottom40 u-xs-padding20">
+              <div class="u-flex1">
+                <p class="u-fontSize18 u-contentSansRegular u-marginBottom40 u-xs-marginBottom20">Send  me a message, anytime</p>
+                <div class="creditCardForm creditCardForm--saved"></div>
+                <form [formGroup]="parent"  class="u-sizeFullWidth creditCardForm creditCardForm--input">
+                  <fieldset class="u-marginBottom15">
+                    <label class="creditCardForm-heading u-block">Name</label>
+                    <div class="u-relative">
+                      <input formControlName="fullName" autocomplete="name" class="textInput u-padding0 textInput--transparent textInput--underlined u-sizeFullWidth creditCardForm-number" type="text">
+                    </div>
+                    <label class="creditCardForm-heading u-block">Email</label>
+                    <div class="u-relative">
+                      <input formControlName="email" autocomplete="email" class="textInput u-padding0 textInput--transparent textInput--underlined u-sizeFullWidth creditCardForm-number" type="text">
+                    </div>
+                    <label class="creditCardForm-heading u-block">Message</label>
+                    <div class="u-relative">
+                      <input formControlName="message" class="textInput u-padding0 textInput--transparent textInput--underlined u-sizeFullWidth creditCardForm-number" type="text">
+                    </div>
+                  </fieldset>
+                </form>
+                <div class="u-marginTop20 u-height20">
+                  <div class="creditCardForm creditCardForm--error u-marginBottom0 u-marginTop0"></div>
+                </div>
+              </div>
+              <div class="u-marginTop20">
+                <button class="button button--large button--withChrome" (click)="submitForm($event)" type="button" [disabled]="!parent.valid" [ngClass]="{'valid' : parent.valid, 'invalid' : !parent.valid}">Send Message</button>
+
+                <p class="u-textColorNormal u-fontSize14 u-marginTop40 u-marginBottom0">By clicking "Start membership", you agree to our
+                  <a class="link link--underline u-baseColor--link" href="#">Subscription Terms of Service</a> and
+                  <a class="link link--underline u-baseColor--link" href="#" target="_blank">Privacy Policy</a>.
+                  The Lovely You will charge the membership ($5) to your payment method monthly until you cancel. There are no refunds or credits for partial months.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  `,
   styleUrls: ['contact-form.scss']
 })
 export class ContactFormComponent implements OnInit {

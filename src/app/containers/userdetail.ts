@@ -67,7 +67,7 @@ export class UserDetailComponent implements OnInit {
       if (user.$exists()) {
         this.user$ = user;
       } else {
-        console.log('user does not exists')
+        console.log('user does not exists');
       }
     });
 

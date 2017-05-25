@@ -14,17 +14,6 @@
                     [disabled]="!activeStep.isValid"
                     [hidden]="!hasNextStep || !activeStep.showNext"
                     class="button button--withChrome u-baseColor--buttonNormal">Next</button>
-            <!--<button [ngClass]="{'valid' : activeStep.isValid, 'dead' : !hasNextStep}"-->
-                    <!--(click)="next()"-->
-                    <!--[disabled]="!activeStep.isValid"-->
-                    <!--[hidden]="!hasNextStep || !activeStep.showNext"-->
-                    <!--class="button button&#45;&#45;small button&#45;&#45;expandable button&#45;&#45;withChrome u-baseColor&#45;&#45;buttonNormal button&#45;&#45;withIcon button&#45;&#45;withSvgIcon button&#45;&#45;withIconAndLabel">-->
-              <!--<span class="svgIcon svgIcon&#45;&#45;addMediaPlus svgIcon&#45;&#45;25px">-->
-                <!--<svg class="svgIcon-use" width="25" height="25" viewBox="0 0 25 25">-->
-                 <!--<path d="M8.3 4.2l6.4 6.3-6.4 6.3-.8-.8 5.5-5.5L7.5 5" fill-rule="evenodd"></path>-->
-                <!--</svg>-->
-              <!--</span>-->
-            <!--</button>-->
           </div>
         </header>
         <nav class="u-flex heading heading--borderedTop u-textAlignCenter">
@@ -67,42 +56,3 @@
     </div>
   </div>
 </div>
-
-
-<!--<div class="onboardingTopBar" [style.paddingBottom.em]="1">-->
-  <!--<div class="topbar u-maxWidth920">-->
-    <!--<div class="onboardingTopBar-progress">-->
-      <!--<small *ngFor="let step of steps" class="onboardingTopBar-step">-->
-        <!--<a [ngClass]="{'is-active': step.isActive, 'enabled': !step.isDisabled, 'disabled': step.isDisabled, 'u-accentColor&#45;&#45;textDarken': isCompleted}"-->
-           <!--(click)="goToStep(step)"-->
-           <!--class="svgIcon svgIcon&#45;&#45;arrowRight svgIcon&#45;&#45;21px">{{step.title}}<span>-->
-                  <!--<svg class="svgIcon-use" width="18" height="18" viewBox="0 0 21 10">-->
-                    <!--<path d="M8.3 4.2l6.4 6.3-6.4 6.3-.8-.8 5.5-5.5L7.5 5" fill-rule="evenodd"></path>-->
-                  <!--</svg>-->
-                <!--</span>-->
-        <!--</a>-->
-      <!--</small>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
-<!--<div [hidden]="isCompleted" class="onboardingTopBar-actions">-->
-  <!--<div class="u-flex0">-->
-    <!--<div class="buttonSwitch">-->
-      <!--<button type="button"-->
-              <!--class="button button&#45;&#45;withChrome u-baseColor&#45;&#45;buttonNormal"-->
-              <!--[ngClass]="{'back' : hasPrevStep}"-->
-              <!--(click)="previous()"-->
-              <!--[disabled]="!hasPrevStep || !activeStep.showPrev">Back-->
-      <!--</button>-->
-      <!--<button type="button"-->
-              <!--class="button button&#45;&#45;withChrome u-baseColor&#45;&#45;buttonNormal"-->
-              <!--[ngClass]="{'valid' : activeStep.isValid, 'dead' : !hasNextStep}"-->
-              <!--(click)="next()" [disabled]="!activeStep.isValid"-->
-              <!--[hidden]="!hasNextStep || !activeStep.showNext">Next-->
-      <!--</button>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
-<!--<div [style.paddingTop.em]="2">-->
-  <!--<ng-content></ng-content>-->
-<!--</div>-->

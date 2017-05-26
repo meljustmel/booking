@@ -1488,3 +1488,39 @@ hr.section-divider {
   font-weight: 600;
   color: rgba(0, 0, 0, .8)
 }
+
+
+.button--unstyled, .button--unstyled:active, .button--unstyled:focus, .button--unstyled:hover {
+  border-radius: 0;
+  box-shadow: none;
+  background: inherit;
+  color: inherit;
+  height: auto;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  text-transform: inherit;
+  border-width: 0;
+  padding: 0;
+  vertical-align: baseline;
+  white-space: normal
+}
+
+.buttonSet>.button {
+  margin-right: 8px;
+  vertical-align: middle
+}
+
+.buttonSet>.button:last-child {
+  margin-right: 0
+}
+
+.u-maxWidth1040 {
+  max-width: 1040px!important
+}
+
+.middotDivider:after {
+  content: "\B7";
+}

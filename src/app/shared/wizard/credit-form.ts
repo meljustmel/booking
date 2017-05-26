@@ -24,7 +24,7 @@ export class CreditFormComponent implements OnInit {
   private cardNumber = '';
   private expireDate = '';
   private cvc;
-  private isValid : boolean = false;
+  private isValid = false;
   onModelChange: Function = (_: any) => {
   }
 

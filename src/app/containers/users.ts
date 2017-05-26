@@ -44,7 +44,7 @@ export class UsersComponent implements OnInit {
   ngOnInit() {
     this.slimLoadingBarService.start();
     this.store.dispatch(this.usersActions.getUsers());
-     //= this.store.select(state => state.userState.users);
+    // this.store.select(state => state.userState.users);
     this.store.select(state => state.userState.users).subscribe((users) => {
       this.users = users;
       this.filterUsers();
@@ -54,8 +54,8 @@ export class UsersComponent implements OnInit {
 
 
   filterUsers() {
-    let filtered = [];
-    let searchLowercase = this.searchString.toLocaleLowerCase();
+    const filtered = [];
+    const searchLowercase = this.searchString.toLocaleLowerCase();
     if (this.users && this.users.length > 0) {
       /*
        if (this.status == -1 && this.searchString == '') {
@@ -66,9 +66,9 @@ export class UsersComponent implements OnInit {
         if (this.searchString == '' || user.email.toLocaleLowerCase().includes(searchLowercase) || user.displayName.toLocaleLowerCase().includes(searchLowercase)) {
           filtered.push(user);
         }
-      })
+      });
       this.filtered = filtered;
-      //}
+      // }
     }
   }
 

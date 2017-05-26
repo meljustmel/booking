@@ -1,10 +1,11 @@
-import {Component, HostBinding, OnInit} from "@angular/core";
+import {Component, HostBinding, OnChanges, OnInit} from "@angular/core";
 import {SlimLoadingBarService} from "ng2-slim-loading-bar";
 import {UserActions} from "../store/actions/user";
 import {UserService} from "../core/service/user";
 import * as RootStore from "../store";
 import {ActivatedRoute} from "@angular/router";
 import {ReservationService} from "../core/service/res";
+import {getReservationStatusName} from "../core/model/index";
 
 import {routeFadeStateTrigger} from "../app.animations";
 
@@ -62,10 +63,12 @@ import {Store} from "@ngrx/store";
     routeFadeStateTrigger
   ]
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnChanges {
   @HostBinding('@routeFadeState') routeAnimation = false;
   profile;
+  userId;
   reservations$;
+  status;
 
   constructor(private usersActions: UserActions,
               private userService: UserService,
@@ -77,16 +80,22 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.slimLoadingBarService.start();
-    const userId = this.route.params['value'].id;
+
     this.store.select(state => state.authState.profile).subscribe(profile => {
       this.slimLoadingBarService.complete();
       this.profile = profile;
-      console.log(profile);
+      if (this.profile) {
+        this.userId = this.profile.$key;
+      }
+      // console.log(profile);
     });
+    if (this.userId) {
+      this.reservations$ = this.reservationService.loadUserReservations(this.userId);
+    }
 
-    this.reservationService.loadUserReservations(userId).subscribe((reservations) => {
-      this.reservations$ = reservations;
-    });
+
+
+
 
     // let userId = this.route.params['value'].id;
     //
@@ -103,5 +112,16 @@ export class ProfileComponent implements OnInit {
     //  console.log('hala reservations', reservations)
     //  this.reservations$ = reservations;
     // });
+  }
+  ngOnChanges() {
+    if (this.userId) {
+      this.reservations$ = this.reservationService.loadUserReservations(this.userId);
+    }
+
+  }
+
+
+  currentStatus(reservation) {
+    return getReservationStatusName(reservation.reservation.status);
   }
 }

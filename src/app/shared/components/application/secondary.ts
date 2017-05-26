@@ -15,6 +15,11 @@ import {Observable} from 'rxjs/Observable';
           </li>
           <li class="metabar-navItem u-uiTextRegular u-fontSizeSmaller u-inlineBlock u-textColorNormal u-xs-paddingRight12 u-xs-marginRight0">
             <a class="link  link--darken u-accentColor--textDarken u-baseColor--link"
+               routerLink="/profile"
+               routerLinkActive="link--darker">Profile</a>
+          </li>
+          <li class="metabar-navItem u-uiTextRegular u-fontSizeSmaller u-inlineBlock u-textColorNormal u-xs-paddingRight12 u-xs-marginRight0">
+            <a class="link  link--darken u-accentColor--textDarken u-baseColor--link"
                routerLink="booking"
                routerLinkActive="link--darker">Booking</a>
           </li>
@@ -56,6 +61,6 @@ export class SecondaryComponent implements OnInit {
   }
 
   isAdmin() {
-    return this.profile && this.profile.role && this.profile.role == ROLES.ADMIN;
+    return this.profile && this.profile.role && this.profile.role === ROLES.ADMIN;
   }
 }

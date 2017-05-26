@@ -6,9 +6,9 @@ import {routeFadeStateTrigger} from "../app.animations";
 @Component({
   selector: 'about',
   template: `
-    <!--<hero [background]="'assets/hero.png'">-->
-    <!--</hero>-->
-    <div class="spacer" style="padding-top: 6em"></div>
+    <hero [background]="'assets/hands.jpg'">
+    </hero>
+    <div class="spacer" style="padding-top: 3em"></div>
     <div class="segment">
       <div class="container">
         <div class="network">

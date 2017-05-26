@@ -7,7 +7,7 @@ import {Component, Input, OnInit} from "@angular/core";
       <user-item [user]="user"></user-item>
     </div>
   `,
-  styles: []
+  styleUrls: ['user-list.scss']
 })
 export class UserListComponent implements OnInit {
   @Input() users;

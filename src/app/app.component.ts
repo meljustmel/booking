@@ -15,7 +15,6 @@ import {User} from "./core/model/index";
 
       <div class="surface" style="display: block; visibility: visible;">
         <div class="screenContent surface-content">
-          <!--<topbar></topbar>-->
           <navigator [user]='user$ | async'
                      [profile]='profile$ | async'
                      (open)='authModal()'

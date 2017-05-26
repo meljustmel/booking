@@ -1,17 +1,17 @@
 export enum ReservationStatus {
-  booked,
+  active,
   rescheduled,
   completed,
   cancelled
 }
  export function getReservationStatusName(status) {
-   if (status == ReservationStatus.booked) {
+   if (status === ReservationStatus.active) {
      return 'Booked';
-   } else if (status == ReservationStatus.rescheduled) {
+   } else if (status === ReservationStatus.rescheduled) {
      return 'Rescheduled';
-   } else if (status == ReservationStatus.cancelled) {
+   } else if (status === ReservationStatus.cancelled) {
      return 'Cancelled';
-   } else if (status == ReservationStatus.completed) {
+   } else if (status === ReservationStatus.completed) {
      return 'Completed';
    }
 

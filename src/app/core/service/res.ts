@@ -50,22 +50,21 @@ export class ReservationService {
 
   reservations$: Observable<ReservationEvent[]>;
 
-  constructor(private db: AngularFireDatabase, //@Inject(FirebaseRef) fb,
+  constructor(private db: AngularFireDatabase,
               private http: Http, private af: FirebaseApp, public auth$: AngularFireAuth,
               private reservationsActions: ReservationsActions,
               private slimLoadingBarService: SlimLoadingBarService,
               private store: Store<RootStore.AppState>) {
 
-    //this.sdkDb = fb.database().ref();
     this.sdkDb = this.af.database().ref();
 
     this.getUser$ = this.auth$.authState.subscribe(user => {
-      if(user) {
+      if (user) {
         console.log('auth', user);
         this.user$ = user;
         this.user$.getToken().then(token => {
           this.token = token;
-        })
+        });
         console.log('uid', user.uid);
       }
     });
@@ -130,24 +129,6 @@ export class ReservationService {
     });
 
   }
-  //
-  // getAllReservations() {
-  //
-  //   return this.af.database.list('reservations')
-  //     .map((res: Reservation[]) => {
-  //       // console.log(res)
-  //       return res.map((reservation) => {
-  //         return {
-  //           title: reservation.service,
-  //           start: new Date(reservation.reservationFullDate),
-  //           color: colors.pink,
-  //           incrementsBadgeTotal: true,
-  //           reservation
-  //         }
-  //       })
-  //     })
-  //
-  // }
 
   getAllSlots() {
     return this.db.list('slots')
@@ -189,62 +170,13 @@ export class ReservationService {
       }
     });
   }
-  // getSlotsTaken() {
-  //   return this.af.database.list('slots')
-  //     .map((slots: Slot[]) => {
-  //       // console.log(res)
-  //       return slots.map((slot: Slot) => {
-  //         return {
-  //           hour: slot.hour,
-  //           // start: new Date(slot.slotDate),
-  //           header: slot.header,
-  //           available: slot.available,
-  //           slot
-  //         }
-  //       }).filter(slot => slot.available == false)
-  //     })
-  // }
-  //bookUserReservation(reservation: any): Observable<any> {
-  //  const userId = this.user$.uid;
-  //  const newReservationKey = this.sdkDb.child('reservations').push().key;
-  //  const compiledReservation = {
-  //    client: {
-  //      uid: this.user$.uid,
-  //      email: this.user$.email,
-  //      name: this.user$.displayName,
-  //      avatar: this.user$.photoURL
-  //    },
-  //    type: reservation.service,
-  //    key: newReservationKey,
-  //    status: ReservationStatus.booked,
-  //    createdDate: reservation.createdDate,
-  //    reservationDate: reservation.reservationDate,
-  //    reservationTime: reservation.reservationTime,
-  //    reservationFullDate: setHours(new Date(reservation.reservationDate), reservation.reservationTime)
-  //  };
-  //
-  //  const reservationToSave = Object.assign(compiledReservation, {userId});
-  //  const dataToSave = {};
-  //
-  //  dataToSave[`reservations/${newReservationKey}`] = reservationToSave;
-  //  dataToSave[`users/${userId}/reservations/${newReservationKey}`] = true;
-  //
-  //  console.log(dataToSave);
-  //  return this.firebaseUpdate(dataToSave);
-  //}
+
   bookUserReservation(reservation: any, token: string, amount: number): Observable<any> {
     const userId = this.user$.uid;
-    //const newReservationKey = this.sdkDb.child('reservations').push().key;
+    // const newReservationKey = this.sdkDb.child('reservations').push().key;
     const compiledReservation = {
-      //client: {
-      //  uid: this.user$.uid,
-      //  email: this.user$.email,
-      //  name: this.user$.displayName,
-      //  avatar: this.user$.photoURL
-      //},
       type: reservation.service,
-      //key: newReservationKey,
-      status: ReservationStatus.booked,
+      status: ReservationStatus.active,
       createdDate: reservation.createdDate,
       reservationDate: reservation.reservationDate,
       reservationTime: reservation.reservationTime,
@@ -282,8 +214,6 @@ export class ReservationService {
     return subject.asObservable();
 
   }
-
-
 
   updateStatus(reservation, newStatus) {
     reservation.status = newStatus;

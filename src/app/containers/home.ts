@@ -36,19 +36,19 @@ import {Service} from "../core/model/index";
       <action [type]="'action'" [label]="'Contact Us'" [tag]="'Do you have other question?'"></action>
     </segment>
 
-    <segment [type]="'alternate'"
-             [pretitle]="'Products'"
-             [title]="'Sign up to interact with what matters most'"
-             [subtitle]="'Great stories deserve a great audience'">
-      <products></products>
-      <action [type]="'action'" [label]="'See All Products'" (action)='onAction()'></action>
-    </segment>
-    <segment [type]="'flat'"
-             [title]="'Frequently Asked Questions'"
-             [subtitle]="'Great stories deserve a great audience'"
-             [pretitle]="'Instafeed'" >
-      <instafeed></instafeed>
-    </segment>
+    <!--<segment [type]="'alternate'"-->
+             <!--[pretitle]="'Products'"-->
+             <!--[title]="'Sign up to interact with what matters most'"-->
+             <!--[subtitle]="'Great stories deserve a great audience'">-->
+      <!--<products></products>-->
+      <!--<action [type]="'action'" [label]="'See All Products'" (action)='onAction()'></action>-->
+    <!--</segment>-->
+    <!--<segment [type]="'flat'"-->
+             <!--[title]="'Frequently Asked Questions'"-->
+             <!--[subtitle]="'Great stories deserve a great audience'"-->
+             <!--[pretitle]="'Instafeed'" >-->
+      <!--<instafeed></instafeed>-->
+    <!--</segment>-->
     <segment [type]="'action'"
              [title]="'Save your spot now!'"
              [subtitle]="'Great stories deserve a great audience'">

@@ -47,15 +47,20 @@ const routes: Routes = [
       { path: ':id', component: UserDetailComponent },
     ]
   },
+  // {
+  //   path: 'profile',
+  //   component: ProfileComponent,
+  //   canActivate: [AuthGuard],
+  //   children: [
+  //     { path: '', component: MyProfileComponent},
+  //     { path: 'reservations', component: MyReservationsComponent },
+  //     { path: 'messages', component: MyMessagesComponent },
+  //   ]
+  // },
   {
     path: 'profile',
     component: ProfileComponent,
-    canActivate: [AuthGuard],
-    children: [
-      { path: '', component: MyProfileComponent},
-      { path: 'reservations', component: MyReservationsComponent },
-      { path: 'messages', component: MyMessagesComponent },
-    ]
+    canActivate: [AuthGuard]
   },
   {
     path: '**',

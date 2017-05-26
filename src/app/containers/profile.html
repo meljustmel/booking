@@ -25,7 +25,7 @@
           <div class="buttonSet buttonSet--profile u-noWrap">
             <!--<a class="button button&#45;&#45;chromeless u-baseColor&#45;&#45;buttonNormal" href="#" title="title">-->
               <!--<span class="u-fontWeightBold">1</span> Active</a>-->
-            <a class="button button--chromeless u-baseColor--buttonNormal" href="#" title="title">
+            <a class="button button--chromeless u-baseColor--buttonNormal">
               <b>{{ (reservations$ | async )?.length}}</b> Reservations</a>
           </div>
           <div class="dropdown--button buttonSet buttonSet--profile u-inlineBlock">
@@ -133,12 +133,12 @@
                 <div class="postMetaInline u-floatLeft">
                   <div class="u-flexCenter">
                     <div class="postMetaInline-avatar u-flex0">
-                      <a class="link avatar u-baseColor--link" href="#">
+                      <a class="link avatar u-baseColor--link">
                         <img alt="Go to the profile of Florian" class="avatar-image u-size36x36 u-xs-size32x32"
                              [src]="profile.photoURL"></a>
                     </div>
                     <div class="u-fontSize12 u-baseColor--textNormal u-textColorNormal" style="padding-left: 1em">
-                      <a class="link link--darken" href="#">
+                      <a class="link link--darken">
                         <span>{{ reservation?.start | date: 'EEEE d' }} @ {{ reservation?.time | time}}</span>
                       </a>
                       <span class="middotDivider u-fontSize12"></span>

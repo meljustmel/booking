@@ -14,15 +14,21 @@ import { Router } from '@angular/router'
     background-size: cover;">
           <div class="u-flex1 u-sizeHalfWidth u-borderBox u-padding40 u-xs-padding20 u-xs-marginBottom20 u-xs-sizeFullWidth">
             <h3 class="u-contentSerifBold u-lineHeightTight u-textColorWhite u-borderTopGreen u-borderBottomGreen u-paddingTop20 u-paddingBottom20 u-marginBottom30 u-xs-fontSize24 u-fontSize40">
-              <span class="data">Lorem ipsum dolor sit amet, consectetur adipisicing.</span>
+              <span class="data">Have any questions, not answered here?</span>
             </h3>
-            <p class="u-margin0 u-contentSansRegular u-letterSpacingNormal u-textColorTransparentWhiteDarker">Does this look correct?</p>
+            <p class="u-margin0 u-contentSansBold u-paddingTop20 u-letterSpacingNormal u-textColorTransparentWhiteDarker">Address</p>
+            <p class="u-margin0 u-contentSansRegular u-letterSpacingNormal u-textColorTransparentWhiteDarker">Level 1 262 Main Street</p>
+            <p class="u-margin0 u-contentSansRegular u-letterSpacingNormal u-textColorTransparentWhiteDarker">Morning VIC 3931</p>
+            <p class="u-margin0 u-contentSansBold u-paddingTop20 u-letterSpacingNormal u-textColorTransparentWhiteDarker">Enquires</p>
+            <p class="u-margin0 u-contentSansRegular u-letterSpacingNormal u-textColorTransparentWhiteDarker">hello@thelovelyyou.com</p>
+            <p class="u-margin0 u-contentSansBold u-paddingTop20 u-letterSpacingNormal u-textColorTransparentWhiteDarker">Phone</p>
+            <p class="u-margin0 u-contentSansRegular u-letterSpacingNormal u-textColorTransparentWhiteDarker">(987) 456 7984</p>
 
           </div>
           <div class="u-relative u-flex1 u-sizeHalfWidth u-minHeight250 u-xs-minHeight100 u-xs-sizeFullWidth">
             <div class="u-flexColumn u-sizeFullHeight u-backgroundWhite u-borderBox u-paddingLeft30 u-paddingRight30 u-paddingTop40 u-paddingBottom40 u-xs-padding20">
               <div class="u-flex1">
-                <p class="u-fontSize18 u-contentSansRegular u-marginBottom40 u-xs-marginBottom20">Send  me a message, anytime</p>
+                <p class="u-fontSize18 u-contentSansRegular u-marginBottom40 u-xs-marginBottom20">Let me know how we can help.</p>
                 <div class="creditCardForm creditCardForm--saved"></div>
                 <form [formGroup]="parent"  class="u-sizeFullWidth creditCardForm creditCardForm--input">
                   <fieldset class="u-marginBottom15">
@@ -47,10 +53,10 @@ import { Router } from '@angular/router'
               <div class="u-marginTop20">
                 <button class="button button--large button--withChrome" (click)="submitForm($event)" type="button" [disabled]="!parent.valid" [ngClass]="{'valid' : parent.valid, 'invalid' : !parent.valid}">Send Message</button>
 
-                <p class="u-textColorNormal u-fontSize14 u-marginTop40 u-marginBottom0">By clicking "Start membership", you agree to our
-                  <a class="link link--underline u-baseColor--link" href="#">Subscription Terms of Service</a> and
-                  <a class="link link--underline u-baseColor--link" href="#" target="_blank">Privacy Policy</a>.
-                  The Lovely You will charge the membership ($5) to your payment method monthly until you cancel. There are no refunds or credits for partial months.</p>
+                <!--<p class="u-textColorNormal u-fontSize14 u-marginTop40 u-marginBottom0">By clicking "Start membership", you agree to our-->
+                  <!--<a class="link link&#45;&#45;underline u-baseColor&#45;&#45;link" href="#">Subscription Terms of Service</a> and-->
+                  <!--<a class="link link&#45;&#45;underline u-baseColor&#45;&#45;link" href="#" target="_blank">Privacy Policy</a>.-->
+                  <!--The Lovely You will charge the membership ($5) to your payment method monthly until you cancel. There are no refunds or credits for partial months.</p>-->
               </div>
             </div>
           </div>

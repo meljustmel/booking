@@ -11,7 +11,7 @@ import {Component, Input, OnInit} from "@angular/core";
               <div *ngIf="pretitle" class="pretitle">{{ pretitle}}</div>
               <h1 [ngClass]="{intro:  type === 'intro'}" class="content__headline">{{ title || 'Some of what you can discover'}}</h1>
               <p [ngClass]="{intro:  type === 'intro'}" class="subtitle" *ngIf="subtitle">{{ subtitle || 'Some of what you can discover' }}</p>
-              <img *ngIf="type === 'intro'" src="assets/intro.jpg" alt="">
+              <!--<img *ngIf="type === 'intro'" src="assets/intro.jpg" alt="">-->
             </div>
           </div>
           <ng-content></ng-content>
@@ -37,6 +37,7 @@ import {Component, Input, OnInit} from "@angular/core";
     .flat {
       padding: 3em 0 0;
     }
+    
     .discover__intro {
       margin-bottom: 0;
     }
@@ -62,6 +63,7 @@ import {Component, Input, OnInit} from "@angular/core";
     }
     .subtitle {
       opacity: 0.7;
+      margin-bottom: 0;
     }
   
     .pretitle {
@@ -87,6 +89,7 @@ import {Component, Input, OnInit} from "@angular/core";
       opacity: 0.8;
       
     }
+
   `]
 })
 export class SegmentComponent implements OnInit {

@@ -13,27 +13,27 @@ import {Service} from "../core/model/index";
     <hero [type]="'jumbotron'" [background]="'assets/hero.png'">
       <hero-text
         [heading]="'The eyes are windows to the soul'"
-        [subheading]="'The Rapture Startup is the one platform you need to build the business you’ve always dreamed of.'">
+        [subheading]="'Your gaze is the soul shining back into the world..'">
       </hero-text>
     </hero>
-    <segment [title]="'Rapture is the easiest way to sell your products at events like fairs, pop ups & markets'"
-             [subtitle]="'Choose and customize your site with over 160+ gorgeous content block types. Build and launch with ease with Slides'"
+    <segment [title]="'The shape of your eyebrows should compliment the shape of your face.'"
+             [subtitle]="'Similarly the shaping method should compliment the growth pattern of your eyebrows.'"
              [type]="'intro'">
 
     </segment>
-    <segment [pretitle]="'Services'" [subtitle]="'You need to get that shit together'">
+    <segment [pretitle]="'Services'" [title]="'The shape of your eyebrows should compliment the shape of your face'"  [subtitle]="'Similarly the shaping method should compliment the growth pattern of your eyebrows'">
       <services [services]='services' (open)='serviceModal($event)'></services>
       <action [type]="'action'" [label]="'Book Now'" (action)='onAction()'></action>
     </segment>
     <segment [type]="'lovely'"
-             [title]="'Some of the awesome people & companies that love The Rapture Startup'"
+             [title]="'Some of the awesome people that love The Lovely You'"
              [pretitle]="'Client Testimonials'">
       <testimonials></testimonials>
     </segment>
 
     <segment [title]="'Frequently Asked Questions'">
       <questions></questions>
-      <action [type]="'action'" [label]="'Contact Us'" [tag]="'Do you have other question?'"></action>
+      <action [type]="'action'" [label]="'Contact Us'" [tag]="'Do you have other question?'" (action)='onContact()'></action>
     </segment>
 
     <!--<segment [type]="'alternate'"-->
@@ -51,7 +51,7 @@ import {Service} from "../core/model/index";
     <!--</segment>-->
     <segment [type]="'action'"
              [title]="'Save your spot now!'"
-             [subtitle]="'Great stories deserve a great audience'">
+             [subtitle]="'Check availability. Helps to plan in advance as space is limited.'">
       <action [type]="'lovely'" [label]="'Book Now'" (action)='onAction()'></action>
     </segment>
 
@@ -76,21 +76,21 @@ export class HomeComponent implements OnInit {
   @HostBinding('@routeFadeState') routeAnimation = false;
   services: Service[] = [
     {
-      'title': 'Organic Waxing',
+      'title': 'Brow Waxing',
       'price': 25,
-      'description': 'Suddenly you are aware of every single thing that happens.',
+      'description': 'Involves removing hair from the root along with dead skin cells resulting in an ultra smooth feel to the touch.',
       'type': 'Waxing',
       'img': '/assets/hands.jpg',
     },
     {
-      'title': 'Total Tinting',
+      'title': 'Brow Tinting',
       'price': 30,
-      'description': 'Play the game, or lose. But you’ll probably lose anyway.',
+      'description': 'Involves adding pigment to the eyebrow to achieve an more defined look. this process can last anywhere from 2-3 weeks. ',
       'type': 'Shaping',
       'img': '/assets/hands.jpg',
     },
     {
-      'title': 'Full Shaping',
+      'title': 'Brow Shaping',
       'price': 35,
       'description': 'Do you ever wake up wondering, “I’ve made a huge mistake”?',
       'type': 'Tinting',
@@ -110,8 +110,12 @@ export class HomeComponent implements OnInit {
   onAction() {
     this.router.navigate(['booking']);
   }
+
+  onContact() {
+    this.router.navigate(['contact']);
+  }
   serviceModal(service): void {
-    console.log(service);
+    // console.log(service);
     const modal$ = this.modalService.create(SharedModule, ServiceModalComponent, {
       service: service,
       goToBooking: () => {

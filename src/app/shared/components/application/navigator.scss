@@ -45,3 +45,11 @@
   color: #F7CFD2;
   border-color: #F7CFD2;
 }
+@media screen and (max-width: 767px) {
+  .siteNav-logo {
+    padding-top: 0;
+  }
+}
+.siteNav-logo {
+  padding-top: 0;
+}

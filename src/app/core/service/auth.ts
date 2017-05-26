@@ -39,21 +39,21 @@ export class AuthService {
 
         userRef.take(1).subscribe((user) => {
           if (user.$exists()) {
-            console.log('user exists', user);
+            // console.log('user exists', user);
             this.store.dispatch(this.authActions.updateUserInfo(user));
 
           } else {
-            console.log('user does not exists');
+            // console.log('user does not exists');
             userRef.set(dataToSet)
               .then((result) => {
                 // console.log(result)
               })
               .catch((error) => {
-                console.log(error);
+                // console.log(error);
               });
           }
         });
-        console.log('hala user', user);
+        // console.log('hala user', user);
         this.store.dispatch(this.authActions.loginSuccess(user));
       } else {
         this.store.dispatch(this.authActions.logOutUser());
@@ -87,10 +87,10 @@ export class AuthService {
   logout(): Observable<any> {
     return Observable.create((observer) => {
       this.auth$.auth.signOut().then(() => {
-        console.log('logging out');
+        // console.log('logging out');
         return observer.next(this.authActions.logoutSuccess());
       }, (error) => {
-        console.log("error", error);
+        // console.log("error", error);
         return observer.next(this.authActions.logoutFailure(error.message));
       });
 
@@ -102,22 +102,22 @@ export class AuthService {
   // }
 
   login(provider): Observable<any> {
-    console.log('service', provider);
+    // console.log('service', provider);
     return Observable.create((observer) => {
       if (provider === 'Facebook') {
         this.auth$.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider).then((user) => {
-          console.log("user", user);
+          // console.log("user", user);
           return observer.next(this.authActions.loginSuccess(user));
         }, (error) => {
-          console.log("error", error);
+          // console.log("error", error);
           return observer.next(this.authActions.loginFailure(error.message));
         });
       } else {
         this.auth$.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider).then((user) => {
-          console.log("service log google----should be user", user);
+          // console.log("service log google----should be user", user);
           return observer.next(this.authActions.loginSuccess(user));
         }, (error) => {
-          console.log("error", error);
+          // console.log("error", error);
           return observer.next(this.authActions.loginFailure(error.message));
         });
       }

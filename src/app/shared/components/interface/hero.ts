@@ -43,7 +43,7 @@ export class HeroComponent implements OnInit {
   @Input() type;
 
   ngOnInit() {
-    console.log(this.type);
+    // console.log(this.type);
   }
 }
 

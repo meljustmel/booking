@@ -60,12 +60,12 @@ export class ReservationService {
 
     this.getUser$ = this.auth$.authState.subscribe(user => {
       if (user) {
-        console.log('auth', user);
+        // console.log('auth', user);
         this.user$ = user;
         this.user$.getToken().then(token => {
           this.token = token;
         });
-        console.log('uid', user.uid);
+        // console.log('uid', user.uid);
       }
     });
 
@@ -223,7 +223,7 @@ export class ReservationService {
 
   kill(id) {
     this.slimLoadingBarService.start();
-    console.log('im here now', id)
+    // console.log('im here now', id)
     const subject = new Subject();
     this.sdkDb.child(`reservations/${id}`)
       .remove();

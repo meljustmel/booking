@@ -5,38 +5,39 @@ import {Component, Input} from "@angular/core";
     <div class="discover__row container">
       <div class="discover__col">
         <div class="testimonial">
-          <p>Rapture takes the hassle out of going through the feedback on a design,
-            which ultimately speeds up the entire process, something everyone wants.
-            It's a brilliant product.</p>
+          <p>Cuando encuentras una persona que ama su trabajo y pone empeño, dedicacion al final este es el resultado, unas cejas como nunca las habia tenido, Dios bendiga tu talento y profesionalismo, se que tu nombre brillara entre las mejores de New York en tu area profesional.</p>
         </div>
-        <div class="avatar">
-          <img src="/assets/t1.png" class="avatar-image avatar-image--icon" alt="name">
-        </div>
-        <h5>Ana Stanley</h5>
-        <small>@username</small>
+        <!--<div class="avatar">-->
+        <!--<img src="/assets/t2.png" class="avatar-image avatar-image&#45;&#45;icon" alt="name">-->
+        <!--</div>-->
+        <!--<h5>Gabrielle Campbell</h5>-->
+        <br>
+        <small>@yennyhc</small>
       </div>
+      
       <div class="discover__col">
         <div class="testimonial">
-          <p>Rapture has made massive improvements when communicating design at TMW.
-            There are usually many stakeholders involved in the process, both internally
-            and externally, and having a simple platform for feedback and approval is
-            extremely helpful. Awesome work guys!</p>
+          <p>I struggle with eyebrow growth. I have been them grow since my maternity photoshoot nearly a year ago. As you can see from the top photo they didn't grow much.
+            However The Lovely You managed to make my eyebrows look better than ever before. So happy I took this step. Thank you for making my time there feel so welcoming and for bringing my eyebrows back to life. You are AMAZING at what you do. Thank you. Thank you Thank you.</p>
         </div>
-        <div class="avatar">
-          <img src="/assets/t2.png" class="avatar-image avatar-image--icon" alt="name">
-        </div>
-        <h5>Gabrielle Campbell</h5>
-        <small>@username</small>
+        <!--<div class="avatar">-->
+          <!--<img src="/assets/t1.png" class="avatar-image avatar-image&#45;&#45;icon" alt="name">-->
+        <!--</div>-->
+        <!--<h5>Ana Stanley</h5>-->
+        <br>
+        <small>@_your_favorite_nerd_</small>
       </div>
+     
       <div class="discover__col">
         <div class="testimonial">
-          <p>Easy to use, works great, customizable, and by far, the best support I have experienced.</p>
+          <p>Can you just take a second to notice my brows, I have't let anyone touch my brows in more than a year and a half because they never got it right but then I came across The Lovely You and I thought "yeah I have to let her do my brows" and I was amazed . SO SO HAPPY! ladies check her out! I promise you won't be disappointed. She's such a sweet heart and doesn't rush her work!</p>
         </div>
-        <div class="avatar">
-          <img src="/assets/t3.png" class="avatar-image avatar-image--icon" alt="name">
-        </div>
-        <h5>Jennifer Fisher</h5>
-        <small>@username</small>
+        <!--<div class="avatar">-->
+          <!--<img src="/assets/t3.png" class="avatar-image avatar-image&#45;&#45;icon" alt="name">-->
+        <!--</div>-->
+        <!--<h5>Jennifer Fisher</h5>-->
+        <br>
+        <small>@kriss_teen_88</small>
       </div>
     </div>
   `,
@@ -99,6 +100,12 @@ import {Component, Input} from "@angular/core";
     .avatar-image--icon {
       width: 70px;
       height: 70px;
+    }
+
+    @media screen and (max-width: 767px) {
+      .testimonial {
+        margin: 1em 0;
+      }
     }
     
 

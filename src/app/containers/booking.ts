@@ -103,8 +103,7 @@ type CalendarPeriod = 'day' | 'week' | 'month';
                 [title]="'Payment'"
                 [stepTitle]="'Step Four'"
                 [stepTagline]="'Review your answers and Pay with Credit Card'"
-                [stepHeading]="'Payment Is Secure'"
-                >
+                [stepHeading]="'Payment Is Secure'">
                 <div [ngSwitch]="isCompleted">
                   <div *ngSwitchDefault>
                     <credit-form formControlName="creditDetail" [user]="user | async" [data]='data' (onComplete)="onComplete($event)"></credit-form>
@@ -248,7 +247,7 @@ export class BookingComponent implements OnInit {
               _this.loading = false;
               _this.isCompleted = true;
               _this.slimLoadingBarService.complete();
-              swal('Awesome', 'Booking have been successful', 'success');
+              swal('Awesome', 'You Have Successfully booked an appointment', 'success');
               _this.reservationForm.reset();
               _this._router.navigate(['/']);
             },
@@ -315,21 +314,6 @@ export class BookingComponent implements OnInit {
 
   getThisDay(day) {
     return this.reservationService.loadReservationsOnDay(day);
-  }
-
-
-  save(form) {
-    // console.log(form.value)
-
-    // this.reservationService.bookUserReservation(form.value)
-    //  .subscribe(
-    //    () => {
-    //      form.reset();
-    //      // this._router.navigate(['admin/calendar']);
-    //    },
-    //    err => console.log(`error creating reservation ${err}`)
-    //  );
-
   }
 
 

@@ -11,13 +11,13 @@ import {Service} from "../core/model/index";
   selector: 'home',
   template: `
     <hero [type]="'jumbotron'" [background]="'assets/hero.png'">
-      <hero-text
-        [heading]="'The eyes are windows to the soul'"
-        [subheading]="'Your gaze is the soul shining back into the world..'">
-      </hero-text>
+      <!--<hero-text-->
+        <!--[heading]="'The eyes are windows to the soul'"-->
+        <!--[subheading]="'Your gaze is the soul shining back into the world..'">-->
+      <!--</hero-text>-->
     </hero>
-    <segment [title]="'The shape of your eyebrows should compliment the shape of your face.'"
-             [subtitle]="'Similarly the shaping method should compliment the growth pattern of your eyebrows.'"
+    <segment [title]="'The eyes are windows to the soul, Your gaze is the soul shining back into the world.'"
+             [subtitle]="'Put forth your best self.'"
              [type]="'intro'">
 
     </segment>

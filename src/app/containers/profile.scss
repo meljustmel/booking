@@ -1524,3 +1524,7 @@ hr.section-divider {
 .middotDivider:after {
   content: "\B7";
 }
+
+.streamItem--postPreview:last-child {
+  padding-bottom: 4em;
+}

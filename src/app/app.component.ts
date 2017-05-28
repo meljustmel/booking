@@ -62,7 +62,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.user$ = this.store.select(state => state.authState.currentUser);
     this.profile$ = this.store.select(state => state.authState.profile);
-    (<any>window).Stripe.setPublishableKey('pk_test_DVnrccbN8XTItu9kMbTt153t');
+    (<any>window).Stripe.setPublishableKey('pk_live_w68cmUaq2Mj63jSiQuGASmth');
 
 
   }

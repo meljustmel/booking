@@ -1,0 +1,60 @@
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/bin/node /usr/local/bin/firebase deploy --only functions
+[debug] CLI Version:  3.9.0
+[debug] Platform:     darwin
+[debug] Node Version: v6.9.1
+[debug] Time:         Sat May 27 2017 22:56:35 GMT-0400 (EDT)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/framework-97dbe  
+ Sat May 27 2017 22:56:35 GMT-0400 (EDT)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/framework-97dbe/tokens  
+ Sat May 27 2017 22:56:36 GMT-0400 (EDT)
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'framework-97dbe'...
+[info] 
+[debug] TypeError: targetNames.join is not a function
+    at deploy (/usr/local/lib/node_modules/firebase-tools/lib/deploy/index.js:68:57)
+    at Command._action (/usr/local/lib/node_modules/firebase-tools/commands/deploy.js:47:12)
+    at /usr/local/lib/node_modules/firebase-tools/lib/command.js:176:29
+    at tryCatch (/usr/local/lib/node_modules/firebase-tools/node_modules/rsvp/dist/rsvp.js:539:12)
+    at invokeCallback (/usr/local/lib/node_modules/firebase-tools/node_modules/rsvp/dist/rsvp.js:554:13)
+    at publish (/usr/local/lib/node_modules/firebase-tools/node_modules/rsvp/dist/rsvp.js:522:7)
+    at flush (/usr/local/lib/node_modules/firebase-tools/node_modules/rsvp/dist/rsvp.js:2414:5)
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/bin/node /usr/local/bin/firebase deploy --only functions
+[debug] CLI Version:  3.9.0
+[debug] Platform:     darwin
+[debug] Node Version: v6.9.1
+[debug] Time:         Sat May 27 2017 22:56:43 GMT-0400 (EDT)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[debug] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/framework-97dbe  
+ Sat May 27 2017 22:56:43 GMT-0400 (EDT)
+[debug] <<< HTTP RESPONSE 200
+[debug] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/framework-97dbe/tokens  
+ Sat May 27 2017 22:56:43 GMT-0400 (EDT)
+[debug] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'framework-97dbe'...
+[info] 
+[debug] TypeError: targetNames.join is not a function
+    at deploy (/usr/local/lib/node_modules/firebase-tools/lib/deploy/index.js:68:57)
+    at Command._action (/usr/local/lib/node_modules/firebase-tools/commands/deploy.js:47:12)
+    at /usr/local/lib/node_modules/firebase-tools/lib/command.js:176:29
+    at tryCatch (/usr/local/lib/node_modules/firebase-tools/node_modules/rsvp/dist/rsvp.js:539:12)
+    at invokeCallback (/usr/local/lib/node_modules/firebase-tools/node_modules/rsvp/dist/rsvp.js:554:13)
+    at publish (/usr/local/lib/node_modules/firebase-tools/node_modules/rsvp/dist/rsvp.js:522:7)
+    at flush (/usr/local/lib/node_modules/firebase-tools/node_modules/rsvp/dist/rsvp.js:2414:5)
+    at _combinedTickCallback (internal/process/next_tick.js:67:7)
+    at process._tickCallback (internal/process/next_tick.js:98:9)
+[error] 
+[error] Error: An unexpected error has occurred.

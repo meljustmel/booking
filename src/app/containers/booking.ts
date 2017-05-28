@@ -66,7 +66,7 @@ type CalendarPeriod = 'day' | 'week' | 'month';
             <form-wizard [formGroup]="reservationForm" (onStepChanged)="onStepChanged($event)">
               <wizard-step
                 [isValid]="!reservationForm.controls['service'].untouched"
-                [title]=" data?.service ||'Pick Service'"
+                [title]=" data?.service?.type ||'Pick Service'"
                 [stepTitle]="'Step One'"
                 [stepTagline]="'Select the method you prefer'"
                 [stepHeading]="'All Three are Organic'"
@@ -200,7 +200,7 @@ export class BookingComponent implements OnInit {
   }
 
   onStep1Next(event) {
-    console.log('Step1 - Next');
+    console.log(this.data, 'Step1 - Next');
     // this.stepNumber = 'Step Two';
     // console.log("HALA ISIVISIBLE", swal.isVisible());
     // swal.showLoading();
@@ -241,7 +241,7 @@ export class BookingComponent implements OnInit {
       if (status === 200) {
         console.log(`Success! Card token ${response.card.id}.`);
         console.log('card  response', response);
-        _this.reservationService.bookUserReservation(_this.reservationForm.value, response.id, 100)
+        _this.reservationService.bookUserReservation(_this.reservationForm.value, response.id, _this.data.service.price)
           .subscribe(
             () => {
               _this.loading = false;
@@ -316,7 +316,6 @@ export class BookingComponent implements OnInit {
     return this.reservationService.loadReservationsOnDay(day);
   }
 
-
   dayClicked(day: Date): void {
     // if (this.selectedDay) {
     //  delete this.selectedDay.cssClass;
@@ -329,7 +328,6 @@ export class BookingComponent implements OnInit {
     console.log("hala day", day);
     // console.log(this.selectedDay, this.reservationDay)
   }
-
 
   increment(): void {
     this.changeDate(CalendarUtils.addPeriod(this.view, this.viewDate, 1));

@@ -28,7 +28,7 @@ const SERVICE_VALUE_ACCESSOR = {
           <div class="col-sm-4 col-md-4 center-block"
                [ngClass]="{active: checkedOption === i}"
                *ngFor="let service of services; let i = index"
-               (click)="onServiceSelect(service.type)">
+               (click)="onServiceSelect(service)">
             <div class="estimate-project__checkbox"
                  (click)="checkedOption = i"
                  [ngClass]="{active: checkedOption === i}">
@@ -58,17 +58,17 @@ export class ServiceFormComponent implements OnInit {
   // @Input() tag;
   services: any = [
     {
+      'price': 20,
+      'type': 'Threading',
+      'img': '//www.netguru.co/hubfs/images/landing_pages/city/time_green_icon.png?t=1495524306439',
+    },
+    {
       'price': 25,
       'type': 'Waxing',
       'img': '//www.netguru.co/hubfs/images/ico/new-case-study/results_icon.png?t=1495524306439',
     },
     {
-      'price': 30,
-      'type': 'Shaping',
-      'img': '//www.netguru.co/hubfs/images/landing_pages/city/time_green_icon.png?t=1495524306439',
-    },
-    {
-      'price': 35,
+      'price': 40,
       'type': 'Tinting',
       'img': '//www.netguru.co/hubfs/images/ico/new-case-study/process_icon.png?t=1495524306439',
     }

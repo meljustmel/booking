@@ -60,17 +60,17 @@ export class ServiceFormComponent implements OnInit {
     {
       'price': 20,
       'type': 'Threading',
-      'img': '//www.netguru.co/hubfs/images/landing_pages/city/time_green_icon.png?t=1495524306439',
+      'img': 'assets/needle.svg',
     },
     {
       'price': 25,
       'type': 'Waxing',
-      'img': '//www.netguru.co/hubfs/images/ico/new-case-study/results_icon.png?t=1495524306439',
+      'img': 'assets/wax.svg',
     },
     {
       'price': 40,
       'type': 'Tinting',
-      'img': '//www.netguru.co/hubfs/images/ico/new-case-study/process_icon.png?t=1495524306439',
+      'img': 'assets/drop.svg',
     }
   ];
 

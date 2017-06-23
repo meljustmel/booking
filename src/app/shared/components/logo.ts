@@ -3,7 +3,7 @@ import {Component, OnInit} from "@angular/core";
   selector: 'logo',
   template: `
     <a class="siteNav-logo">
-        <!--<span class="svgIcon svgIcon&#45;&#45;logoNew svgIcon&#45;&#45;45px is-flushLeft">-->
+          <!--<span class="svgIcon svgIcon&#45;&#45;logoNew svgIcon&#45;&#45;45px is-flushLeft">-->
           <!--<svg class="svgIcon-use" width="45" height="45" viewBox="-17 18 45 45" data-multipart="true">-->
             <!--<path d="M11.525 28.078c-.472-.225-.858.002-.858.506v20.044l8.616 4.113c.948.46 1.717.14 1.717-.7v-19.3a.22.22 0 0 0-.124-.19l-9.35-4.46v-.01z"></path>-->
             <!--<path d="M.333 43.696l9.83-15.247c.278-.43.89-.6 1.36-.38l9.364 4.47c.06.03.082.1.047.15L10.666 48.63.333 43.698v-.002z"></path>-->

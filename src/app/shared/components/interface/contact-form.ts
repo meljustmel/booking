@@ -17,12 +17,12 @@ import { Router } from '@angular/router'
               <span class="data">Have any questions, not answered here?</span>
             </h3>
             <p class="u-margin0 u-contentSansBold u-paddingTop20 u-letterSpacingNormal u-textColorTransparentWhiteDarker">Address</p>
-            <p class="u-margin0 u-contentSansRegular u-letterSpacingNormal u-textColorTransparentWhiteDarker">Level 1 262 Main Street</p>
-            <p class="u-margin0 u-contentSansRegular u-letterSpacingNormal u-textColorTransparentWhiteDarker">Morning VIC 3931</p>
+            <p class="u-margin0 u-contentSansRegular u-letterSpacingNormal u-textColorTransparentWhiteDarker">1647 Macombs road & 174th street</p>
+            <p class="u-margin0 u-contentSansRegular u-letterSpacingNormal u-textColorTransparentWhiteDarker">Bronx, New York</p>
             <p class="u-margin0 u-contentSansBold u-paddingTop20 u-letterSpacingNormal u-textColorTransparentWhiteDarker">Enquires</p>
-            <p class="u-margin0 u-contentSansRegular u-letterSpacingNormal u-textColorTransparentWhiteDarker">hello@thelovelyyou.com</p>
+            <p class="u-margin0 u-contentSansRegular u-letterSpacingNormal u-textColorTransparentWhiteDarker">hello@thelovelyou.com</p>
             <p class="u-margin0 u-contentSansBold u-paddingTop20 u-letterSpacingNormal u-textColorTransparentWhiteDarker">Phone</p>
-            <p class="u-margin0 u-contentSansRegular u-letterSpacingNormal u-textColorTransparentWhiteDarker">(987) 456 7984</p>
+            <p class="u-margin0 u-contentSansRegular u-letterSpacingNormal u-textColorTransparentWhiteDarker">+1 (646) 535-1334</p>
 
           </div>
           <div class="u-relative u-flex1 u-sizeHalfWidth u-minHeight250 u-xs-minHeight100 u-xs-sizeFullWidth">

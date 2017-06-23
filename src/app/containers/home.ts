@@ -80,21 +80,21 @@ export class HomeComponent implements OnInit {
       'price': 25,
       'description': 'Involves removing hair from the root along with dead skin cells resulting in an ultra smooth feel to the touch.',
       'type': 'Waxing',
-      'img': '/assets/hands.jpg',
+      'img': '/assets/wax.svg',
     },
     {
       'title': 'Brow Tinting',
       'price': 30,
       'description': 'Involves adding pigment to the eyebrow to achieve an more defined look. this process can last anywhere from 2-3 weeks. ',
       'type': 'Shaping',
-      'img': '/assets/hands.jpg',
+      'img': '/assets/drop.svg',
     },
     {
       'title': 'Brow Shaping',
       'price': 35,
       'description': 'Do you ever wake up wondering, “I’ve made a huge mistake”?',
       'type': 'Tinting',
-      'img': '/assets/hands.jpg',
+      'img': '/assets/needle.svg',
     }
   ];
   constructor(private router: Router,

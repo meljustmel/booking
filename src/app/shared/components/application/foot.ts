@@ -3,7 +3,7 @@ import {Component} from "@angular/core";
 @Component({
   selector: 'foot',
   template: `
-    <footer class=" u-borderTopLighter">
+    <footer class=" ">
       <div class="container u-maxWidth1040 u-textColorNormal u-baseColor--textNormal">
         <div class="left linkSet u-clearfix">
           <a class="button button--chromeless u-baseColor--buttonNormal u-marginLeft15 u-lineHeight35 u-xs-block u-xs-marginLeft0"

@@ -6,6 +6,7 @@ import {Service} from "../../../core/model/service";
     <div class="discover__row container">
       <div *ngFor="let service of services; let i = index" class="discover__col">
         <div class="article-card">
+          <img [src]="service.img" style="width: 60px; height: 60px; padding: 10px 0">
          <!--<span class="svgIcon svgIcon&#45;&#45;logoNew svgIcon&#45;&#45;45px is-flushLeft">-->
           <!--<svg class="svgIcon-use" width="45" height="45" viewBox="-17 18 45 45" data-multipart="true">-->
             <!--<path d="M11.525 28.078c-.472-.225-.858.002-.858.506v20.044l8.616 4.113c.948.46 1.717.14 1.717-.7v-19.3a.22.22 0 0 0-.124-.19l-9.35-4.46v-.01z"></path>-->

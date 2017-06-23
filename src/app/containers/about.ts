@@ -32,7 +32,7 @@ import {routeFadeStateTrigger} from "../app.animations";
     </div>
     <segment [type]="'action'"
              [title]="'Save your spot now!'"
-             [subtitle]="'Great stories deserve a great audience'">
+             [subtitle]="'Check availability. Helps to plan in advance as space is limited.'">
       <action [type]="'lovely'" [label]="'Book Now'" (action)='onAction()'></action>
     </segment>
   `,

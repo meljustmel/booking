@@ -4,6 +4,7 @@
       <div class="container u-maxWidth1040">
         <header class="hero hero--standalone hero--compact hero--alignLeft u-clearfix u-maxWidth1040">
           <h1 class="hero-title">Booking</h1>
+
           <div class="buttonSet" style="margin: 15px 0 0 auto;">
             <button [ngClass]="{'invalid' : !hasPrevStep, 'back' : hasPrevStep}"
                     (click)="previous()"
@@ -16,6 +17,7 @@
                     class="button button--withChrome u-baseColor--buttonNormal">Next</button>
           </div>
         </header>
+
         <nav class="u-flex heading heading--borderedTop u-textAlignCenter">
           <!--<span class="u-flex1"></span>-->
           <ul class="heading-tabs" >

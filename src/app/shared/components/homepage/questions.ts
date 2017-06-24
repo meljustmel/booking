@@ -48,6 +48,9 @@ import {Component, Input} from "@angular/core";
       width: 50%;
       padding: 1em;
     }
+    .lovely {
+      background: #FEEADE;
+    }
     h3 {
       
     }

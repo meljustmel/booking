@@ -29,15 +29,19 @@ import {ChangeDetectionStrategy, Component, ElementRef, HostListener, Input, Vie
               <div class="u-flexColumn u-sizeFullHeight u-backgroundWhite u-borderBox u-paddingLeft30 u-paddingRight30 u-paddingTop40 u-paddingBottom40 u-xs-padding20">
                 <div class="u-flex1">
                   <p class="u-fontSize18 u-contentSansRegular u-marginBottom40 u-xs-marginBottom20">Promo Text Here <strong>&amp; here.</strong></p>
-                  <div class="creditCardForm creditCardForm--saved js-savedCard"></div>
+                  <div class="">
+                    <p>{{service.description}}</p>
+
+                  </div>
                   
                   <div class="u-marginTop20 u-height20">
                     <div class="creditCardForm creditCardForm--error u-marginBottom0 u-marginTop0 js-creditCardError"></div>
                   </div>
                 </div>
+                <img [src]="service.img" style="width: 60px; height: 60px; padding: 10px 0">
                 <div class="u-marginTop20">
                   <button type="button" class="button button--large button--withChrome" (click)="onGoToBooking($event)">Book Reservation</button>
-                  <!--<p style="text-align: left;" class="u-textColorNormal u-fontSize14 u-marginTop40 u-marginBottom0">By clicking "Start membership", you agree to our <a class="link link&#45;&#45;underline u-baseColor&#45;&#45;link" href="#" target="_blank">Subscription Terms of Service</a> and <a class="link link&#45;&#45;underline u-baseColor&#45;&#45;link" href="#" target="_blank">Privacy Policy</a>. The Lovely You will charge the membership ($5) to your payment method monthly until you cancel. There are no refunds or credits for partial months.</p>-->
+                  <p style="text-align: left;" class="u-textColorNormal u-fontSize14 u-marginTop40 u-marginBottom0">By clicking "Start membership", you agree to our <a class="link link--underline u-baseColor--link" href="#" target="_blank">Subscription Terms of Service</a> and <a class="link link--underline u-baseColor--link" href="#" target="_blank">Privacy Policy</a>. The Lovely You will charge the membership ($5) to your payment method monthly until you cancel. There are no refunds or credits for partial months.</p>
                 </div>
               </div>
             </div>

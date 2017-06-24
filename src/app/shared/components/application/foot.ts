@@ -10,15 +10,17 @@ import {Component} from "@angular/core";
              routerLink="about"
              routerLinkActive="link--darker">About</a>
           <span class="middotDivider u-xs-hide"></span>
+          <a class="button button--chromeless u-baseColor--buttonNormal u-marginLeft15 u-lineHeight35 u-xs-block u-xs-marginLeft0"
+             routerLink="contact"
+             routerLinkActive="link--darker">Contact</a>
+          <!--<span class="middotDivider u-xs-hide"></span>-->
           <!--<a class="button button&#45;&#45;chromeless u-baseColor&#45;&#45;buttonNormal u-marginLeft15 u-lineHeight35 u-xs-block u-xs-marginLeft0" >Policy</a>-->
           <!--<span class="middotDivider u-xs-hide"></span>-->
           <!--<a class="button button&#45;&#45;chromeless u-baseColor&#45;&#45;buttonNormal u-marginLeft15 u-lineHeight35 u-xs-block u-xs-marginLeft0" >Terms</a>-->
         </div>
         <div class="right linkSet u-clearfix">
-          <a class="button button--chromeless u-baseColor--buttonNormal u-marginLeft15 u-lineHeight35 u-xs-block u-xs-marginLeft0"
-             routerLink="contact"
-             routerLinkActive="link--darker">Contact</a>
-          <span class="middotDivider u-xs-hide"></span>
+          
+          
           <a class="button button--chromeless u-baseColor--buttonNormal u-marginLeft15 u-lineHeight35 u-xs-block u-xs-marginLeft0"
           >Instagram</a>
           <span class="middotDivider u-xs-hide"></span>

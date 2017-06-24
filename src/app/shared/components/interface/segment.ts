@@ -27,7 +27,7 @@ import {Component, Input, OnInit} from "@angular/core";
       background: #FAFAFB;
     }
     .lovely {
-      background: #F7E7E7;
+      background: #FEEADE;
     }
     .action {
       background: #384368;

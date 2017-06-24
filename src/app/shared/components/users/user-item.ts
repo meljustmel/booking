@@ -5,16 +5,16 @@ import { Component, Input, OnInit } from "@angular/core";
   templateUrl: 'user-item.html',
   styles: [`
     .link--accent {
-      color: #AEEEE1;
+      color: #5FE6BE;
     }
     .button--primary {
-      color: #AEEEE1;
-      border-color: #AEEEE1;
+      color: #5FE6BE;
+      border-color: #5FE6BE;
     }
     .button--primary:hover {
       color: #FFF;
-      border-color: #AEEEE1;
-      background-color: #AEEEE1;
+      border-color: #5FE6BE;
+      background-color: #5FE6BE;
     }
   `]
 })

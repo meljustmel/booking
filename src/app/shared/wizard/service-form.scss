@@ -323,13 +323,13 @@ p {
 }
 
 .estimate-project__checkbox.active {
-  border-color: #AEEEE1;
+  border-color: #5FE6BE;
   box-shadow: 0 18px 32px 0 rgba(0, 0, 0, .1)
 }
 
 .estimate-project__checkbox.active:after {
-  background: #AEEEE1;
-  border-color: #AEEEE1;
+  background: #5FE6BE;
+  border-color: #5FE6BE;
 }
 
 @media (min-width:768px) {
@@ -416,8 +416,8 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #AEEEE1;
-  border-color: #AEEEE1;
+  background-color: #5FE6BE;
+  border-color: #5FE6BE;
   border-radius: 4px;
   content: "\F00C";
   font-family: FontAwesome;

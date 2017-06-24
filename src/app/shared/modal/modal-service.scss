@@ -593,7 +593,7 @@ p {
 }
 
 .button--primary {
-  color: #AEEEE1
+  color: #5FE6BE
 }
 
 .button--primary {
@@ -610,8 +610,8 @@ p {
 }
 
 .button--filled {
-  background: #AEEEE1;
-  border-color: #AEEEE1
+  background: #5FE6BE;
+  border-color: #5FE6BE
 }
 
 .button--filled:active, .button--filled:focus, .button--filled:hover {
@@ -630,8 +630,8 @@ p {
 
 button.valid {
   color: #FFFFFF;
-  background-color: #AEEEE1;
-  border-color: #AEEEE1;
+  background-color: #5FE6BE;
+  border-color: #5FE6BE;
   opacity: 1;
 }
 
@@ -776,20 +776,20 @@ button.invalid:hover {
   perspective: 80px;
   z-index: 900
 }
-
-.creditCardForm-icon:before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 25px;
-  height: 19px;
-  background-image: url(https://cdn-static-1.medium.com/_/fp/img/payments/credit-card-sprite.aNIJTodZTkf86-MUkQX7Xw.png);
-  background-repeat: no-repeat;
-  background-size: 175px 19px;
-  background-position: 0 0;
-  transition: transform linear .2s, background linear 1ms .1s
-}
+//
+//.creditCardForm-icon:before {
+//  content: '';
+//  position: absolute;
+//  left: 0;
+//  top: 0;
+//  width: 25px;
+//  height: 19px;
+//  background-image: url(https://cdn-static-1.medium.com/_/fp/img/payments/credit-card-sprite.aNIJTodZTkf86-MUkQX7Xw.png);
+//  background-repeat: no-repeat;
+//  background-size: 175px 19px;
+//  background-position: 0 0;
+//  transition: transform linear .2s, background linear 1ms .1s
+//}
 
 .creditCardForm-icon:before {
   transform: rotateY(180deg)

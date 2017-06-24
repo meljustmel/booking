@@ -19,7 +19,6 @@ import {Service} from "../core/model/index";
     <segment [title]="'The eyes are windows to the soul, Your gaze is the soul shining back into the world.'"
              [subtitle]="'Put forth your best self.'"
              [type]="'intro'">
-
     </segment>
     <segment [pretitle]="'Services'" [title]="'The shape of your eyebrows should compliment the shape of your face'"  [subtitle]="'Similarly the shaping method should compliment the growth pattern of your eyebrows'">
       <services [services]='services' (open)='serviceModal($event)'></services>
@@ -33,9 +32,12 @@ import {Service} from "../core/model/index";
 
     <segment [title]="'Frequently Asked Questions'">
       <questions></questions>
+      <div class="content content--center">
+
+        <img src="/assets/question.svg" style="width: 70px; height: 70px; padding: 0">
+      </div>
       <action [type]="'action'" [label]="'Contact Us'" [tag]="'Do you have other question?'" (action)='onContact()'></action>
     </segment>
-
     <!--<segment [type]="'alternate'"-->
              <!--[pretitle]="'Products'"-->
              <!--[title]="'Sign up to interact with what matters most'"-->
@@ -76,23 +78,23 @@ export class HomeComponent implements OnInit {
   @HostBinding('@routeFadeState') routeAnimation = false;
   services: Service[] = [
     {
-      'title': 'Brow Waxing',
+      'title': 'Waxing',
       'price': 25,
       'description': 'Involves removing hair from the root along with dead skin cells resulting in an ultra smooth feel to the touch.',
       'type': 'Waxing',
       'img': '/assets/wax.svg',
     },
     {
-      'title': 'Brow Tinting',
+      'title': 'Tinting',
       'price': 30,
       'description': 'Involves adding pigment to the eyebrow to achieve an more defined look. this process can last anywhere from 2-3 weeks. ',
       'type': 'Shaping',
       'img': '/assets/drop.svg',
     },
     {
-      'title': 'Brow Shaping',
+      'title': 'Shaping',
       'price': 35,
-      'description': 'Do you ever wake up wondering, “I’ve made a huge mistake”?',
+      'description': 'Brow shaping consist  of analyzing your actual brow shape and carefully removing unnecessary hair to begin your brow transformation.',
       'type': 'Tinting',
       'img': '/assets/needle.svg',
     }

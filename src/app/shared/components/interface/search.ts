@@ -12,9 +12,9 @@ import {Component, Input, Output, EventEmitter} from "@angular/core";
   styles: [`
     .help-hero__input {
 
-      border: 1px solid #AEEEE1;
+      border: 1px solid #5FE6BE;
 
-    }
+    }      
   `]
 })
 export class SearchComponent {

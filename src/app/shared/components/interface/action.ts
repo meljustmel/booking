@@ -45,13 +45,13 @@ import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 
     .action {
       color: #fff;
-      background: #AEEEE1;
-      border-color: #AEEEE1;
+      background: #5FE6BE;
+      border-color: #5FE6BE;
     }
     .action:hover {
       background: #fff;
-      color: #AEEEE1;
-      border-color: #AEEEE1;
+      color: #5FE6BE;
+      border-color: #5FE6BE;
     }
     
     * {

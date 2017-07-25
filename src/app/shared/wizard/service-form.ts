@@ -34,7 +34,7 @@ const SERVICE_VALUE_ACCESSOR = {
                  [ngClass]="{active: checkedOption === i}">
               <div class="estimate-project__checkbox__icon">
             <span class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_image">
-              <img alt="" class="hs-image-widget" [src]="service.img" style="width:121px;border-width:0px;border:0px;" title="" width="121"></span>
+              <img alt="" class="hs-image-widget" [src]="service.img" style="width:100px;border-width:0px;border:0px;" title="" width="100"></span>
               </div>
               <div class="estimate-project__checkbox__text">
                 <span class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_text">{{ service.type }}</span>

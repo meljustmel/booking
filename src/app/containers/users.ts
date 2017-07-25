@@ -63,7 +63,7 @@ export class UsersComponent implements OnInit {
        } else {
        */
       this.users.forEach(user => {
-        if (this.searchString == '' || user.email.toLocaleLowerCase().includes(searchLowercase) || user.displayName.toLocaleLowerCase().includes(searchLowercase)) {
+        if (this.searchString === '' || user.email.toLocaleLowerCase().includes(searchLowercase) || user.displayName.toLocaleLowerCase().includes(searchLowercase)) {
           filtered.push(user);
         }
       });

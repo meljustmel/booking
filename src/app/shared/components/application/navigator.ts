@@ -1,5 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
+import {Component, EventEmitter, HostBinding, Input, OnInit, Output} from '@angular/core'
 import {User} from "../../../core/model/index";
+import {routeFadeStateTrigger} from "../../../app.animations";
+
 @Component({
   selector: 'navigator',
   template: `
@@ -32,9 +34,14 @@ import {User} from "../../../core/model/index";
       <secondary *ngIf='user' [user]='this.user' [profile]='this.profile'></secondary>
     </div>
   `,
-  styleUrls: ['navigator.scss']
+  styleUrls: ['navigator.scss'],
+  animations: [
+    routeFadeStateTrigger
+  ]
 })
 export class NavigatorComponent implements OnInit {
+  @HostBinding('@routeFadeState') routeAnimation = false;
+
 
   @Input() user: User;
   @Input() profile: User;

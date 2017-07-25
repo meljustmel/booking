@@ -162,4 +162,282 @@ h3 {
   outline: 0;
 }
 
+.bg-gradient-blend {
+  background-image: linear-gradient(to bottom right, #F7F7F7, #EAFBFF);
+}
+
+
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+}
+
+body {
+  margin: 0;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+[hidden], template {
+  display: none;
+}
+
+
+
+@font-face {
+  font-family: 'GT-Walsheim';
+  src: url("/assets/fonts/GT-Walsheim-Ultra-Bold-Oblique.eot");
+  src: url("/assets/fonts/GT-Walsheim-Ultra-Bold-Oblique.eot.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/GT-Walsheim-Ultra-Bold-Oblique.woff") format("woff");
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'GT-Walsheim';
+  src: url("/assets/fonts/GT-Walsheim-Ultra-Bold.eot");
+  src: url("/assets/fonts/GT-Walsheim-Ultra-Bold.eot.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/GT-Walsheim-Ultra-Bold.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GT-Walsheim';
+  src: url("/assets/fonts/GT-Walsheim-Black-Oblique.eot");
+  src: url("/assets/fonts/GT-Walsheim-Black-Oblique.eot.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/GT-Walsheim-Black-Oblique.woff") format("woff");
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'GT-Walsheim';
+  src: url("/assets/fonts/GT-Walsheim-Black.eot");
+  src: url("/assets/fonts/GT-Walsheim-Black.eot.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/GT-Walsheim-Black.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GT-Walsheim';
+  src: url("/assets/fonts/GT-Walsheim-Bold-Oblique.eot");
+  src: url("/assets/fonts/GT-Walsheim-Bold-Oblique.eot.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/GT-Walsheim-Bold-Oblique.woff") format("woff");
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'GT-Walsheim';
+  src: url("/assets/fonts/GT-Walsheim-Bold.eot");
+  src: url("/assets/fonts/GT-Walsheim-Bold.eot.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/GT-Walsheim-Bold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GT-Walsheim';
+  src: url("/assets/fonts/GT-Walsheim-Medium-Oblique.eot");
+  src: url("/assets/fonts/GT-Walsheim-Medium-Oblique.eot.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/GT-Walsheim-Medium-Oblique.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'GT-Walsheim';
+  src: url("/assets/fonts/GT-Walsheim-Medium.eot");
+  src: url("/assets/fonts/GT-Walsheim-Medium.eot.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/GT-Walsheim-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GT-Walsheim';
+  src: url("/assets/fonts/GT-Walsheim-Regular-Oblique.eot");
+  src: url("/assets/fonts/GT-Walsheim-Regular-Oblique.eot.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/GT-Walsheim-Regular-Oblique.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'GT-Walsheim';
+  src: url("/assets/fonts/GT-Walsheim-Regular.eot");
+  src: url("/assets/fonts/GT-Walsheim-Regular.eot.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/GT-Walsheim-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GT-Walsheim';
+  src: url("/assets/fonts/GT-Walsheim-Light-Oblique.eot");
+  src: url("/assets/fonts/GT-Walsheim-Light-Oblique.eot.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/GT-Walsheim-Light-Oblique.woff") format("woff");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'GT-Walsheim';
+  src: url("/assets/fonts/GT-Walsheim-Light.eot");
+  src: url("/assets/fonts/GT-Walsheim-Light.eot.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/GT-Walsheim-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GT-Walsheim';
+  src: url("/assets/fonts/GT-Walsheim-Thin-Oblique.eot");
+  src: url("/assets/fonts/GT-Walsheim-Thin-Oblique.eot.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/GT-Walsheim-Thin-Oblique.woff") format("woff");
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'GT-Walsheim';
+  src: url("/assets/fonts/GT-Walsheim-Thin.eot");
+  src: url("/assets/fonts/GT-Walsheim-Thin.eot.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/GT-Walsheim-Thin.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GT-Walsheim';
+  src: url("/assets/fonts/GT-Walsheim-Ultra-Light-Oblique.eot");
+  src: url("/assets/fonts/GT-Walsheim-Ultra-Light-Oblique.eot.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/GT-Walsheim-Ultra-Light-Oblique.woff") format("woff");
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'GT-Walsheim';
+  src: url("/assets/fonts/GT-Walsheim-Ultra-Light.eot");
+  src: url("/assets/fonts/GT-Walsheim-Ultra-Light.eot.eot?#iefix") format("embedded-opentype"), url("/assets/fonts/GT-Walsheim-Ultra-Light.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+}
+
+#service-description {
+  //position: absolute;
+  //top: 0px;
+  //right: 0;
+  width: 490px;
+  height: 100%;
+  //padding: 15px;
+}
+
+#service-description h2 {
+  color: #a5a5a5;
+  font-size: 16px;
+  line-height: 1;
+  margin: 0 0 20px 0;
+  font-weight: 400;
+}
+
+#service-description h2 a {
+  color: #a5a5a5;
+}
+
+#service-description h2 a:hover {
+  color: #000;
+}
+
+#service-description p {
+  color: #a5a5a5;
+  font-size: 22px;
+  line-height: 28px;
+  margin: 0;
+  font-weight: 300;
+  letter-spacing: 0;
+}
+
+.inner {
+  width: 1330px;
+  margin: 0 auto;
+}
+
+a,
+a:visited,
+a:focus {
+  color: #000000;
+  outline: none;
+  text-decoration: none;
+  -webkit-transition: color 300ms ease-out;
+  -moz-transition: color 300ms ease-out;
+  -o-transition: color 300ms ease-out;
+  transition: color 300ms ease-out;
+}
+
+a:hover {
+  color: #969696;
+  outline: none;
+  text-decoration: none;
+  -webkit-transition: color 300ms ease-out;
+  -moz-transition: color 300ms ease-out;
+  -o-transition: color 300ms ease-out;
+  transition: color 300ms ease-out;
+}
+
+body {
+  font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+.headline {
+  font-size: 36px;
+  line-height: 42px;
+  margin: 0 0 22px 0;
+  font-weight: 300;
+  margin-bottom: 22px;
+  letter-spacing: 0;
+}
+
+.subhead {
+  /*color: #fff;*/
+  font-size: 14px;
+  line-height: 1;
+  margin: 0 0 20px 0;
+  font-weight: 400;
+}
+
+.tag {
+
+  font-weight: 300;
+  text-decoration: none;
+}
+
+#service-description .link {
+  color: #000;
+  font-size: 16px;
+  line-height: 16px;
+  letter-spacing: 0;
+  position: relative;
+}
+
+#service-description .link:hover {
+  color: #a5a5a5;
+}
+
+#service-description .link:after {
+  content: '';
+  width: 100%;
+  height: 1px;
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  background-color: #000;
+  -webkit-transition: all 300ms ease-out;
+  -moz-transition: all 300ms ease-out;
+  -o-transition: all 300ms ease-out;
+  transition: all 300ms ease-out;
+}
+
+#service-description .link:hover:after {
+  background-color: #a5a5a5;
+}
+
+.push {
+  padding-bottom:2em;
+}
+
 

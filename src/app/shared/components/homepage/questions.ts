@@ -52,7 +52,9 @@ import {Component, Input} from "@angular/core";
       background: #FEEADE;
     }
     h3 {
-      
+      font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      font-weight: 400;
+
     }
     p {
       padding-top: 1em;

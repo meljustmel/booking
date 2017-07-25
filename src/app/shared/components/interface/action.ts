@@ -20,7 +20,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
       margin-bottom: 15px;
       height: 40px;
       line-height: 38px;
-      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif;
+      font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
       font-size: 14px;
       white-space: nowrap;
       text-decoration: none;

@@ -24,7 +24,8 @@ import {Component, Input, OnInit} from "@angular/core";
       padding-top: 2em;
     }
     h1 {
-      font-size: 3.5em;
+      font-family: 'Droid Serif', serif;
+      font-size: 4em;
       margin: 1.5em auto 1em;
       width: 600px;
     }

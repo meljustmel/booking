@@ -38,6 +38,11 @@ import {Component} from "@angular/core";
     footer {
       padding-top: 35px;
       padding-bottom: 65px;
+      font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    }
+    .linkSet .button {
+      font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
     }
     .left {
       float: left;

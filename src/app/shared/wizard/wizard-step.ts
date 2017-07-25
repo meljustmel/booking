@@ -1,7 +1,16 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter, HostBinding} from '@angular/core'
+import {routeFadeStateTrigger} from "../../app.animations";
 
 @Component({
   selector: 'wizard-step',
+  styles: [`
+    :host {
+      display: block;
+    }
+  `],
+  animations: [
+    routeFadeStateTrigger
+  ],
   template:
       `
     <div [hidden]="!isActive">
@@ -10,6 +19,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   `
 })
 export class WizardStepComponent implements OnInit {
+  @HostBinding('@routeFadeState') routeAnimation = true;
   @Input() title: string;
   @Input() hidden = false;
   @Input() isValid = true;

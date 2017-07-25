@@ -14,28 +14,63 @@ const EMAIL_PATTERN = /.+@.+/;
 @Component({
   selector: 'contact',
   template: `
-    <hero [background]="'assets/hero.png'">
-    </hero>
+    <hero [type]="'top'" [background]="'assets/pink.png'"></hero>
+    <section class="quote">
+      <h3 class="text-center italic mb-half">"Udacity has empowered me to be a better software engineer. They have given me opportunities that I would not have if I had to rely on the traditional education system."</h3>
+      <h6 class="mb-1 slate inline">— Jonathan, Graduate</h6>
+    </section>
     <loadingspinner *ngIf="loading"></loadingspinner>
     <contact-form [parent]="contactForm" (form)="sendMessage($event)"></contact-form>
-    <!--<div *ngIf=“isLoaded; then movieList else spinner”></div>-->
-
-    <!--<ng-template #movieList>-->
-
-      <!--<movies-list [movies]=“movies”></movies-list>-->
-
-    <!--</ng-template>-->
-    <!---->
-    <!--<ng-template #spinner>-->
-
-      <!--<spinner></spinner>-->
-
-    <!--</ng-template>-->
+    <segment [title]="'hello@thelovelyou.com'"
+             [type]="'contact'"
+             [subtitle]="'Check availability. Helps to plan in advance as space is limited.'"></segment>
   `,
   styles: [`
     :host {
       display: block;
     }
+    .slate {
+      text-align: center;
+      opacity: .7;
+    }
+    .quote h3.italic {
+      font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      font-weight: 300;
+    }
+    @media (min-width: 44em) {
+      .arrow-slider-block blockquote {
+        padding: 0 8.125em;
+      }
+      .arrow-slider-block blockquote {
+        margin: 0;
+        text-align: center;
+      }
+    }
+
+    @media screen and (min-width: 48rem) {
+      section {
+        padding: 4em 0 2em;
+        width: 70%;
+        margin: 0 auto;
+      }
+
+      h3 {
+        font-size: 1.5em;
+        line-height: 1.5em;
+        font-weight: 100;
+      }
+      
+      .text-center {
+        text-align: center !important;
+      }
+      .italic, em {
+        font-style: italic !important;
+      }
+      .mb-half {
+        margin-bottom: 0.75rem !important;
+      }
+    }
+    
   `],
   animations: [
     routeFadeStateTrigger
@@ -46,7 +81,7 @@ export class ContactComponent implements OnInit {
   messages: FirebaseListObservable<Message[]>;
 
   contactForm: FormGroup;
-  loading: boolean = false;
+  loading = false;
 
   constructor(private db: AngularFireDatabase,
               private fb: FormBuilder,

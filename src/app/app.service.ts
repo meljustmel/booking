@@ -81,7 +81,7 @@ export class AuthGuard implements CanActivate {
         this._router.navigate(['/']);
         return false;
       }
-      if (roles.indexOf(this.profile.role) == -1) {
+      if (roles.indexOf(this.profile.role) === -1) {
         this._router.navigate(['/']);
         return false;
       }

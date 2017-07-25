@@ -47,7 +47,11 @@ import {Observable} from 'rxjs/Observable';
       </nav>
     </div>
   `,
-  styles: [``]
+  styles: [`
+    nav ul li a {
+      font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    }
+  `]
 })
 export class SecondaryComponent implements OnInit {
 

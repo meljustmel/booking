@@ -53,7 +53,7 @@ export class AuthService {
               });
           }
         });
-        // console.log('hala user', user);
+        // console.log('hello user', user);
         this.store.dispatch(this.authActions.loginSuccess(user));
       } else {
         this.store.dispatch(this.authActions.logOutUser());

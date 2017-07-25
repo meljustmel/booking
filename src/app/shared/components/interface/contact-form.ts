@@ -8,27 +8,36 @@ import { Router } from '@angular/router'
 @Component({
   selector: 'contact-form',
   template: `
-    <div class="u-marginAuto u-marginTop60 u-xs-marginTop30 u-marginBottom60">
+    <div class="theme u-marginAuto u-marginTop60 u-xs-marginTop30 u-marginBottom60 bg-gradient-blend">
       <section class="u-maxWidth1000 u-marginAuto u-relative u-borderBox u-boxShadowThick">
-        <div class="u-backgroundGrey u-sm-minHeight150 u-flex u-xs-flexWrap" style="min-height: 470px; background-image: url(assets/hands.jpg);
-    background-size: cover;">
+        <div class="u-sm-minHeight150 u-flex u-xs-flexWrap contact-photo">
           <div class="u-flex1 u-sizeHalfWidth u-borderBox u-padding40 u-xs-padding20 u-xs-marginBottom20 u-xs-sizeFullWidth">
-            <h3 class="u-contentSerifBold u-lineHeightTight u-textColorWhite u-borderTopGreen u-borderBottomGreen u-paddingTop20 u-paddingBottom20 u-marginBottom30 u-xs-fontSize24 u-fontSize40">
-              <span class="data">Have any questions, not answered here?</span>
-            </h3>
-            <p class="u-margin0 u-contentSansBold u-paddingTop20 u-letterSpacingNormal u-textColorTransparentWhiteDarker">Address</p>
-            <p class="u-margin0 u-contentSansRegular u-letterSpacingNormal u-textColorTransparentWhiteDarker">1647 Macombs road & 174th street</p>
-            <p class="u-margin0 u-contentSansRegular u-letterSpacingNormal u-textColorTransparentWhiteDarker">Bronx, New York</p>
-            <p class="u-margin0 u-contentSansBold u-paddingTop20 u-letterSpacingNormal u-textColorTransparentWhiteDarker">Enquires</p>
-            <p class="u-margin0 u-contentSansRegular u-letterSpacingNormal u-textColorTransparentWhiteDarker">hello@thelovelyou.com</p>
-            <p class="u-margin0 u-contentSansBold u-paddingTop20 u-letterSpacingNormal u-textColorTransparentWhiteDarker">Phone</p>
-            <p class="u-margin0 u-contentSansRegular u-letterSpacingNormal u-textColorTransparentWhiteDarker">+1 (646) 535-1334</p>
+            <div class="inner">
+              <div id="service-description">
+                <h2><a class="tag" href="#">@thelovelyou</a></h2>
+                <p class="push">Latest work on Instagram</p>
+                <h2>Address</h2>
+                <!--<h3 class="subhead">Camus Restaurant</h3>-->
+                <h1 class="headline">1647 McCombs Road <br>& 174th Street.<br> Bronx, New York</h1>
+                <a class="link" href="#">Google Map</a>
+              </div>
+            </div>
+            <!--<h3 class="u-contentSerifBold u-lineHeightTight u-textColorWhite u-borderTopGreen u-borderBottomGreen u-paddingTop20 u-paddingBottom20 u-marginBottom30 u-xs-fontSize24 u-fontSize40">-->
+              <!--<span class="data">Have any questions, not answered here?</span>-->
+            <!--</h3>-->
+            <!--<p class="u-margin0 u-contentSansBold u-paddingTop20 u-letterSpacingNormal u-textColorTransparentWhiteDarker">Address</p>-->
+            <!--<p class="u-margin0 u-contentSansRegular u-letterSpacingNormal u-textColorTransparentWhiteDarker">1647 Macombs road & 174th street</p>-->
+            <!--<p class="u-margin0 u-contentSansRegular u-letterSpacingNormal u-textColorTransparentWhiteDarker">Bronx, New York</p>-->
+            <!--<p class="u-margin0 u-contentSansBold u-paddingTop20 u-letterSpacingNormal u-textColorTransparentWhiteDarker">Enquires</p>-->
+            <!--<p class="u-margin0 u-contentSansRegular u-letterSpacingNormal u-textColorTransparentWhiteDarker">hello@thelovelyou.com</p>-->
+            <!--<p class="u-margin0 u-contentSansBold u-paddingTop20 u-letterSpacingNormal u-textColorTransparentWhiteDarker">Phone</p>-->
+            <!--<p class="u-margin0 u-contentSansRegular u-letterSpacingNormal u-textColorTransparentWhiteDarker">+1 (646) 535-1334</p>-->
 
           </div>
           <div class="u-relative u-flex1 u-sizeHalfWidth u-minHeight250 u-xs-minHeight100 u-xs-sizeFullWidth">
-            <div class="u-flexColumn u-sizeFullHeight u-backgroundWhite u-borderBox u-paddingLeft30 u-paddingRight30 u-paddingTop40 u-paddingBottom40 u-xs-padding20">
+            <div class="u-flexColumn u-sizeFullHeight u-backgroundWhite u-borderBox u-paddingLeft30 u-paddingRight30 u-paddingTop20 u-paddingBottom40 u-xs-padding20">
               <div class="u-flex1">
-                <p class="u-fontSize18 u-contentSansRegular u-marginBottom40 u-xs-marginBottom20">Let me know how we can help.</p>
+                <p class="u-fontSize18 u-marginBottom40 u-xs-marginBottom20">Let me know how we can help.</p>
                 <div class="creditCardForm creditCardForm--saved"></div>
                 <form [formGroup]="parent"  class="u-sizeFullWidth creditCardForm creditCardForm--input">
                   <fieldset class="u-marginBottom15">

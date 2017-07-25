@@ -1,12 +1,13 @@
 import {Component, HostBinding, OnInit} from "@angular/core";
 import {SlimLoadingBarService} from "ng2-slim-loading-bar";
 import {routeFadeStateTrigger} from "../app.animations";
+import {Router} from "@angular/router";
 
 
 @Component({
   selector: 'about',
   template: `
-    <hero [background]="'assets/hands.jpg'">
+    <hero [background]="'assets/lite.jpg'">
     </hero>
     <div class="spacer" style="padding-top: 3em"></div>
     <div class="segment">
@@ -40,6 +41,13 @@ import {routeFadeStateTrigger} from "../app.animations";
     :host {
       display: block;
     }
+    .content__headline, .content__subline {
+      font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      font-weight: 400;
+    }
+    .content__subline {
+      font-size: 22px;
+    }
   `],
   animations: [
     routeFadeStateTrigger
@@ -47,11 +55,14 @@ import {routeFadeStateTrigger} from "../app.animations";
 })
 export class AboutComponent implements OnInit {
   @HostBinding('@routeFadeState') routeAnimation = false;
-  constructor(private slimLoadingBarService: SlimLoadingBarService) {
+  constructor(private router: Router, private slimLoadingBarService: SlimLoadingBarService) {
   }
 
   ngOnInit() {
     this.slimLoadingBarService.start();
     this.slimLoadingBarService.complete();
+  }
+  onAction() {
+    this.router.navigate(['booking']);
   }
 }

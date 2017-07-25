@@ -4,4 +4,6 @@ export interface Service {
   description: string;
   type: string;
   img: string;
+  question: string;
+  answer: string;
 }

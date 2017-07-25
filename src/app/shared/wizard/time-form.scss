@@ -1,3 +1,7 @@
+:host {
+  display: block;
+}
+
 .section {
   overflow: hidden;
   margin-bottom: 100px;
@@ -626,12 +630,17 @@ p {
 svg:not(:root) {
   overflow: hidden;
 }
-.ActionBlock__icon___1FkrF {
+.ActionBlock__icon {
   fill: #00237e;
   width: 6rem;
   height: 6rem;
   margin-bottom: .25rem;
 }
+
+.ActionBlock__icon.disabled {
+  fill: #DDD;
+}
+
 iframe, img, svg, video {
   max-width: 100%;
   vertical-align: middle;

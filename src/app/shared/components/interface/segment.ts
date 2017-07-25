@@ -3,7 +3,10 @@ import {Component, Input, OnInit} from "@angular/core";
 @Component({
   selector: 'segment',
   template: `
-    <div [ngClass]="{intro:  type === 'intro', alternate:  type === 'alternate', action:  type === 'action', lovely: type === 'lovely', flat: type === 'flat'}" class="segment">
+    <div [ngClass]="{intro:  type === 'intro',
+     alternate:  type === 'alternate', action:  type === 'action',
+      lovely: type === 'lovely', flat: type === 'flat',
+      contact: type === 'contact'}" class="segment">
       <div [ngClass]="{flat:  type === 'flat'}" class="container">
         <div class="discover">
           <div class="discover__intro">
@@ -22,6 +25,12 @@ import {Component, Input, OnInit} from "@angular/core";
   styles: [`
     .segment {
       padding: 6em 0 3em;
+
+    }
+    .content__headline {
+      font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      font-weight: 400;
+
     }
     .alternate {
       background: #FAFAFB;
@@ -30,8 +39,8 @@ import {Component, Input, OnInit} from "@angular/core";
       background: #FEEADE;
     }
     .action {
-      background: #384368;
-      color: #FFFFFF;
+      background-image: linear-gradient(to bottom right, #F7F7F7, #EAFBFF);
+      color: #353E4E;
       padding: 3em 0;
     }
     .flat {
@@ -89,6 +98,33 @@ import {Component, Input, OnInit} from "@angular/core";
       opacity: 0.8;
       
     }
+    .contact {
+      font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      color: #E0DFDF;
+      padding: 4em 0 6em;
+     
+      
+    }
+    
+
+    .contact h1 {
+      font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      letter-spacing: 0px;
+      font-weight: 400;
+
+    }
+
+    @media (max-width: 480px) {
+      .contact .content__headline {
+        font-size: 30px;
+        letter-spacing: -.035em;
+      }
+    }
+    
+    
+    
+    
+   
 
   `]
 })

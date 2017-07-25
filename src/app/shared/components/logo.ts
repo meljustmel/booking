@@ -156,6 +156,11 @@ import {Component, OnInit} from "@angular/core";
       .siteNav-logo {
         padding-top: 0;
       }
+    @media (max-width: 480px) {
+      .svgIcon-use {
+        padding: .3em;
+      }
+    }
 
 
   `]

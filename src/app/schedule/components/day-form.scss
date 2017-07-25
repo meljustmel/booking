@@ -474,9 +474,12 @@ button.disabled {
 
 
 }
-.ActionBlock__icon___1FkrF {
+.ActionBlock__icon {
   fill: #00237e;
   width: 6rem;
   height: 6rem;
   margin-bottom: .25rem;
+}
+.ActionBlock__icon.disabled {
+  fill: #DDD;
 }

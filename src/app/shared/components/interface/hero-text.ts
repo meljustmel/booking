@@ -6,7 +6,7 @@ import {Component, Input, OnInit} from "@angular/core";
     <div class="jumbotron--text">
       <div class="jumbotron--inner">
         <h1 class="">{{heading}}</h1>
-        <h2 class="">{{subheading}}</h2>
+        <!--<h2 class="">{{subheading}}</h2>-->
       </div>
     </div>
   `,
@@ -27,7 +27,7 @@ import {Component, Input, OnInit} from "@angular/core";
       font-family: 'Droid Serif', serif;
       font-size: 4em;
       margin: 1.5em auto 1em;
-      width: 600px;
+      width: 750px;
     }
     h2 {
       font-size: 1.3em;

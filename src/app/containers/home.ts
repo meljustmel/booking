@@ -5,8 +5,6 @@ import {routeFadeStateTrigger} from "../app.animations";
 import {ServiceModalComponent, ModalService} from ".././shared/modal/index";
 import {SharedModule} from "../shared/shared.module";
 import {Service} from "../core/model/index";
-
-
 @Component({
   selector: 'home',
   template: `
@@ -16,7 +14,7 @@ import {Service} from "../core/model/index";
         [subheading]="'Your gaze is the soul shining back into the world..'">
       </hero-text>
     </hero>
-    <segment [title]="'The eyes are windows to the soul, Your gaze is the soul shining back into the world.'"
+    <segment [title]="'The eyes are windows to the soul, your gaze is the soul shining back into the world.'"
              [subtitle]="'Put forth your best self.'"
              [type]="'intro'">
     </segment>

@@ -21,10 +21,10 @@ import {Component} from "@angular/core";
         <div class="right linkSet u-clearfix">
           
           
-          <a class="button button--chromeless u-baseColor--buttonNormal u-marginLeft15 u-lineHeight35 u-xs-block u-xs-marginLeft0"
+          <a target="_blank" href="https://www.instagram.com/thelovelyyou/" class="button button--chromeless u-baseColor--buttonNormal u-marginLeft15 u-lineHeight35 u-xs-block u-xs-marginLeft0"
           >Instagram</a>
           <span class="middotDivider u-xs-hide"></span>
-          <a class="button button--chromeless u-baseColor--buttonNormal u-marginLeft15 u-lineHeight35 u-xs-block u-xs-marginLeft0"
+          <a target="_blank" href="https://www.facebook.com/yulisa.guzman.96558" class="button button--chromeless u-baseColor--buttonNormal u-marginLeft15 u-lineHeight35 u-xs-block u-xs-marginLeft0"
           >Facebook</a>
         </div>
         <div class="middle">

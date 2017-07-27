@@ -10,7 +10,11 @@ import {Component, Input, OnInit} from "@angular/core";
 
     <!--<pre>{{items | json }}</pre>-->
   `,
-  styles: []
+  styles: [`
+    body {
+      font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    }
+  `]
 })
 export class ItemListComponent implements OnInit {
   @Input() items;

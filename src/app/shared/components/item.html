@@ -1,8 +1,8 @@
 <div class="streamItem-card streamItem-card--postPreview u-paddingRight20 u-paddingLeft20 u-borderRadius3">
   <div class="streamItem-cardInner streamItem-cardInner--postPreview">
-    <div class="postArticle postArticle--short">
+    <div class="theme postArticle postArticle--short">
       <div class="u-clearfix u-marginBottom10">
-        <div class="postMetaInline u-floatLeft">
+        <div class=" u-floatLeft">
           <div class="u-flexCenter">
             <div class="postMetaInline-avatar u-flex0" *ngIf="showUserInfo">
               <a class="link avatar u-baseColor--link" href="javascript:;">
@@ -11,13 +11,13 @@
                      [src]="reservation?.client.avatar">
               </a>
             </div>
-            <div class="postMetaInline-authorLockup u-flex1 u-noWrapWithEllipsis">
+            <div class="theme u-flex1 u-noWrapWithEllipsis">
               <a
                 class="link link link--darken link--accent u-accentColor--textNormal u-accentColor--textDarken u-baseColor--link" *ngIf="showUserInfo">{{
                 reservation?.client.name }}
               </a>
               <div class="u-fontSize12 u-baseColor--textNormal u-textColorNormal">
-                <a class="link link--darken" href="#">
+                <a class="link link--darken theme" href="#">
                   <span>{{ reservation?.start | date: 'EEEE d' }} @ {{ reservation?.time | time}}</span>
                 </a>
                 <span class="middotDivider u-fontSize12"></span>

@@ -6,6 +6,9 @@ import { ReservationStatus, getReservationStatusName } from '../../core/model/in
   selector: 'item',
   templateUrl: 'item.html',
   styles: [`
+    .link .link--darken .theme {
+      font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    }
     .link--accent {
       color: #5FE6BE;
     }

@@ -22,8 +22,8 @@
           <div class="buttonSet buttonSet--profile u-noWrap">
             <!--<a class="button button&#45;&#45;chromeless u-baseColor&#45;&#45;buttonNormal" href="#" title="title">-->
               <!--<span class="u-fontWeightBold">1</span> Active</a>-->
-            <a class="button button--chromeless u-baseColor--buttonNormal">
-              <b>{{ (reservations$ | async )?.length}}</b> Reservations</a>
+            <a class="button button--chromeless u-baseColor--buttonNormal" style="color: #78E0B1">
+              {{ (reservations$ | async )?.length}} Reservations</a>
           </div>
           <div class="dropdown--button buttonSet buttonSet--profile u-inlineBlock">
             <span class="followState buttonSet-inner">

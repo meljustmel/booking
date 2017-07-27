@@ -19,9 +19,9 @@ import {ChangeDetectionStrategy, Component, ElementRef, HostListener, Input, Vie
             </button>
             <div class="u-flex1 u-sizeHalfWidth u-borderBox u-padding40 u-xs-padding20 u-xs-marginBottom20 u-xs-sizeFullWidth">
               <h3 class="u-contentSerifBold u-lineHeightTight  u-paddingTop20 u-paddingBottom20 u-marginBottom30 u-xs-fontSize24 u-fontSize40">
-                <span class="data" style="color: #353E4E">{{service.title}}</span>
+                <span class="data" style="color: #353E4E; font-size: 50px">{{service.title}}</span>
               </h3>
-              <p style="padding-bottom: 1em" class="u-margin0 u-letterSpacingNormal">Does this look correct?</p>
+              <!--<p style="padding-bottom: 1em" class="u-margin0 u-letterSpacingNormal">Does this look correct?</p>-->
               <img [src]="service.img" style="width: 120px; height: 120px; opacity: .5; position: absolute; bottom: 2em">
             </div>
             <div class="u-relative u-flex1 u-sizeHalfWidth u-minHeight250 u-xs-minHeight100 u-xs-sizeFullWidth js-paymentForm">

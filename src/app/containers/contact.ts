@@ -16,12 +16,13 @@ const EMAIL_PATTERN = /.+@.+/;
   template: `
     <hero [type]="'top'" [background]="'assets/pink.png'"></hero>
     <section class="quote">
-      <h3 class="text-center italic mb-half">"Udacity has empowered me to be a better software engineer. They have given me opportunities that I would not have if I had to rely on the traditional education system."</h3>
-      <h6 class="mb-1 slate inline">— Jonathan, Graduate</h6>
+      <h3 class="text-center italic mb-half">"I've learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel.
+        "</h3>
+      <h6 class="mb-1 slate inline">— Maya Angelou</h6>
     </section>
     <loadingspinner *ngIf="loading"></loadingspinner>
     <contact-form [parent]="contactForm" (form)="sendMessage($event)"></contact-form>
-    <segment [title]="'hello@thelovelyou.com'"
+    <segment [title]="'thelovelyyouny@gmail.com'"
              [type]="'contact'"
              [subtitle]="'Check availability. Helps to plan in advance as space is limited.'"></segment>
   `,

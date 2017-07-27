@@ -190,6 +190,8 @@ export class ReservationService {
         'Authorization': 'Bearer ' + this.token
       }
     };
+    console.log("User Token: ", this.token);
+    console.log("Stripe token: ", cardToken);
 
     return this.http.post(`${firebaseConfig.cloudFunctionsURL}/bookservice`, { reservation: compiledReservation, token: cardToken, amount: amount }, option);
   }

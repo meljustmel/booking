@@ -171,7 +171,7 @@ export class ReservationService {
     });
   }
 
-  bookUserReservation(reservation: any, token: string, amount: number): Observable<any> {
+  bookUserReservation(reservation: any, cardToken: string, amount: number): Observable<any> {
     const userId = this.user$.uid;
     // const newReservationKey = this.sdkDb.child('reservations').push().key;
     const compiledReservation = {
@@ -191,7 +191,7 @@ export class ReservationService {
       }
     };
 
-    return this.http.post(`${firebaseConfig.cloudFunctionsURL}/bookservice`, { reservation: compiledReservation, token: token, amount: amount }, option);
+    return this.http.post(`${firebaseConfig.cloudFunctionsURL}/bookservice`, { reservation: compiledReservation, token: cardToken, amount: amount }, option);
   }
   firebaseUpdate(dataToSave) {
     this.slimLoadingBarService.start();

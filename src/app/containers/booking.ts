@@ -53,7 +53,7 @@ type CalendarPeriod = 'day' | 'week' | 'month';
   template: `
     <hero [background]="'assets/lite.jpg'"></hero>
     <!--<banner></banner>-->
-    
+
     <div class="u-foreground homeContainer-content u-marginAuto u-clearfix u-sizeViewHeightMin100">
       <div class="container">
         <section>
@@ -251,7 +251,7 @@ export class BookingComponent implements OnInit {
               // this.isCompleted = true;
               console.log(`error creating reservation ${err}`);
               _this.loading = false;
-              swal('Oops...', err.message, 'error');
+              swal('Oops...', err.message || err._body, 'error');
               _this.slimLoadingBarService.complete();
             }
           );

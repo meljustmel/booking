@@ -1,7 +1,7 @@
-import { User } from '../../core/model';
+import { User } from '../../core/model/index';
 import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
-import { FirebaseListObservable } from 'angularfire2';
+import { FirebaseListObservable } from 'angularfire2/database';
 
 @Injectable()
 export class UserActions {
@@ -47,7 +47,7 @@ export class UserActions {
     };
   }
 
-  getUsersSuccess(users: FirebaseListObservable<User>): Action {
+  getUsersSuccess(users): Action {
     return {
       type: UserActions.GET_USERS_SUCCESS,
       payload: users

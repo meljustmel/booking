@@ -1,31 +1,27 @@
 import {Component, HostBinding, OnInit} from "@angular/core";
 import {SlimLoadingBarService} from "ng2-slim-loading-bar";
 import {routeFadeStateTrigger} from "../app.animations";
+import {Router} from "@angular/router";
 
 
 @Component({
   selector: 'about',
   template: `
-    <!--<hero [background]="'assets/hero.png'">-->
-    <!--</hero>-->
-    <div class="spacer" style="padding-top: 6em"></div>
+    <hero [background]="'assets/lite.jpg'">
+    </hero>
+    <div class="spacer" style="padding-top: 3em"></div>
     <div class="segment">
       <div class="container">
         <div class="network">
           <div class="network__intro">
             <div class="content content--center">
-              <h1 class="content__headline">A network of thought</h1>
-              <h2 class="content__subline">Content that matters</h2>
+              <h1 class="content__headline">I want to help you be <i>lovely</i></h1>
+              <h2 class="content__subline">A Little About Me</h2>
             </div>
           </div>
           <div class="network__text">
-            <p class="network__p">“Medium is a vibrant network of thinkers who care about the world and making
-              it better —  through their craft, their stories, and their ideas. More than a network of
-              thinkers, though, Medium is a network of thought. Connecting people together increases their
-              knowledge and capabilities. Connecting ideas together increases their value, as well.</p>
-            <p class="network__p">Medium is not for everybody, but it’s open to everybody. It encourages
-              participation and a diversity of opinion. Anyone can earn influence on Medium via the value of
-              their ideas, thoughtfulness of their responses, or quality of their rhetoric.”</p>
+            <p class="network__p">“Hi! I'm Yulisa, Among other things I'm a brow artist and I love it! I love to help people bring out the best in them, specially helping them beging their journey to beautiful brows!".</p>
+            
           </div>
           <div class="network__profile">
             <img alt="" class="network__avatar" src="/assets/founder.png"> 
@@ -37,13 +33,20 @@ import {routeFadeStateTrigger} from "../app.animations";
     </div>
     <segment [type]="'action'"
              [title]="'Save your spot now!'"
-             [subtitle]="'Great stories deserve a great audience'">
+             [subtitle]="'Check availability. Helps to plan in advance as space is limited.'">
       <action [type]="'lovely'" [label]="'Book Now'" (action)='onAction()'></action>
     </segment>
   `,
   styles: [`
     :host {
       display: block;
+    }
+    .content__headline, .content__subline {
+      font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+      font-weight: 400;
+    }
+    .content__subline {
+      font-size: 22px;
     }
   `],
   animations: [
@@ -52,11 +55,14 @@ import {routeFadeStateTrigger} from "../app.animations";
 })
 export class AboutComponent implements OnInit {
   @HostBinding('@routeFadeState') routeAnimation = false;
-  constructor(private slimLoadingBarService: SlimLoadingBarService) {
+  constructor(private router: Router, private slimLoadingBarService: SlimLoadingBarService) {
   }
 
   ngOnInit() {
     this.slimLoadingBarService.start();
     this.slimLoadingBarService.complete();
+  }
+  onAction() {
+    this.router.navigate(['booking']);
   }
 }

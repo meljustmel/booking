@@ -29,8 +29,10 @@ import {ReservationsActions} from "../store/actions/res";
 import {ReservationService} from "../core/service/res";
 import {SlimLoadingBarService} from "ng2-slim-loading-bar";
 import {routeFadeStateTrigger} from "../app.animations";
-
-
+import swal from 'sweetalert2';
+import { Router } from '@angular/router'
+// declare swal: any;
+// declare var swal:any;
 class CustomDateFormatter extends CalendarDateFormatter {
 
   public monthViewColumnHeader({date, locale}: DateFormatterParams): string {
@@ -49,22 +51,18 @@ type CalendarPeriod = 'day' | 'week' | 'month';
 @Component({
   selector: 'booking',
   template: `
-    <!--<hero [background]="'assets/hero.png'"></hero>-->
+    <hero [background]="'assets/lite.jpg'"></hero>
     <!--<banner></banner>-->
-    <div class="spacer" style="padding-top: 3em"></div>
+
     <div class="u-foreground homeContainer-content u-marginAuto u-clearfix u-sizeViewHeightMin100">
       <div class="container">
-        <section class="">
-          <div class="root" [style.paddingTop.em]="6">
-            <h4 class="label">{{step?.stepTitle}}</h4>
-            <h3 class="">{{step?.stepTagline}}</h3>
-            <h1 class="title">{{step?.stepHeading}}</h1>
-          </div>
+        <section>
+          <loadingspinner *ngIf="loading"></loadingspinner>
           <div class="wizard">
             <form-wizard [formGroup]="reservationForm" (onStepChanged)="onStepChanged($event)">
               <wizard-step
                 [isValid]="!reservationForm.controls['service'].untouched"
-                [title]=" data?.service ||'Pick your Service'"
+                [title]=" data?.service?.type ||'Pick Service'"
                 [stepTitle]="'Step One'"
                 [stepTagline]="'Select the method you prefer'"
                 [stepHeading]="'All Three are Organic'"
@@ -73,40 +71,40 @@ type CalendarPeriod = 'day' | 'week' | 'month';
               </wizard-step>
               <wizard-step
                 [isValid]="!reservationForm.controls['reservationDate'].untouched"
-                [title]=" (data?.reservationDate | date)  ||'Pick your Day'"
+                [title]=" (data?.reservationDate | date :'EEEE')  ||'Pick Date'"
                 [stepTitle]="'Step Two'"
                 [stepTagline]="'What day would you like'"
                 [stepHeading]="'Everyday but Sunday'"
-                [showNext]="step2.showNext" 
-                [showPrev]="step2.showPrev" 
+                [showNext]="step2.showNext"
+                [showPrev]="step2.showPrev"
                 (onNext)="onStep2Next($event)">
 
-                <calendar-form [parent]="reservationForm"
+                <day-form formControlName="reservationDate" [parent]="reservationForm"
                                [dayModifier]="dayModifier"
                                [viewDate]="viewDate"
                                (dayClicked)="dayClicked($event.day)">
-                </calendar-form>
+                </day-form>
               </wizard-step>
               <wizard-step
                 [isValid]="!reservationForm.controls['reservationTime'].untouched"
-                [title]=" (data?.reservationTime | time) || 'Pick your Time'"
+                [title]=" (data?.reservationTime | time) || 'Pick Time'"
                 [stepTitle]="'Step Three'"
                 [stepTagline]="'What time would you like'"
                 [stepHeading]="'Sessions are an hour long'"
                 (onNext)="onStep3Next($event)">
-                <time-form formControlName="reservationTime" [times]='times | async'></time-form>
+                <time-form formControlName="reservationTime" [times]='times | async' [bookedTimes]='bookedTimes'></time-form>
               </wizard-step>
-              <wizard-step title='Confirm'
-                           [stepTitle]="'Step Four'"
-                           [stepTagline]="'Review your answers'"
-                           [stepHeading]="'You are seconds away!'"
-                           (onComplete)="onComplete($event)">
+              <wizard-step
+                [isValid]="this.data && this.data.creditDetail && this.data.creditDetail.valid"
+                [title]="'Payment'"
+                [stepTitle]="'Step Four'"
+                [stepTagline]="'Review your answers and Pay with Credit Card'"
+                [stepHeading]="'Payment Is Secure'">
                 <div [ngSwitch]="isCompleted">
                   <div *ngSwitchDefault>
-                    <confirm-form [user]="user | async" [data]='data'></confirm-form>
+                    <credit-form formControlName="creditDetail" [user]="user | async" [data]='data' (onComplete)="onComplete($event)"></credit-form>
                   </div>
                   <div *ngSwitchCase="true">
-                    <!--<h4>Thank you {{data.email}}! You have completed all the steps.</h4>-->
                     <success-form [user]="user | async" [data]='data'></success-form>
                   </div>
                 </div>
@@ -115,8 +113,6 @@ type CalendarPeriod = 'day' | 'week' | 'month';
           </div>
         </section>
       </div>
-      <!--<pre>{{ filtered | json }}</pre>-->
-      <!--<pre>Value: {{ reservationForm.value | json }}</pre>-->
     </div>
   `,
   styles: [`
@@ -147,10 +143,8 @@ export class BookingComponent implements OnInit {
     stepTagline : 'Select the method you prefer',
     stepHeading : 'All Three are Organic',
   };
-
   reservations$;
   reservationForm: FormGroup;
-
   activeDayIsOpen = false;
 
   reservationDay;
@@ -160,10 +154,11 @@ export class BookingComponent implements OnInit {
     showPrev: true
   };
 
-
+  loading = false;
   times;
+  bookedTimes = [];
   user;
-  data = {};
+  data: any = {};
 
   minDate: Date = subDays(new Date(), 1);
 
@@ -181,13 +176,16 @@ export class BookingComponent implements OnInit {
 
   constructor(private reservationsActions: ReservationsActions,
               private fb: FormBuilder,
+              private _router: Router,
               private reservationService: ReservationService,
               private slimLoadingBarService: SlimLoadingBarService,
               private store: Store<RootStore.AppState>) {
-    this.dayModifier = function (day: CalendarMonthViewDay): void {
-      if (!this.dateIsValid(day.date) || isSunday(day.date)) {
-        day.cssClass = 'cal-disabled';
+    this.dayModifier = function (day: Date): string {
+      if (!this.dateIsValid(day) || isSunday(day)) {
+        // day.cssClass = 'cal-disabled';
+        return 'disabled';
       }
+      return '';
     }.bind(this);
     this.dateOrViewChanged();
   }
@@ -198,25 +196,71 @@ export class BookingComponent implements OnInit {
   }
 
   onStep1Next(event) {
-    console.log('Step1 - Next');
+    console.log(this.data, 'Step1 - Next');
     // this.stepNumber = 'Step Two';
+    // console.log("HALA ISIVISIBLE", swal.isVisible());
+    // swal.showLoading();
+    // if(swal.isVisible()) { // instant regret
+    //  swal.close();
+    // }
+    // sweetAlert.swal.showLoading();
   }
 
   onStep2Next(event) {
     console.log('Step2 - Next');
     // this.stepNumber = 'Step Three';
+    // This is after selecting day
+    this.reservationService.getReservationsForDay(this.data.reservationDate).subscribe(reservations => {
+      this.bookedTimes = reservations.map(reservation => {
+        return reservation.reservationTime;
+      });
+    });
   }
 
   onStep3Next(event) {
     console.log('Step3 - Next');
     // this.stepNumber = 'Step Four';
   }
-
+  onStep4Next(event) {
+    console.log('Step4 - Next');
+    // this.stepNumber = 'Step Four';
+  }
   onComplete(event) {
     this.slimLoadingBarService.start();
-    this.isCompleted = true;
-    this.save(this.reservationForm);
-    this.slimLoadingBarService.complete();
+    const _this = this;
+    this.loading = true;
+    (<any>window).Stripe.card.createToken({
+      number: this.reservationForm.value['creditDetail'].cardNumber,
+      exp: this.reservationForm.value['creditDetail'].expireDate,
+      cvc: this.reservationForm.value['creditDetail'].cvc
+    }, (status: number, response: any) => {
+      if (status === 200) {
+        _this.reservationService.bookUserReservation(_this.reservationForm.value, response.id, _this.data.service.price)
+          .subscribe(
+            () => {
+              _this.loading = false;
+              _this.isCompleted = true;
+              _this.slimLoadingBarService.complete();
+              swal('Awesome', 'You Have Successfully booked an appointment', 'success');
+              _this.reservationForm.reset();
+              _this._router.navigate(['/']);
+            },
+            err => {
+              // this.isCompleted = true;
+              console.log(`error creating reservation ${err}`);
+              _this.loading = false;
+              swal('Oops...', err.message || err._body, 'error');
+              _this.slimLoadingBarService.complete();
+            }
+          );
+        // this.save(this.reservationForm);
+      } else {
+        console.log("ERROR", response.error);
+        _this.loading = false;
+        swal('Oops...', response.error.message, 'error');
+        _this.slimLoadingBarService.complete();
+      }
+    });
   }
 
   onStepChanged(step) {
@@ -246,14 +290,15 @@ export class BookingComponent implements OnInit {
       service: ['', Validators.required],
       reservationDate: ['', Validators.required],
       reservationTime: ['', Validators.required],
+      creditDetail: ['', Validators.required],
       createdDate: [new Date()]
     });
     this.reservationForm.valueChanges.subscribe(data => {
-      console.log('Form changes', data);
       this.data = {
         service: data.service,
         reservationDate: data.reservationDate,
         reservationTime: data.reservationTime,
+        creditDetail: data.creditDetail,
         name: this.user.displayName,
         email: this.user.email,
       };
@@ -265,33 +310,18 @@ export class BookingComponent implements OnInit {
     return this.reservationService.loadReservationsOnDay(day);
   }
 
-
-  save(form) {
-    // console.log(form.value)
-
-    this.reservationService.bookUserReservation(form.value)
-      .subscribe(
-        () => {
-          form.reset();
-          // this._router.navigate(['admin/calendar']);
-        },
-        err => console.log(`error creating reservation ${err}`)
-      );
-
-  }
-
-
-  dayClicked(day: CalendarMonthViewDay): void {
-    if (this.selectedDay) {
-      delete this.selectedDay.cssClass;
-    }
-    this.setDay();
-    day.cssClass = 'cal-day-selected';
-    this.selectedDay = day;
-    this.reservationDay = this.selectedDay.date;
+  dayClicked(day: Date): void {
+    // if (this.selectedDay) {
+    //  delete this.selectedDay.cssClass;
+    // }
+    // this.setDay();
+    // day.cssClass = 'cal-day-selected';
+    // this.selectedDay = day;
+    this.viewDate = day;
+    this.reservationDay = day; // this.selectedDay;
+    console.log("hala day", day);
     // console.log(this.selectedDay, this.reservationDay)
   }
-
 
   increment(): void {
     this.changeDate(CalendarUtils.addPeriod(this.view, this.viewDate, 1));

@@ -9,9 +9,13 @@ import {SharedModule} from './shared/shared.module';
 import {CoreModule} from "./core/core.module";
 import {AngularFireModule} from "angularfire2";
 import {SharedStoreModule} from "./store/index";
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 
 import {firebaseConfig} from "./core/config/firebase";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { AuthGuard } from './app.service';
+
 
 @NgModule({
   imports: [
@@ -23,13 +27,14 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     SharedModule,
     CoreModule.forRoot(),
     AngularFireModule.initializeApp(firebaseConfig),
-
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
     AppRoutingModule
   ],
   declarations: [
     AppComponent
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [AuthGuard],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

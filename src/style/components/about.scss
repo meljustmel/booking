@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Droid+Serif');
 .network {
   max-width: 630px;
   margin-left: auto;
@@ -16,7 +17,7 @@
 
 .network__text {
   color: #676873;
-  font-family: Charter, Helvetica, sans-serif;
+  font-family: 'Droid Serif', serif;
   font-size: 20px;
   line-height: 1.7;
 }
@@ -54,7 +55,7 @@
   align-items: center;
   position: relative;
   padding-top: 30px;
-  font-family: Charter, Helvetica, sans-serif;
+  font-family: 'Droid Serif', serif;
   color: #003;
   &:before {
     content: "";

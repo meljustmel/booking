@@ -1,0 +1,60 @@
+:host {
+  display: block;
+}
+.metabar {
+  background: transparent;
+  font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
+}
+.activated {
+  background: #fff;
+  box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.15);
+  z-index:3;
+}
+
+.button, .button .svgIcon {
+  transition: .1s background-color,.1s border-color,.1s color,.1s fill;
+}
+
+.button--login {
+  display: inline-block;
+  padding: 0 15px;
+  /*margin-bottom: 15px;*/
+  height: 40px;
+  line-height: 38px;
+  font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 14px;
+  white-space: nowrap;
+  color: rgba(0,0,0,0.44);
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 20px;
+  -webkit-transition-property: border-color, color, background-color;
+  transition-property: border-color, color, background-color;
+  -webkit-transition-duration: 125ms;
+  transition-duration: 125ms;
+  -webkit-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.button--login {
+  color: #384368;
+  border: none;
+  background: #FFF;
+}
+.button--login:hover {
+  color: #F7CFD2;
+  border-color: #F7CFD2;
+}
+@media screen and (max-width: 767px) {
+  .siteNav-logo {
+    padding-top: 0;
+  }
+}
+.siteNav-logo {
+  padding-top: 0;
+}

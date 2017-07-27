@@ -1,5 +1,5 @@
 import {Component, HostBinding, OnInit} from "@angular/core";
-import {CalendarEvent, CalendarMonthViewDay } from "angular-calendar";
+import {CalendarEvent, CalendarMonthViewDay} from "angular-calendar";
 import * as RootStore from "../store";
 import {
   addHours,
@@ -9,19 +9,18 @@ import {
   format,
   isSameDay,
   isSameMonth,
+  isWeekend,
   startOfDay,
   startOfMonth,
-  startOfWeek,
-  isWeekend
+  startOfWeek
 } from "date-fns";
 import {Store} from "@ngrx/store";
 import {FormBuilder} from "@angular/forms";
 import {ReservationsActions} from "../store/actions/res";
 import {ReservationService} from "../core/service/res";
 import {SlimLoadingBarService} from "ng2-slim-loading-bar";
-
 import {routeFadeStateTrigger} from "../app.animations";
-import {Subject} from 'rxjs/';
+import {Subject} from "rxjs/";
 
 @Component({
   selector: 'schedule',
@@ -52,13 +51,8 @@ import {Subject} from 'rxjs/';
                   [viewDate]="viewDate"
                   [events]="(reservations$ | async) || []"
         ></day-view>
-
       </div>
-
     </div>
-    <p>{{(filtered$ | async)?.length }}</p>
-    <pre>{{filtered$ | async | json }}</pre>
-
   `,
   styles: [`
     :host {
@@ -75,7 +69,6 @@ export class ScheduleComponent implements OnInit {
   viewDate: Date = new Date();
   reservations$;
   subject = new Subject();
-
   activeDayIsOpen = false;
 
   slots$;
@@ -91,7 +84,8 @@ export class ScheduleComponent implements OnInit {
               private fb: FormBuilder,
               private reservationService: ReservationService,
               private slimLoadingBarService: SlimLoadingBarService,
-              private store: Store<RootStore.AppState>) {  }
+              private store: Store<RootStore.AppState>) {
+  }
 
   ngOnInit() {
     // this.store.dispatch(this.reservationsActions.loadReservations());
@@ -108,7 +102,6 @@ export class ScheduleComponent implements OnInit {
   }
 
   dayClicked({date, events}: { date: Date, events: CalendarEvent[] }): void {
-    // const day = date;
     const day = date.toString();
     this.subject.next(day);
     if (this.selectedDay) {
@@ -127,9 +120,4 @@ export class ScheduleComponent implements OnInit {
       }
     }
   }
-
-  // eventClicked(event: FilmEvent): void {
-  //   window.open(`https://www.themoviedb.org/movie/${event.film.id}`, '_blank');
-  // }
-
 }

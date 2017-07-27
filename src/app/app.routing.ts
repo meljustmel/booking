@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {HomeComponent, BookingComponent, ScheduleComponent, ReservationsComponent, ContactComponent, AboutComponent} from "./containers";
+import { HomeComponent, BookingComponent, ScheduleComponent, ReservationsComponent, ContactComponent, AboutComponent, UsersComponent, UserDetailComponent,
+  ProfileComponent, MyReservationsComponent, MyMessagesComponent, MyProfileComponent } from "./containers/index";
+
 import {SharedModule} from "./shared/shared.module";
 import {CommonModule} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { AuthGuard } from './app.service'
 
 const routes: Routes = [
   {
@@ -12,11 +15,14 @@ const routes: Routes = [
   },
   {
     path: 'booking',
-    component: BookingComponent
+    component: BookingComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'schedule',
-    component: ScheduleComponent
+    component: ScheduleComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['admin'] }
   },
   {
     path: 'contact',
@@ -28,7 +34,33 @@ const routes: Routes = [
   },
   {
     path: 'reservations',
-    component: ReservationsComponent
+    component: ReservationsComponent,
+    canActivate: [AuthGuard],
+    data: { roles: ['admin'] }
+  },
+  {
+    path: 'users',
+    canActivate: [AuthGuard],
+    data: { roles: ['admin'] },
+    children: [
+      { path: '', component: UsersComponent},
+      { path: ':id', component: UserDetailComponent },
+    ]
+  },
+  // {
+  //   path: 'profile',
+  //   component: ProfileComponent,
+  //   canActivate: [AuthGuard],
+  //   children: [
+  //     { path: '', component: MyProfileComponent},
+  //     { path: 'reservations', component: MyReservationsComponent },
+  //     { path: 'messages', component: MyMessagesComponent },
+  //   ]
+  // },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '**',
@@ -38,7 +70,9 @@ const routes: Routes = [
 
 @NgModule({
   imports: [ReactiveFormsModule, FormsModule, SharedModule, CommonModule, RouterModule.forRoot(routes)],
-  declarations: [HomeComponent, BookingComponent, ScheduleComponent, ReservationsComponent, ContactComponent, AboutComponent],
-  exports: [RouterModule, HomeComponent, BookingComponent, ScheduleComponent, ReservationsComponent, ContactComponent, AboutComponent]
+  declarations: [HomeComponent, BookingComponent, ScheduleComponent, ReservationsComponent, ContactComponent, AboutComponent, UsersComponent, UserDetailComponent,
+    ProfileComponent, MyReservationsComponent, MyMessagesComponent, MyProfileComponent],
+  exports: [RouterModule, HomeComponent, BookingComponent, ScheduleComponent, ReservationsComponent, ContactComponent, AboutComponent, UsersComponent, UserDetailComponent,
+    ProfileComponent, MyReservationsComponent, MyMessagesComponent, MyProfileComponent]
 })
 export class AppRoutingModule { }

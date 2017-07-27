@@ -1,0 +1,60 @@
+<div class="surface">
+  <div class="screenContent">
+    <div class="u-sizeFullHeight u-clearfix">
+      <div class="container u-maxWidth1040">
+        <header class="hero hero--standalone hero--compact hero--alignLeft u-clearfix u-maxWidth1040">
+          <h1 class="hero-title">Booking</h1>
+
+          <div class="buttonSet" style="margin: 15px 0 0 auto;">
+            <button [ngClass]="{'invalid' : !hasPrevStep, 'back' : hasPrevStep}"
+                    (click)="previous()"
+                    [disabled]="!hasPrevStep || !activeStep.showPrev"
+                    class="button button--withChrome u-baseColor--buttonNormal">Back</button>
+            <button [ngClass]="{'active' : activeStep.isValid, 'invalid' : !activeStep.isValid, 'dead' : !hasNextStep}"
+                    (click)="next()"
+                    [disabled]="!activeStep.isValid"
+                    [hidden]="!hasNextStep || !activeStep.showNext"
+                    class="button button--withChrome u-baseColor--buttonNormal">Next</button>
+          </div>
+        </header>
+
+        <nav class="u-flex heading heading--borderedTop u-textAlignCenter">
+          <!--<span class="u-flex1"></span>-->
+          <ul class="heading-tabs" >
+            <li *ngFor="let step of steps; let i = index"
+                (click)="goToStep(step)"
+                [ngClass]="{'is-active': step.isActive, 'enabled': !step.isDisabled, 'disabled': step.isDisabled, 'u-accentColor--textDarken': isCompleted}"
+                class="heading-tabsItem u-inlineBlock is-active">
+              <span class="u-flex1">
+                <span
+                  [ngClass]="{'u-fontWeightMedium': step.isActive}"
+                  class="heading-title u-inlineBlock u-fontWeightNormal">
+                <a
+                  [ngClass]="{'u-accentColor': step.isCompleted}"
+                  class="button button--unstyled is-touched">{{step.title}}</a>
+               </span>
+              </span>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div>
+      <ng-content></ng-content>
+    </div>
+    <div class="container u-maxWidth1040 u-marginBottom100 u-marginTop100">
+      <div class="buttonSet u-paddingTop40 u-paddingBottom40 u-borderTopLightest u-floatRight u-sizeFullWidth u-textAlignRight">
+        <span class="buttonSet-label">Step {{active}} of {{steps.length}}</span>
+        <button [ngClass]="{'invalid' : !hasPrevStep, 'back' : hasPrevStep}"
+                (click)="previous()"
+                [disabled]="!hasPrevStep || !activeStep.showPrev"
+                class="button button--withChrome u-baseColor--buttonNormal">Back</button>
+        <button [ngClass]="{'active' : activeStep.isValid, 'invalid' : !activeStep.isValid, 'dead' : !hasNextStep}"
+                (click)="next()"
+                [disabled]="!activeStep.isValid"
+                [hidden]="!hasNextStep || !activeStep.showNext"
+                class="button button--withChrome u-baseColor--buttonNormal">Next</button>
+      </div>
+    </div>
+  </div>
+</div>

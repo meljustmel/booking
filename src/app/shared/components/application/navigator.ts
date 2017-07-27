@@ -1,14 +1,16 @@
-import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
-import {User} from "../../../core/model";
+import {Component, EventEmitter, HostBinding, Input, OnInit, Output} from '@angular/core'
+import {User} from "../../../core/model/index";
+import {routeFadeStateTrigger} from "../../../app.animations";
+
 @Component({
   selector: 'navigator',
   template: `
     <div [style.z-index]='' [ngClass]="user ? 'activated' : 'metabar'" class="metabar u-clearfix js-metabar is-withBottomSection">
       <div class="metabar-inner u-marginAuto u-maxWidth1000">
         <div class="metabar-block metabar-block--left u-floatLeft u-height65 u-xs-height56">
-          <!--<logo [style.fill]="user ? '#404040' : 'white'"></logo>-->
+          <logo [style.fill]="user ? '#404040' : 'white'"></logo>
         </div>
-        <div class="metabar-block u-floatRight u-xs-absolute u-xs-textAlignRight u-xs-right0 u-xs-marginRight20 u-height65 u-xs-height56">
+        <div class="metabar-block u-floatRight u-xs-absolute u-xs-textAlignRight u-xs-right0 u-height65 u-xs-height56">
           <div *ngIf='!user' class="buttonSet">
             <a (click)='onOpen($event)' class="button button--small button--login u-accentColor--buttonNormal u-sm-hide u-marginRight15 u-lineHeight30 u-height32">Sign In</a>
           </div>
@@ -29,63 +31,20 @@ import {User} from "../../../core/model";
           </div>
         </div>
       </div>
-      <secondary *ngIf='user'></secondary>
+      <secondary *ngIf='user' [user]='this.user' [profile]='this.profile'></secondary>
     </div>
   `,
-  styles: [`
-    .metabar {
-      background: transparent;
-    }
-    .activated {
-      background: #fff;
-      box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.15);
-      z-index:3;
-    }
-
-    .button, .button .svgIcon {
-      transition: .1s background-color,.1s border-color,.1s color,.1s fill;
-    }
-
-    .button--login {
-      display: inline-block;
-      padding: 0 15px;
-      /*margin-bottom: 15px;*/
-      height: 40px;
-      line-height: 38px;
-      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Open Sans, Helvetica Neue, sans-serif;
-      font-size: 14px;
-      white-space: nowrap;
-      color: rgba(0,0,0,0.44);
-      text-decoration: none;
-      cursor: pointer;
-      border: 1px solid rgba(0,0,0,0.15);
-      border-radius: 20px;
-      -webkit-transition-property: border-color, color, background-color;
-      transition-property: border-color, color, background-color;
-      -webkit-transition-duration: 125ms;
-      transition-duration: 125ms;
-      -webkit-transition-timing-function: ease-in;
-      transition-timing-function: ease-in;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-    }
-
-    .button--login {
-      color: #384368;
-      border: none;
-      background: #FFF;
-    }
-    .button--login:hover {
-      color: #F7CFD2;
-      border-color: #F7CFD2;
-    }
-
-  `]
+  styleUrls: ['navigator.scss'],
+  animations: [
+    routeFadeStateTrigger
+  ]
 })
 export class NavigatorComponent implements OnInit {
+  @HostBinding('@routeFadeState') routeAnimation = false;
+
 
   @Input() user: User;
+  @Input() profile: User;
 
   @Output() open = new EventEmitter<any>();
   @Output() menu = new EventEmitter<any>();
@@ -102,10 +61,8 @@ export class NavigatorComponent implements OnInit {
 
   ngOnInit() {
     if (this.user) {
-      console.log(this.user);
       this.isUser = true;
     } else {
-      console.log('gay');
       this.isUser = false;
     }
   }

@@ -1,7 +1,7 @@
 // import { IAuthCredentials } from '../../models';
 import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
-import { FirebaseAuthState } from 'angularfire2';
+// import { FirebaseAuthState } from 'angularfire2';
 
 @Injectable()
 export class AuthActions {
@@ -17,6 +17,7 @@ export class AuthActions {
   static LOGOUT_FAILURE = 'LOGOUT_SUCCESS';
   static USER_AUTHENTICATED = 'USER_AUTHENTICATED';
   static USER_NOT_AUTHENTICATED = 'USER_NOT_AUTHENTICATED';
+  static USER_INFO_LOADED = 'USER_INFO_LOADED';
 
   loginUser(authCredentials): Action {
     return {
@@ -38,13 +39,18 @@ export class AuthActions {
       payload: authState
     };
   }
-
-  registerUser(authCredentials): Action {
+  updateUserInfo(user): Action {
     return {
-      type: AuthActions.REGISTER_RECEIVED,
-      payload: authCredentials
+      type: AuthActions.USER_INFO_LOADED,
+      payload: user
     };
   }
+  // registerUser(authCredentials): Action {
+  //  return {
+  //    type: AuthActions.REGISTER_RECEIVED,
+  //    payload: authCredentials
+  //  };
+  // }
 
   registerSuccess(): Action {
     return {
@@ -78,12 +84,12 @@ export class AuthActions {
     };
   }
 
-  userAuthenticated(authState: FirebaseAuthState): Action {
-    return {
-      type: AuthActions.USER_AUTHENTICATED,
-      payload: authState
-    };
-  }
+  // userAuthenticated(authState: FirebaseAuthState): Action {
+  //  return {
+  //    type: AuthActions.USER_AUTHENTICATED,
+  //    payload: authState
+  //  };
+  // }
 
   userNotAuthenticated(): Action {
     return {

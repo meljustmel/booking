@@ -13,7 +13,7 @@ export * from './week-event';
 export * from './week-header';
 export * from './day-view';
 export * from './day-view-hour';
-
+export * from './day-form';
 // export * from './week-event';
 // export * from './week-header';
 

@@ -3,8 +3,8 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
-import { AuthService, UserService, ReservationService } from '../../core/service';
-import { ReservationsActions } from '../actions';
+import { AuthService, UserService, ReservationService } from '../../core/service/index';
+import { ReservationsActions } from '../actions/index';
 import { Injectable } from '@angular/core';
 import { Actions, Effect, toPayload } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
@@ -20,7 +20,7 @@ export class ReservationEffects {
         .switchMap((reservations) => Observable.of(this.reservationActions.loadReservationsSuccess(reservations)))
         .catch(error => Observable.of(this.reservationActions.loadReservationsFailure(error.message)))
     );
-
+/*
     @Effect() addReservation$ = this.actions$
         .ofType(ReservationsActions.ADD_RESERVATION_RECEIVED)
         .map(toPayload)
@@ -29,6 +29,8 @@ export class ReservationEffects {
                 .switchMap(() => Observable.of(this.reservationActions.addReservationSuccess(payload)))
                 .catch(error => Observable.of(this.reservationActions.addReservationFailure(error.message)))
         );
+        */
+
     constructor(
         private actions$: Actions,
         private reservationActions: ReservationsActions,

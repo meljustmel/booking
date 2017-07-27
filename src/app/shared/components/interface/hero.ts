@@ -4,7 +4,8 @@ import {Component, Input, OnInit} from "@angular/core";
   selector: 'hero',
   template: `
     <div class="help-hero"
-      [ngClass]="{jumbotron:  type === 'jumbotron'}"
+      [ngClass]="{jumbotron:  type === 'jumbotron'}" 
+      [style.background-position]="getStyle()"
       [ngStyle]="{'background-image': 'url(' + background + ')'}">
       <div class="help-hero__container">
         <div class="help-hero__content">
@@ -16,6 +17,7 @@ import {Component, Input, OnInit} from "@angular/core";
   styles: [`
     .help-hero {
       background-size: cover;
+      background-position: center;
       display: flex;
       height: 450px;
       align-items: flex-end;
@@ -36,14 +38,19 @@ import {Component, Input, OnInit} from "@angular/core";
       text-align: center;
     }
 
+
   `]
 })
-export class HeroComponent implements OnInit {
+export class HeroComponent {
   @Input() background;
   @Input() type;
 
-  ngOnInit() {
-    console.log(this.type);
+  getStyle() {
+    if (this.type === 'top') {
+      return 'top';
+    } else {
+      return 'center';
+    }
   }
 }
 

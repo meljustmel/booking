@@ -1,5 +1,5 @@
-import {Message} from "../../core/model";
-import { MessagesActions } from './../actions';
+import {Message} from "../../core/model/index";
+import { MessagesActions } from './../actions/index';
 
 
 export interface MessageState {

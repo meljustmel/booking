@@ -13,32 +13,37 @@ import {
   HeroTextComponent,
   ItemComponent,
   LogoComponent,
-  MenuComponent,
   NavigatorComponent,
   SearchComponent,
   SecondaryComponent,
   ServiceFormComponent,
   ServicesComponent,
   TimeFormComponent,
+  CreditFormComponent,
   TimeComponent,
   SegmentComponent,
   ItemListComponent,
+  UserItemComponent,
+  UserListComponent,
   TestimonialsComponent,
   QuestionsComponent,
   ProductsComponent,
   SuccessFormComponent,
-  InstafeedComponent
-} from './components';
-import {PopoverDirective, SpotlightDirective} from './directives';
-import {LoginModalComponent, ModalModule, ModalPlaceholderComponent} from './modal';
+  InstafeedComponent,
+  LoadingSpinnerComponent,
+  ContactFormComponent
+} from './components/index';
+import {PopoverDirective, SpotlightDirective} from './directives/index';
+import {LoginModalComponent, ServiceModalComponent, ModalModule, ModalPlaceholderComponent} from './modal/index';
 import {
   PopoverMenuComponent,
   PopoverModule,
   PopoverNotificationsComponent,
   PopoverPlaceholderComponent
-} from './popover';
+} from './popover/index';
 import {ScheduleModule} from '../schedule/schedule.module';
-import { FormWizardModule } from './wizard';
+import { FormWizardModule } from './wizard/index';
+import { CreditCardPipe, ExpireDatePipe } from './directives/index'
 
 
 @NgModule({
@@ -55,6 +60,7 @@ import { FormWizardModule } from './wizard';
   declarations: [
     ConfirmFormComponent,
     TimeFormComponent,
+    CreditFormComponent,
     TimeComponent,
     ServicesComponent,
     FootComponent,
@@ -66,7 +72,6 @@ import { FormWizardModule } from './wizard';
     HeroTextComponent,
     NavigatorComponent,
     SecondaryComponent,
-    MenuComponent,
     LogoComponent,
     CardComponent,
     PopoverDirective,
@@ -74,6 +79,8 @@ import { FormWizardModule } from './wizard';
     PopoverMenuComponent,
     ItemComponent,
     ItemListComponent,
+    UserItemComponent,
+    UserListComponent,
     PopoverNotificationsComponent,
     BlockComponent,
     BlockHeaderComponent,
@@ -83,11 +90,16 @@ import { FormWizardModule } from './wizard';
     ProductsComponent,
     InstafeedComponent,
     SuccessFormComponent,
-
+    LoadingSpinnerComponent,
+    ContactFormComponent,
+    CreditCardPipe,
+    ExpireDatePipe,
+    ServiceModalComponent
   ],
   exports: [
     ConfirmFormComponent,
     TimeFormComponent,
+    CreditFormComponent,
     TimeComponent,
     ServicesComponent,
     FootComponent,
@@ -103,14 +115,16 @@ import { FormWizardModule } from './wizard';
     FormWizardModule,
     ItemComponent,
     ItemListComponent,
+    UserItemComponent,
+    UserListComponent,
     ReactiveFormsModule,
+    PopoverMenuComponent,
     FormsModule,
     PopoverNotificationsComponent,
     PopoverPlaceholderComponent,
     ModalPlaceholderComponent,
     NavigatorComponent,
     SecondaryComponent,
-    MenuComponent,
     LogoComponent,
     CardComponent,
     PopoverDirective,
@@ -121,7 +135,11 @@ import { FormWizardModule } from './wizard';
     ProductsComponent,
     InstafeedComponent,
     SuccessFormComponent,
-
+    LoadingSpinnerComponent,
+    ContactFormComponent,
+    CreditCardPipe,
+    ExpireDatePipe,
+    ServiceModalComponent
   ]
 })
 export class SharedModule {

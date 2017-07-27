@@ -2,14 +2,14 @@ import "rxjs/add/observable/of";
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/switchMap";
-import {MessagesService} from "../../core/service";
-import {MessagesActions} from "../actions";
+import {MessagesService} from "../../core/service/index";
+import {MessagesActions} from "../actions/index";
 import * as RootStore from "../";
 import {Injectable} from "@angular/core";
 import {Actions, Effect, toPayload} from "@ngrx/effects";
 import {Observable} from "rxjs/Observable";
 import {Store} from "@ngrx/store";
-import {AngularFireDatabase} from "angularfire2";
+import {AngularFireDatabase} from "angularfire2/database";
 
 @Injectable()
 export class MessageEffects {

@@ -113,7 +113,7 @@ input {
 
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   letter-spacing: 0;
   font-weight: 400;
   font-style: normal;
@@ -127,7 +127,7 @@ body {
 }
 
 h3 {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   letter-spacing: 0;
   font-weight: 700;
   font-style: normal;
@@ -575,7 +575,7 @@ ul {
 }
 
 .u-uiTextRegular {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
+  font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   letter-spacing: 0 !important;
   font-weight: 400 !important;
   font-style: normal !important;
@@ -584,7 +584,7 @@ ul {
 .u-contentSerifRegular {
   --x-height-multiplier: 0.35 !important;
   --baseline-multiplier: 0.179 !important;
-  font-family: medium-content-serif-font, Georgia, Cambria, "Times New Roman", Times, serif !important;
+  font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   letter-spacing: .01rem !important;
   font-weight: 400 !important;
   font-style: normal !important;
@@ -787,7 +787,7 @@ ul {
   user-select: none;
   box-sizing: border-box;
   border-radius: 999em;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   letter-spacing: 0;
   font-weight: 400;
   font-style: normal;
@@ -1130,7 +1130,8 @@ ul {
 
 .button--close {
   font-size: 32px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  letter-spacing: 0;
   letter-spacing: 0;
   font-weight: 300;
   font-style: normal;
@@ -1318,7 +1319,7 @@ ul {
   appearance: none;
   box-sizing: border-box;
   border-radius: 4px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   letter-spacing: 0;
   font-weight: 400;
   font-style: normal;
@@ -1380,7 +1381,7 @@ ul {
 
 .heading--simple {
   .heading-content {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     letter-spacing: 0;
     font-weight: 400;
     font-style: normal;
@@ -1388,7 +1389,7 @@ ul {
     text-transform: none;
   }
   .heading-title {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     letter-spacing: 0;
     font-weight: 400;
     font-style: normal;
@@ -1460,7 +1461,7 @@ ul {
 }
 
 .postMetaInline {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   letter-spacing: 0;
   font-weight: 400;
   font-style: normal;
@@ -1708,7 +1709,7 @@ ul {
   font-size: 14px;
   background: #fff;
   color: rgba(0, 0, 0, 0.44);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   letter-spacing: 0;
   font-weight: 400;
   font-style: normal;
@@ -1727,7 +1728,7 @@ ul {
   }
 }
 
-.metabar .popover {
+.metabar .popovercustom {
   color: rgba(0, 0, 0, 0.8);
 }
 
@@ -1804,6 +1805,12 @@ ul {
     line-height: 33px;
   }
 }
+@media screen and (max-width: 1200px) {
+
+  .metabar .buttonSet:last-child {
+    margin-right: 30px;
+  }
+}
 
 @media print {
   .metabar {
@@ -1860,7 +1867,7 @@ ul {
   left: 33px;
 }
 
-.popover .list-item--separator {
+.popovercustom .list-item--separator {
   padding-bottom: 0;
   margin-bottom: 5px;
 }
@@ -1909,7 +1916,7 @@ ul {
 }
 
 .popover--userActions {
-  width: 230px;
+  width: 260px;
   &.popover--globalNav .list-item {
     &:hover > .button {
       color: rgba(0, 0, 0, 0.8);
@@ -1933,7 +1940,7 @@ ul {
     margin-top: -19px;
   }
 }
-
+/*
 @media screen and (max-width: 767px) {
   .popover--globalNav {
     position: relative;
@@ -1959,7 +1966,7 @@ ul {
     margin-right: 10px;
   }
 }
-
+*/
 .cardChromeless {
   background: #fff;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
@@ -2241,7 +2248,7 @@ hr.section-divider {
 .postArticle-content .graf--p {
   --x-height-multiplier: 0.35;
   --baseline-multiplier: 0.179;
-  font-family: medium-content-serif-font, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   letter-spacing: .01rem;
   font-weight: 400;
   font-style: normal;
@@ -2253,7 +2260,7 @@ hr.section-divider {
 .graf--h3 {
   --x-height-multiplier: 0.363;
   --baseline-multiplier: 0.157;
-  font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+  font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 700;
   font-style: normal;
   font-size: 32px;
@@ -2265,7 +2272,7 @@ hr.section-divider {
 .graf--title {
   --x-height-multiplier: 0.363;
   --baseline-multiplier: 0.157;
-  font-family: medium-content-sans-serif-font, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
+  font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   letter-spacing: -.02em;
   font-weight: 700;
   font-style: normal;
@@ -2278,7 +2285,7 @@ hr.section-divider {
 hr.section-divider:before {
   --x-height-multiplier: 0.363;
   --baseline-multiplier: 0.157;
-  font-family: medium-content-slab-serif-font, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 400;
   font-style: italic;
   font-size: 28px;
@@ -2515,7 +2522,7 @@ hr.section-divider {
   font-size: 18px;
   --x-height-multiplier: 0.35;
   --baseline-multiplier: 0.179;
-  font-family: medium-content-serif-font, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-family: "GT-Walsheim", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   letter-spacing: .01rem;
   font-weight: 400;
   font-style: normal;

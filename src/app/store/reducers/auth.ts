@@ -1,17 +1,19 @@
-import { LoginStatus } from '../../core/model';
-import { AuthActions } from './../actions';
+import { LoginStatus } from '../../core/model/index';
+import { AuthActions } from './../actions/index';
 import { Action } from '@ngrx/store';
 import {User} from "../../core/model/user";
 
 export interface AuthState {
   status: LoginStatus;
   currentUser: User;
+  profile: User;
   newlyRegistered: boolean;
 }
 
 const initialState: AuthState = {
   status: LoginStatus.unknown,
   currentUser: null,
+  profile: null,
   newlyRegistered: false
 };
 
@@ -27,9 +29,9 @@ export default function (state = initialState, action: Action): AuthState {
       return updateObject(state, {status: LoginStatus.loggingIn});
 
     case AuthActions.LOGIN_SUCCESS:
-      console.log(action.payload.auth)
-      return updateObject(state, {status: LoginStatus.loggedIn, currentUser: action.payload.auth});
-
+      return updateObject(state, {status: LoginStatus.loggedIn, currentUser: action.payload});
+    case AuthActions.USER_INFO_LOADED:
+      return updateObject(state, {profile: action.payload});
     case AuthActions.LOGIN_FAILURE:
       return updateObject(state, {status: LoginStatus.loginFailed});
 
@@ -37,7 +39,7 @@ export default function (state = initialState, action: Action): AuthState {
       return updateObject(state, {status: LoginStatus.loggingOut});
 
     case AuthActions.LOGOUT_SUCCESS:
-      return updateObject(state, {status: LoginStatus.loggedOut, currentUser: null});
+      return updateObject(state, {status: LoginStatus.loggedOut, currentUser: null, profile: null});
 
     default: return state;
   }

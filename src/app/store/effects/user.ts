@@ -3,8 +3,8 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
-import { AuthService, UserService } from '../../core/service';
-import { UserActions } from '../actions';
+import { AuthService, UserService } from '../../core/service/index';
+import { UserActions } from '../actions/index';
 import { Injectable } from '@angular/core';
 import { Actions, Effect, toPayload } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
@@ -15,9 +15,9 @@ export class UserEffects {
     @Effect() getUsers$ = this.actions$
         .ofType(UserActions.GET_USERS_RECEIVED)
         .switchMap(() =>
-            this.authService.af.auth
+            this.authService.auth$.authState
                 .switchMap(authState => {
-
+                  console.log("HALA UserEffects GET_USERS_RECEIVED")
                     if (authState) {
                         return this.userService.getUsers()
                             .switchMap((users) => Observable.of(this.userActions.getUsersSuccess(users)))

@@ -235,8 +235,6 @@ export class BookingComponent implements OnInit {
       cvc: this.reservationForm.value['creditDetail'].cvc
     }, (status: number, response: any) => {
       if (status === 200) {
-        console.log(`Success! Card token ${response.card.id}.`);
-        console.log('card  response', response);
         _this.reservationService.bookUserReservation(_this.reservationForm.value, response.id, _this.data.service.price)
           .subscribe(
             () => {
